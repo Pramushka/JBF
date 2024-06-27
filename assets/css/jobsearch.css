@@ -1,0 +1,153 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 240px 1fr 200px;
+    gap: 20px;
+    padding: 20px;
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-top: 80px;
+}
+
+
+.sidebar, .main-content, .guidance {
+    background: white;
+    padding: 20px;
+}
+
+.job-listings h3, .guidance h2 {
+    margin-top: 0;
+    font-size: 15px;
+}
+
+.tag {
+    display: inline-block;
+    background: #4b4b4b;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 5px 15px;
+    margin: 5px;
+    font-size: 10px;
+}
+
+.job-card {
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.job-card.not-found {
+    text-align: center;
+}
+
+.search-tags {
+    margin-bottom: 20px;
+}
+
+.job-listings {
+    overflow-y: auto;
+    max-height: 1000px; /* Adjust based on your layout needs */
+}
+
+.guidance {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: fit-content;
+}
+
+/* FILTER SIDE BAR */
+.sidebar {
+    width: 240px;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    font-size: 13px;
+}
+
+.filter-section h3 {
+    font-size: 13px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.filter-section label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.filter-section input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.slider {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.view-more {
+    background: none;
+    border: none;
+    color: #007bff;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.view-more:hover {
+    text-decoration: underline;
+}
+
+/*GUIDENCE SECTION*/
+
+.guidance {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 320px; /* Adjust the width as needed */
+}
+
+.card {
+    background: #f9f9f9; /* Light grey background */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-content {
+    margin-top: 10px;
+}
+
+.card-content h2 {
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 10px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.learn-more {
+    padding: 10px 20px;
+    background-color: #0056b3; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.learn-more:hover {
+    background-color: #003d7a;
+}

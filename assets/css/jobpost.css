@@ -1,0 +1,108 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.job-post-container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    padding: 30px 20px;
+}
+
+.job-post-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.job-post-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.job-post-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.job-post-group {
+    flex: 1;
+    min-width: calc(50% - 10px);
+    margin-bottom: 20px;
+}
+
+.job-post-group-full {
+    flex: 1;
+    min-width: 100%;
+    margin-bottom: 20px;
+}
+
+.job-post-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.job-post-input, .job-post-select, .job-post-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.job-post-input:focus, .job-post-select:focus, .job-post-textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.job-post-input::placeholder, .job-post-select::placeholder, .job-post-textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.job-post-textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.job-post-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.job-post-button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .job-post-group {
+        min-width: 100%;
+    }
+}

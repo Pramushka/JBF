@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.main_title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.main_title h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.main_title p {
+    font-size: 16px;
+    color: #777;
+}
+
+.owl-carousel .owl-item {
+    margin-bottom: 30px;
+}
+
+.single_course {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.single_course:hover {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+
+.single_course .course_head img {
+    width: 100%;
+    height: auto;
+}
+
+.single_course .course_content {
+    padding: 20px;
+    position: relative;
+}
+
+.single_course .course_content .price {
+    position: absolute;
+    top: -30px;
+    right: 15px;
+    background: #fdc632;
+    color: #002347;
+    width: 65px;
+    height: 65px;
+    line-height: 65px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: 500;
+    z-index: 10;
+}
+
+.single_course .course_content .tag {
+    background: #002347;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.single_course .course_content h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.single_course .course_content h4 a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.single_course .course_content h4 a:hover {
+    color: #fdc632;
+}
+
+.single_course .course_content p {
+    margin: 0 0 15px;
+    color: #777;
+    font-size: 14px;
+}
+
+.single_course .course_content .course_meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.single_course .course_content .authr_meta {
+    display: flex;
+    align-items: center;
+}
+
+.single_course .course_content .authr_meta img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.single_course .course_content .authr_meta span {
+    font-size: 14px;
+    color: #333;
+}
+
+.single_course .course_content .meta_info a {
+    font-size: 14px;
+    color: #777;
+    display: flex;
+    align-items: center;
+}
+
+.single_course .course_content .meta_info a i {
+    margin-right: 5px;
+}

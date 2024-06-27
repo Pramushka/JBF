@@ -1,0 +1,121 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f3f2ef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+input, select {
+    display: inline-block;
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+button {
+    background-color: #0073b1;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    margin: 20px 0 10px;
+}
+
+button:hover {
+    background-color: #005582;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+}
+
+.input-with-button {
+    position: relative;
+    margin: 10px 0;
+}
+
+.input-with-button select, 
+.input-with-button input {
+    width: calc(100% - 40px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.input-with-button button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #0073b1;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.8em;
+    width: 25px;
+    height: 25px;
+    line-height: 15px;
+    text-align: center;
+}
+
+.input-with-button button:hover {
+    background-color: #005582;
+}
+
+.skill, .job-position, .job-industry {
+    display: inline-block;
+    background-color: #0073b1;
+    color: white;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.skill i, .job-position i, .job-industry i {
+    margin-left: 5px;
+}
+.error-message {
+    color: red;
+    margin-bottom: 20px;
+}
