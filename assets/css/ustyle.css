@@ -1,0 +1,255 @@
+body{
+    font-family: var(--artdeco-reset-typography-font-family-sans);
+    background-color: #e4e3e3;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container{
+    width: 60%;
+    height: auto;
+    margin: 20px auto;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0,0.1);
+    overflow: hidden;
+}
+
+.exp-view{
+    width: 58%;
+    height: 400px;
+    margin: 20px auto;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0,0.1);
+    overflow: hidden;
+}
+
+.organization{
+    width: 60%;
+    height: auto;
+    margin: 20px auto;
+    margin-left: 380px;
+    background-color: #f3f3f3;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgb(0, 0, 0,0.1);
+    overflow: hidden;
+}
+
+.courses{
+    width: 60%;
+    height: auto;
+    margin: 20px auto;
+    margin-left: 380px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0,0.1);
+    overflow: hidden;
+}
+
+.job{
+    width: 60%;
+    height: auto;
+    margin: 20px auto;
+    margin-left: 380px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0,0.1);
+    overflow: hidden;
+}
+
+.profile-header {
+    display: flex;
+    padding: 10px;
+    height: 280px;
+    background-color: #74d8df;
+   
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    background-color: #8d8d8d;
+    border-radius: 50%;
+    background-image:url();
+    background-size: cover;
+    background-position: center;
+}
+
+.user-details {
+    margin-left: 20px;
+    padding-bottom: 0%;
+    flex-grow: 1;
+}
+
+.user-details h2 {
+    margin-top: 20px;
+    font-size: 34px;
+}
+
+.buttons{
+    margin-top: 180px;
+    margin-left: 650px;
+}
+
+.open-to,
+.add-profile-section,
+.more {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1c7db1;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.open-to:hover,
+.add-profile-section:hover,
+.more:hover {
+    background-color: #024b72;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.details{
+    padding: 20px;
+}
+
+.about{
+    margin-bottom: 20px;
+}
+
+
+.exp-view{
+    padding: 20px;
+}
+.exp-vv{
+    margin-top: 20px;
+}
+/*experince-------------------------------*/
+
+
+
+.organization h3{
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.org{
+    display: flex;
+    overflow-x: auto;
+    
+}
+
+.ecard {
+    margin-top: 20px;
+    min-width: 300px;
+    min-height: 200px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    color: #fff;
+    border-radius: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.774);
+    text-align: center;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.ecard:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+}
+
+.ecard:last-child{
+    margin-right: 0;
+}
+
+/*cources-------------------------------*/
+
+.courses {
+    margin-top: 20px;
+}
+
+.courses h3 {
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 20px;
+}
+.cou-for-you{
+    display: flex;
+    overflow-x: auto;
+}
+
+.card{
+    margin-top: 20px;
+    min-width: 300px;
+    min-height: 200px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    color: #fff;
+    border-radius: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.774);
+    text-align: center;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+}
+
+.card:last-child {
+    margin-right: 0;
+}
+
+/*jobs-------------------------------*/
+
+.job{
+    margin-top: 20px;
+}
+
+.job h3 {
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 20px;
+}
+.jobs-for-you{
+    display: flex;
+    overflow-x: auto;
+}
+
+.jcard{
+    margin-top: 20px;
+    min-width: 300px;
+    min-height: 200px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    color: #fff;
+    border-radius: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.774);
+    text-align: center;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.jcard:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+}
+.jcard:last-child {
+    margin-right: 0;
+}
+
