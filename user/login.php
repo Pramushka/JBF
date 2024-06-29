@@ -59,10 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,11 +81,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php if (isset($login_error)) : ?>
                     <p class="error-message"><?= htmlspecialchars($login_error) ?></p>
                 <?php endif; ?>
-                <div class="input-filed">
+                <div class="input-field">
                     <i class="fas fa-user"></i>
                     <input type="text" name="username" placeholder="Username" required>
                 </div>
-                <div class="input-filed">
+                <div class="input-field">
                     <i class="fas fa-lock"></i>
                     <input type="password" name="password" placeholder="Password" required>
                 </div>
@@ -99,13 +95,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <a href="#" class="social-icon">
                         <i class="fab fa-facebook"></i>
                     </a>
-                    <a href="" class="social-icon">
+                    <a href="#" class="social-icon">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="" class="social-icon">
+                    <a href="#" class="social-icon">
                         <i class="fab fa-google"></i>
                     </a>
-                    <a href="" class="social-icon">
+                    <a href="#" class="social-icon">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
@@ -113,31 +109,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
             <form action="login.php" method="post" class="sign-up-form">
                 <h2 class="title">Sign up</h2>
-                <div class="input-filed">
+                <div class="input-field">
                     <i class="fas fa-user"></i>
                     <input type="text" name="username" placeholder="Username" required>
                 </div>
-                <div class="input-filed">
+                <div class="input-field">
                     <i class="fas fa-envelope"></i>
                     <input type="email" name="email" placeholder="Email" required>
                 </div>
-                <div class="input-filed">
+                <div class="input-field">
                     <i class="fas fa-lock"></i>
                     <input type="password" name="password" placeholder="Password" required>
                 </div>
-                <input type="submit" value="Sign up" class="btn">
+                <input type="submit" name="signup" value="Sign up" class="btn">
                 <p class="social-text">Or signup with social platform</p>
                 <div class="social-media">
                     <a href="#" class="social-icon">
                         <i class="fab fa-facebook"></i>
                     </a>
-                    <a href="" class="social-icon">
+                    <a href="#" class="social-icon">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="" class="social-icon">
+                    <a href="#" class="social-icon">
                         <i class="fab fa-google"></i>
                     </a>
-                    <a href="" class="social-icon">
+                    <a href="#" class="social-icon">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
