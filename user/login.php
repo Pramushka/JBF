@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     // Not a POST request, redirect back to login.php
     //header("Location: ../login.php");
-}
+}//
 ?>
 
 
@@ -143,19 +143,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="panel-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>Find</h3>
-                    <p>Don't have an account?</p>
+                    <h3>Log in</h3>
+                    <p>If you have an account?</p>
                     <button class="btn" id="sign-in-btn">Sign in</button>
                 </div>
-                <img src="image/1.png" alt="" class="image">
+                <img scr="" alt="" class="image">
             </div>
             <div class="panel right-panel">
                 <div class="content">
                     <h3>Join with us</h3>
                     <p>Already have an account?</p>
-                    <button class="btn" id="sign-up-btn">Sign in</button>
+                    <button class="btn" id="sign-up-btn">Sign up</button>
                 </div>
-                <img src="image/2.png" alt="" class="image">
+                <img src="" alt="" class="image">
             </div>
         </div>
     </div>

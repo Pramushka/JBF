@@ -37,12 +37,16 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    margin-top: 10px;
+    margin-left: 10px;
     transition: all 0.3s ease;
     position: relative;
+    transform: scale(1);
 }
 
 .single_course:hover {
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
 
 .single_course .course_head img {
