@@ -1,69 +1,40 @@
-body{
+body {
     font-family: var(--artdeco-reset-typography-font-family-sans);
     background-color: #e4e3e3;
     margin: 0;
     padding: 0;
 }
 
-.profile-container{
-    width: 60%;
-    height: auto;
+.profile-container,
+.exp-view,
+.organization,
+.courses,
+.job {
+    width: 80%;
     margin: 20px auto;
     background-color: #f3f3f3;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgb(0, 0, 0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    display: grid;
+    grid-gap: 20px;
+    padding: 20px;
 }
 
-.exp-view{
-    width: 58%;
-    height: 400px;
-    margin: 20px auto;
-    background-color: #f3f3f3;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgb(0, 0, 0,0.1);
-    overflow: hidden;
+.organization,
+.courses,
+.job {
+    grid-template-columns: 1fr 1fr; /* Two-column layout for organization, courses, job sections */
 }
 
-.organization{
-    width: 60%;
-    height: auto;
-    margin: 20px auto;
-    margin-left: 380px;
-    background-color: #f3f3f3;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgb(0, 0, 0,0.1);
-    overflow: hidden;
-}
-
-.courses{
-    width: 60%;
-    height: auto;
-    margin: 20px auto;
-    margin-left: 380px;
-    background-color: #f3f3f3;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgb(0, 0, 0,0.1);
-    overflow: hidden;
-}
-
-.job{
-    width: 60%;
-    height: auto;
-    margin: 20px auto;
-    margin-left: 380px;
-    background-color: #f3f3f3;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgb(0, 0, 0,0.1);
-    overflow: hidden;
-}
 
 .profile-header {
     display: flex;
-    padding: 10px;
-    height: 280px;
+    align-items: center;
     background-color: #74d8df;
-   
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .profile-pic {
@@ -71,15 +42,13 @@ body{
     height: 150px;
     background-color: #8d8d8d;
     border-radius: 50%;
-    background-image:url();
     background-size: cover;
     background-position: center;
 }
 
 .user-details {
+    flex: 1;
     margin-left: 20px;
-    padding-bottom: 0%;
-    flex-grow: 1;
 }
 
 .user-details h2 {
@@ -87,9 +56,8 @@ body{
     font-size: 34px;
 }
 
-.buttons{
-    margin-top: 180px;
-    margin-left: 650px;
+.buttons {
+    margin-top: auto; /* Align buttons to the bottom */
 }
 
 .open-to,
@@ -113,143 +81,197 @@ body{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.details{
+.details,
+.exp-view {
     padding: 20px;
-}
-
-.about{
-    margin-bottom: 20px;
-}
-
-
-.exp-view{
-    padding: 20px;
-}
-.exp-vv{
-    margin-top: 20px;
-}
-/*experince-------------------------------*/
-
-
-
-.organization h3{
-    font-size: 30px;
-    font-weight: 500;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.org{
-    display: flex;
-    overflow-x: auto;
     
 }
 
-.ecard {
+.exp-vv {
     margin-top: 20px;
-    min-width: 300px;
-    min-height: 200px;
-    margin-right: 10px;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #ffffff;
-    color: #fff;
-    border-radius: 15px;
-    flex-shrink: 0;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.774);
-    text-align: center;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    
 }
 
-.ecard:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
-}
-
-.ecard:last-child{
-    margin-right: 0;
-}
-
-/*cources-------------------------------*/
-
-.courses {
-    margin-top: 20px;
-}
-
-.courses h3 {
-    font-size: 30px;
-    font-weight: 500;
-    text-align: center;
-    margin-top: 20px;
-}
-.cou-for-you{
-    display: flex;
-    overflow-x: auto;
-}
-
-.card{
-    margin-top: 20px;
-    min-width: 300px;
-    min-height: 200px;
-    margin-right: 10px;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #ffffff;
-    color: #fff;
-    border-radius: 15px;
-    flex-shrink: 0;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.774);
-    text-align: center;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.card:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
-}
-
-.card:last-child {
-    margin-right: 0;
-}
-
-/*jobs-------------------------------*/
-
-.job{
-    margin-top: 20px;
-}
-
+.organization h3,
+.courses h3,
 .job h3 {
     font-size: 30px;
     font-weight: 500;
     text-align: center;
     margin-top: 20px;
 }
-.jobs-for-you{
+
+.jobs-for-you,
+.org,
+.cou-for-you {
     display: flex;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items horizontally */
 }
 
-.jcard{
-    margin-top: 20px;
-    min-width: 300px;
-    min-height: 200px;
-    margin-right: 10px;
-    margin-bottom: 20px;
-    padding: 10px;
+.jcard,
+.ecard,
+.card {
+    flex: 1 1 calc(25% - 20px); /* Adjust the width as per your design */
+    margin: 10px; /* Adjust margins as needed */
+    padding: 20px;
     background-color: #ffffff;
-    color: #fff;
     border-radius: 15px;
-    flex-shrink: 0;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.774);
     text-align: center;
     transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
-
+.ecard:hover,
+.card:hover,
 .jcard:hover {
     transform: scale(1.1);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
 }
+
+.ecard:last-child,
+.card:last-child,
 .jcard:last-child {
     margin-right: 0;
 }
 
+/* Modal styles */
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+
+.modal-content {
+    background-color: #1594dd;
+    padding: 20px;
+    width: 80%; /* Adjust the width as per your design */
+    max-width: 800px; /* Limit maximum width */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Ensure modal content is in column layout */
+    align-items: center; /* Center content horizontally */
+    position: relative; /* Needed for absolute positioning of the close button */
+}
+
+.modal .close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #e90e0e;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.modal .card {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    background-color: #ffffff;
+    color: #000;
+    border-radius: 15px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.774);
+    text-align: left;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.modal input[type="text"],
+.modal textarea {
+    width: calc(100% - 40px); /* Adjust width of input elements */
+    max-width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.modal button[type="submit"] {
+    background-color: #1c7db1;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.modal button[type="submit"]:hover {
+    background-color: #145e85;
+}
+
+
+
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%; /* Adjust modal width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95%; /* Adjust modal width for even smaller screens */
+    }
+
+    .modal input[type="text"],
+    .modal textarea {
+        width: calc(100% - 20px); /* Adjust input width for smaller screens */
+    }
+}
+
+
+
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    .jcard,
+    .ecard,
+    .card {
+        flex-basis: calc(50% - 20px); /* Two cards per row */
+    }
+}
+
+/* Adjust for even smaller screens */
+@media (max-width: 480px) {
+    .jcard,
+    .ecard,
+    .card {
+        flex-basis: 100%; /* One card per row */
+    }
+}
+
+
+
+#jobDetailModal .modal-content {
+    max-width: 600px; /* Adjust width as needed */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+#jobDetailModal .close-button {
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+}
