@@ -148,21 +148,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <br>
 <br>
 
-
 <div class="sponsored-companies">
     <h2>Top companies hiring now</h2>
     <div class="company-grid">
         <?php foreach ($companies as $company): ?>
-            <div class="company-card">
-                <img src="../assets/img/Company_Logo_<?= htmlspecialchars($company['ID']) ?>.gif" alt="<?= htmlspecialchars($company['Org_Name']) ?>">
-                <h3><?= htmlspecialchars($company['Org_Name']) ?></h3>
-                <p>⭐ Rating | Reviews Count</p> <!-- Placeholder for rating, replace with actual data if available -->
-                <p><strong>Industry:</strong> <?= htmlspecialchars($company['Org_Industry']) ?></p>
-                <p><?= htmlspecialchars($company['Org_Location']) ?></p>
+            <div class="company-card" style="background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
+                <!-- Using a default image if the specific company image does not exist -->
+                <img src="../assets/img/default_company_logo.png" alt="<?= htmlspecialchars($company['Org_Name']) ?>" style="height: 100px; width: auto; margin-bottom: 10px;">
+                <h3 style="margin-top: 10px; margin-bottom: 5px;"><?= htmlspecialchars($company['Org_Name']) ?></h3>
+                <p style="margin-bottom: 5px;"><strong>Industry:</strong> <?= htmlspecialchars($company['Org_Industry']) ?></p>
+                <p style="margin-bottom: 10px;"><?= htmlspecialchars($company['Org_Location']) ?></p>
+                <!-- Button to view jobs, linking to a job search page filtered by this company -->
+                <button onclick="window.location.href='jobsearch.php?company=<?= urlencode($company['Org_Name']) ?>'" style="padding: 8px 16px; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">View Jobs</button>
             </div>
         <?php endforeach; ?>
     </div>
 </div>
+
+
 
 <div class="courses-container">
     <h2>Top Learning Courses</h2>
