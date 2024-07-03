@@ -270,7 +270,7 @@ $progress = (count($completed_sections) / count($sections)) * 100;
                                 $conn->close();
                                 ?>
                             </div>
-                        </div><
+                        </div><br>
 
                     </div>
                     
@@ -574,7 +574,7 @@ $progress = (count($completed_sections) / count($sections)) * 100;
             </div>
         </div>
     </div>
-
+   
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
