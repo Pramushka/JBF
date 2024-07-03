@@ -40,7 +40,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param("sssi", $work_experience, $work_experience_date, $work_experience_description, $user_id);
         $stmt->execute();
     }
-    
+
+    if (isset($_POST['education_title']) || isset($_POST['education_date']) || isset($_POST['education_description'])) {
+        $education_title = $_POST['education_title'];
+        $education_date = $_POST['education_date'];
+        $education_description = $_POST['education_description'];
+        $stmt = $conn->prepare("UPDATE user SET education_title = ?, education_date = ?, education_description = ? WHERE ID = ?");
+        $stmt->bind_param("sssi", $education_title, $education_date, $education_description, $user_id);
+        $stmt->execute();
+    }
+
     // Redirect back to profile page
     header("Location: userprofile2.php");
     exit();
