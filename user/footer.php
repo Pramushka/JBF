@@ -13,7 +13,7 @@
     <div class="footer-container">
         <div class="footer-main">
             <div class="footer-logo">
-                <img src="../assets/img/Jobforce_Logo2.png" alt="Naukri Logo">
+                <img src="../assets/img/Jobforce_Logo2.png" alt="Jobforce Logo">
             </div>
             <div class="footer-social">
                 <p>Connect with us:</p>
@@ -55,11 +55,10 @@
         <div class="footer-bottom">
             <p>All trademarks are the property of their respective owners.<br>All rights reserved © 2024 Info Edge (Sri Lanka) Ltd.</p>
             <div class="footer-business">
-                <a href="#"><img src="../assets/img/Mastercard.gif" alt="nrigulf.com"></a>
                 <a href="#"><img src="../assets/img/Amazon_Logo.gif" alt="hireskilling"></a>
-                <a href="#"><img src="../assets/img/binned_logo.gif" alt="iimjobs.com"></a>
+                <a href="#"><img src="../assets/img/Mastercard.gif" alt="nrigulf.com"></a>
                 <a href="#"><img src="../assets/img/Spotify.gif" alt="shiksha"></a>
-
+                <a href="#"><img src="../assets/img/binned_logo.gif" alt="iimjobs.com"></a>
             </div>
         </div>
     </div>
