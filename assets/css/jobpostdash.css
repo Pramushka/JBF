@@ -1,68 +1,74 @@
-body { padding-top: 20px; background-color: #f1f5f9; }
-        .card { 
+    body    { 
+        padding-top: 20px;
+        background-color: #ffffff;
+         }
+
+    .card { 
             border: 0; 
             border-radius: 0.5rem; 
             box-shadow: 0 2px 4px rgba(0,0,20,.08), 0 1px 2px rgba(0,0,20,.08); 
             transition: transform 0.3s, box-shadow 0.3s; 
         }
 
-        .card:hover { 
+    .card:hover { 
             transform:translateY(10px);
             box-shadow: 0 4px 8px rgba(0,0,20,.12), 0 2px 4px rgba(0,0,20,.12); 
         }
 
-        .rounded-bottom 
+    .rounded-bottom 
         { border-bottom-left-radius: 0.375rem !important;
              border-bottom-right-radius: 0.375rem !important;
          }
 
-        .avatar-xxl { 
+    .avatar-xxl { 
             height: 7.5rem; 
             width: 7.5rem; 
         }
 
-        .nav-lt-tab {
+    .nav-lt-tab {
              border-top: 1px solid var(--dashui-border-color);
          }
 
-        .px-4 { 
+    .px-4 { 
             padding-left: 1rem !important; 
             padding-right: 1rem !important;
          }
 
-        .avatar-sm {
+    .avatar-sm {
              height: 2rem;
               width: 2rem;
         }
 
-        .nav-lt-tab .nav-item { 
+    .nav-lt-tab .nav-item { 
             margin: -0.0625rem 1rem 0; 
         }
 
-        .nav-lt-tab .nav-item .nav-link {
+    .nav-lt-tab .nav-item .nav-link {
              border-radius: 0; 
              border-top: 2px solid transparent; 
              color: var(--dashui-gray-600);
               font-weight: 500; padding: 1rem 0;
         }
 
-        .pt-20 
-        { padding-top: 8rem !important; 
+    .pt-20 
+        { 
+            padding-top: 8rem !important; 
         }
 
-        .avatar-xxl.avatar-indicators:before 
-        { bottom: 5px; height: 16%; 
+    .avatar-xxl.avatar-indicators:before 
+        { 
+            bottom: 5px; height: 16%; 
             right: 17%; width: 16%;
          }
 
-        .avatar-online:before { 
+    .avatar-online:before { 
             background-color: #198754;
          }
 
-        .avatar-indicators:before {
-             border: 2px solid #FFF;
-              border-radius: 50%; bottom: 0; content: "";
-               display: table; height: 30%; position: absolute;
+    .avatar-indicators:before {
+         border: 2px solid #FFF;
+         border-radius: 50%; bottom: 0; content: "";
+         display: table; height: 30%; position: absolute;
                 right: 5%; width: 30%; 
         }
 

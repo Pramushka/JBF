@@ -1,6 +1,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #94a7e9, #94a7e9);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,11 +12,13 @@ body {
 }
 
 .job-post-container {
-    background: #c0e4ee;
+    background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    max-width: 600px;
+    max-width: 800px;
     width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 30px 20px;
 }
 
