@@ -102,6 +102,26 @@ footer {
     height: auto;
 }
 
+@media (max-width: 992px) {
+    .footer-main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+
+    .footer-column {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-app {
+        align-items: center;
+    }
+}
+
 @media (max-width: 768px) {
     .footer-logo img {
         width: 80px;
@@ -118,6 +138,10 @@ footer {
 
     .footer-business a img {
         width: 80px;
+    }
+
+    .footer-column {
+        min-width: 120px;
     }
 }
 
@@ -137,5 +161,15 @@ footer {
 
     .footer-business a img {
         width: 60px;
+    }
+
+    .footer-main {
+        align-items: flex-start;
+    }
+
+    .footer-column {
+        align-items: flex-start;
+        text-align: left;
+        min-width: unset;
     }
 }

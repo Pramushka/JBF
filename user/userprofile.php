@@ -112,5 +112,8 @@
 <script src="../assets/js/jobs cards.js"></script>
 
 <script src="../assets/js/umodal.js"></script>
+
+<?php include  'footer.php'; ?>
+
 </body>
 </html>

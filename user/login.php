@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     } else {
         $login_error = "Error preparing statement: " . mysqli_error($conn);
     }
-    mysqli_close($conn);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
