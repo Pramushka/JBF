@@ -1,67 +1,51 @@
 <?php
-// Start the PHP session and include necessary files
 session_start();
-include '../includes/dbconn.php';
+require_once '../includes/dbconn.php';
 
-// Initialize variables
-$industrySkillPosition = '';
-$experience = '';
-$location = '';
+// Retrieve filter values from GET request
+$industrySkillPosition = $_GET['industrySkillPosition'] ?? '';
+$experience = $_GET['experience'] ?? '';
+$location = $_GET['location'] ?? '';
 
-// Define an array to hold job posts
 $jobs = [];
 
-// Build the SQL query
+// Build the SQL query dynamically
 $sql = "SELECT * FROM jobpost WHERE IsDeleted = 0";
-
-// Add conditions based on the user input
 $conditions = [];
 $params = [];
 
-if (!empty($industrySkillPosition) && $industrySkillPosition != 'Not Specified') {
+if ($industrySkillPosition !== '') {
     $conditions[] = "Searching_Skill LIKE ?";
-    $params[] = "%$industrySkillPosition%";
+    $params[] = "%{$industrySkillPosition}%";
 }
 
-if (!empty($experience) && $experience != 'Not Specified' && is_numeric($experience)) {
+if ($experience !== '' && is_numeric($experience)) {
     $conditions[] = "Experience <= ?";
     $params[] = $experience;
 }
 
-if (!empty($location) && $location != 'Not Specified') {
+if ($location !== '') {
     $conditions[] = "Location LIKE ?";
-    $params[] = "%$location%";
+    $params[] = "%{$location}%";
 }
 
 if (!empty($conditions)) {
     $sql .= " AND " . implode(" AND ", $conditions);
-} else {
-    // Fallback SQL if no conditions are specified
-    $sql .= " ORDER BY CreatedOn DESC LIMIT 10"; 
 }
 
-// Prepare the statement
 $stmt = $conn->prepare($sql);
 
-// Bind the parameters
-foreach ($params as $index => $param) {
-    // Since mysqli bind_param needs the types, you need to define the type (s for string, i for integer)
-    $type = is_numeric($param) ? 'i' : 's';
-    $stmt->bind_param($type, $params[$index]);
+// Dynamically bind parameters
+if (!empty($params)) {
+    $types = str_repeat("s", count($params) - (in_array($experience, $params) ? 1 : 0)) . (in_array($experience, $params) ? 'i' : '');
+    $stmt->bind_param($types, ...$params);
 }
 
-// Execute the query
 $stmt->execute();
-
-// Bind result variables and fetch
 $result = $stmt->get_result();
-$jobs = [];
 while ($row = $result->fetch_assoc()) {
     $jobs[] = $row;
 }
-
-
-// Close the statement
 $stmt->close();
 ?>
 
@@ -144,14 +128,14 @@ $stmt->close();
 
 <div class="main-content">
     <div class="search-tags">
-        <?php if (!empty($industrySkillPosition) && $industrySkillPosition != 'Not Specified'): ?>
-            <span class="tag" style="background: #e1ecf4; padding: 5px 15px; border-radius: 20px; font-size: 14px;"><?= htmlspecialchars($industrySkillPosition) ?></span>
+        <?php if (!empty($industrySkillPosition)): ?>
+            <span class="tag"><?= htmlspecialchars($industrySkillPosition) ?></span>
         <?php endif; ?>
-        <?php if (!empty($experience) && $experience != 'Not Specified'): ?>
-            <span class="tag" style="background: #e1ecf4; padding: 5px 15px; border-radius: 20px; font-size: 14px;"><?= htmlspecialchars($experience) ?> years</span>
+        <?php if (!empty($experience)): ?>
+            <span class="tag"><?= htmlspecialchars($experience) ?> years</span>
         <?php endif; ?>
-        <?php if (!empty($location) && $location != 'Not Specified'): ?>
-            <span class="tag" style="background: #e1ecf4; padding: 5px 15px; border-radius: 20px; font-size: 14px;"><?= htmlspecialchars($location) ?></span>
+        <?php if (!empty($location)): ?>
+            <span class="tag"><?= htmlspecialchars($location) ?></span>
         <?php endif; ?>
     </div>
     <div class="job-listings">
@@ -160,10 +144,10 @@ $stmt->close();
                 <div class="job-card" style="border: 1px solid #ccc; padding: 20px; margin-top: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                         <div>
-                            <h3 style="margin-top: 0; font-size: 18px;"><?= htmlspecialchars($job['Post_Name']) ?></h3>
+                            <h3 style="margin-top: 0; font-size: 18px;"><?= htmlspecialchars($job['job_positions']) ?></h3>
                             <p style="margin: 5px 0; font-size: 14px;"><?= htmlspecialchars($job['Post_Description']) ?></p>
-                            <p style="margin: 5px 0; font-size: 14px;"><?= htmlspecialchars($job['Searching_Skill']) ?></p>
-                            <p style="margin: 5px 0; font-size: 14px;"><?= htmlspecialchars($job['Contact_Info']) ?></p>
+                            <p style="margin: 5px 0; font-size: 14px;"><?= htmlspecialchars($job['job_category']) ?></p>
+                            <p style="margin: 5px 0; font-size: 14px;"><?= htmlspecialchars($job['location']) ?></p>
                         </div>
                      
                     </div>

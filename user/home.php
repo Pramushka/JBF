@@ -84,7 +84,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ii", $helpId, $userId);
     $stmt->execute();
 
-    echo "Your inquiry has been submitted successfully. Thank you!";
+   // Set a session variable to show the alert after redirecting
+   $_SESSION['alert'] = "Your inquiry has been submitted successfully. Thank you!";
+    
+   // Redirect to the same page to avoid form re-submission issues
+   header("Location: " . $_SERVER['PHP_SELF']);
+   exit;
+}
+
+// Check if there is a session alert set and show it
+if (isset($_SESSION['alert'])) {
+    echo "<script>alert('" . $_SESSION['alert'] . "');</script>";
+    // Clear the session alert so it doesn't keep appearing
+    unset($_SESSION['alert']);
 }
 
 ?>
@@ -95,7 +107,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Home - JobForce</title>
     <link rel="stylesheet" href="../assets/css/homepage.css">
+    <link rel="stylesheet" href="../assets/css/single_input.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/cardtemp.css"> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     
@@ -147,7 +164,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <br>
 <br>
-
+<br>
+<br>
+<br>
+<br>
 <div class="sponsored-companies">
     <h2>Top companies hiring now</h2>
     <div class="company-grid">
@@ -165,37 +185,80 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </div>
 
-
-
-<div class="courses-container">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+        <!--This is the Course Content Section-->
+<div class="sponsored-companies">
     <h2>Top Learning Courses</h2>
-    <div class="courses-list">
+    <div class="company-grid">
         <?php foreach ($courses as $course): ?>
-            <div class="course">
-                <h3><?= htmlspecialchars($course['Course_Name']) ?></h3>
-                <p><strong>Skill Focus:</strong> <?= htmlspecialchars($course['Skill']) ?></p>
-                <p><strong>Industry:</strong> <?= htmlspecialchars($course['Industry']) ?></p>
-                <p><?= htmlspecialchars($course['Description']) ?></p>
-                <p><strong>Price:</strong> $<?= number_format($course['Price'], 2) ?></p>
+            <div class="card" >
+                <!-- Placeholder for course image or icon -->
+                <img class="image">
+                <div class="content">
+                    <a href="#">
+                        <span class="title">
+                            <?= htmlspecialchars($course['Course_Name']) ?>
+                        </span>
+                    </a>   
+                    <p><strong>Skill Focus:</strong> <?= htmlspecialchars($course['Skill']) ?></p>
+                    <p><strong>Industry:</strong> <?= htmlspecialchars($course['Industry']) ?></p>
+                    <p><?= htmlspecialchars($course['Description']) ?></p>
+                    <p><strong>Price:</strong> $<?= number_format($course['Price'], 2) ?></p>
+                    <!-- Optional button if you want to add actions like 'Enroll Now' -->
+                    <a class="action" href="#">
+                        Find out more
+                        <span aria-hidden="true">
+        →
+                        </span>
+                    </a>
+                </div>
             </div>
         <?php endforeach; ?>
     </div>
 </div>
 
-<div class="helpdesk-form-container">
-    <h2>Contact Help Desk</h2>
-    <form action="home.php" method="POST">
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="helpdesk-form-container" style="background-color: #f2f2f2; height: 400px; display: flex; align-items: center; justify-content: center;">
+    <div style="width: 100%; max-width: 1200px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px;">
+        <!-- Contact Form -->
+        <div>
+            <h2>Contact Help Desk</h2>
+            <form action="home.php" method="POST">
+                <div class="inputGroup">
+                    <input type="email" id="email" name="email" required="" autocomplete="off">
+                    <label for="email">email</label>
+                </div>
+                <div class="inputGroup">
+                    <input type="textarea" id="description" name="description" required="" autocomplete="off">
+                    <label for="description">Message</label>
+                </div>
+
+                <button  class="btn" type="submit">Submit</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="description">Message:</label>
-            <textarea id="description" name="description" required></textarea>
+        <!-- Instructions or Additional Content -->
+        <div>
+            <h2>How can we help you?</h2>
+            <br>
+            <p>Please fill out the form with your query or any issue you are facing, and our helpdesk team will get back to you as soon as possible.</p>
+            <br>
+            <p>By fillig this you will automatically accept our policies and you will recive our new updates and news to youre email</p>
         </div>
-        <button type="submit">Submit</button>
-    </form>
+    </div>
 </div>
+
 
 <script>
 $(document).ready(function() {

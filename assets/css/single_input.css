@@ -1,0 +1,80 @@
+.inputGroup {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 1em 0;
+    position: relative;
+    width: 100%; /* Ensures that it takes full width of its parent container */
+    max-width: 690px; /* Increased from 190px to allow for up to 690px width */
+}
+
+.inputGroup input, .inputGroup textarea {
+    font-size: 100%;
+    padding: 0.8em;
+    outline: none;
+    border: 2px solid rgb(200, 200, 200);
+    background-color: transparent;
+    border-radius: 20px;
+    width: 100%; /* Ensures the input takes full width of its container */
+}
+
+.inputGroup label {
+    font-size: 100%;
+    position: absolute;
+    left: 0;
+    padding: 0.8em;
+    margin-left: 0.5em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: rgb(100, 100, 100);
+}
+
+.inputGroup :is(input:focus, input:valid, textarea:focus, textarea:valid)~label {
+    transform: translateY(-50%) scale(.9);
+    margin: 0em;
+    margin-left: 1.3em;
+    padding: 0.4em;
+    background-color: #e8e8e8;
+}
+
+.inputGroup :is(input:focus, input:valid, textarea:focus, textarea:valid) {
+    border-color: rgb(150, 150, 200);
+}
+
+
+  .btn {
+    width: 10em;
+    height: 2.3em;
+    margin: 0.5em;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 0.625em;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+   }
+   
+   button:hover {
+    color: black;
+   }
+   
+   button:after {
+    content: "";
+    background: white;
+    position: absolute;
+    z-index: -1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+   }
+   
+   button:hover:after {
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+   }

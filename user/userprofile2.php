@@ -21,6 +21,18 @@ if ($user_result === false || $user_result->num_rows == 0) {
     die("Error fetching user details or user not found.");
 }
 
+// Prepare the SQL query to fetch the user's organizations
+$sql = "SELECT ID, Org_Name FROM organization WHERE UserID = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$organizations = [];
+while ($row = $result->fetch_assoc()) {
+    $organizations[] = $row;
+}
+$stmt->close();
+
 $user_row = $user_result->fetch_assoc();
 $username = $user_row['username'];
 $job_position = $user_row['Job_Position'];
@@ -401,6 +413,27 @@ $progress = (count($completed_sections) / count($sections)) * 100;
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-title mb-4">My Company</h4>
+                        </div>
+                            <ul class="list-unstyled mb-0" id="organization-list">
+                                <?php if (!empty($organizations)): ?>
+                                <?php foreach ($organizations as $org): ?>
+                            <li class="organization-item">
+                                <a href="single_organization.php?org_id=<?= htmlspecialchars($org['ID']); ?>">
+                                <?= htmlspecialchars($org['Org_Name']); ?>
+                            </a>
+                        </li>
+                        <?php endforeach; ?>
+                        <?php else: ?>
+                            <li>No organizations found.</li>
+                        <?php endif; ?>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
