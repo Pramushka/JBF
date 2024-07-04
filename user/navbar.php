@@ -12,7 +12,7 @@
                 </div>
             </div>
             <a href="companies.html">Companies</a>
-            <a href="services.html">Services</a>
+            <a href="userprofile2.php">User Profile</a>
             <div class="auth-buttons">
                 <a href="sign_page.html" class="Logout-button">Logout</a>
             </div>
