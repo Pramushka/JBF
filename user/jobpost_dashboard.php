@@ -58,7 +58,7 @@ if ($result === false) {
                                 <img src="https://bootdey.com/img/Content/avatar/avatar8.png" class="avatar-xxl rounded-circle border border-2" alt="Image">
                             </div>
                             <div class="lh-1">
-                                <h2 class="mb-0">User Dashboard</h2>
+                                <h2 class="mb-0">Organization Post Dashboard</h2>
                                 <p class="mb-0 d-block">@<?php echo htmlspecialchars($username); ?></p>
                             </div>
                         </div>
