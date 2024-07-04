@@ -83,124 +83,164 @@ $courses_result = $conn->query($courses_sql);
         <div id="all-courses" class="tab-content active">
             <h2>Trending Courses</h2>
             <div class="course-list">
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Career_Advice_from_Some_of _the_Biggest_Names_in_Business.jpg" alt="Course 1">
-                    <h3>Career Advice from Some of the Biggest Names in...</h3>
-                    <p>2,484,258 viewers</p>
+                <div class="course" data-course-id="1">
+                    <a href="course1.html">
+                        <img src="../assets/img/Our_Popular_Courses/Career_Advice_from_Some_of _the_Biggest_Names_in_Business.jpg" alt="Course 1">
+                        <h3>Career Advice from Some of the Biggest Names in...</h3>
+                        <p>2,484,258 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/LOOKUP_Function_in_Excel.png" alt="Course 2">
-                    <h3>Excel: Lookup Functions in Depth</h3>
-                    <p>1,710,993 viewers</p>
+                <div class="course" data-course-id="2">
+                    <a href="course2.html">
+                        <img src="../assets/img/Our_Popular_Courses/LOOKUP_Function_in_Excel.png" alt="Course 2">
+                        <h3>Excel: Lookup Functions in Depth</h3>
+                        <p>1,710,993 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/What_Is_Generative_AI.png" alt="Course 3">
-                    <h3>What Is Generative AI?</h3>
-                    <p>1,244,802 viewers</p>
+                <div class="course" data-course-id="3">
+                    <a href="course3.html">
+                        <img src="../assets/img/Our_Popular_Courses/What_Is_Generative_AI.png" alt="Course 3">
+                        <h3>What Is Generative AI?</h3>
+                        <p>1,244,802 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Expert_Tips_for_Answering_Common_Interview_Questions_2.jpg" alt="Course 4">
-                    <h3>Expert Tips for Answering Common Interview...</h3>
-                    <p>2,366,150 viewers</p>
+                <div class="course" data-course-id="4">
+                    <a href="course4.html">
+                        <img src="../assets/img/Our_Popular_Courses/Expert_Tips_for_Answering_Common_Interview_Questions_2.jpg" alt="Course 4">
+                        <h3>Expert Tips for Answering Common Interview...</h3>
+                        <p>2,366,150 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Electronics_Foundations_Basic_Circuits.jpg" alt="Course 5">
-                    <h3>Electronics Founda Basic Circuits</h3>
-                    <p>812,231 viewers</p>
+                <div class="course" data-course-id="5">
+                    <a href="course5.html">
+                        <img src="../assets/img/Our_Popular_Courses/Electronics_Foundations_Basic_Circuits.jpg" alt="Course 5">
+                        <h3>Electronics Foundations: Basic Circuits</h3>
+                        <p>812,231 viewers</p>
+                    </a>
                 </div>
             </div>
         </div>
         <div id="business" class="tab-content">
             <h2>Trending Business Courses</h2>
             <div class="course-list">
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Career_Advice_from_Some_of _the_Biggest_Names_in_Business.jpg" alt="Course 1">
-                    <h3>Career Advice from Some of the Biggest Names in...</h3>
-                    <p>2,484,258 viewers</p>
+                <div class="course" data-course-id="6">
+                    <a href="course6.html">
+                        <img src="../assets/img/Our_Popular_Courses/Career_Advice_from_Some_of _the_Biggest_Names_in_Business.jpg" alt="Course 1">
+                        <h3>Career Advice from Some of the Biggest Names in...</h3>
+                        <p>2,484,258 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Expert_Tips_for_Answering_Common_Interview_Questions.jpg" alt="Course 2">
-                    <h3>Expert Tips for Answering Common Interview...</h3>
-                    <p>2,366,150 viewers</p>
+                <div class="course" data-course-id="7">
+                    <a href="course7.html">
+                        <img src="../assets/img/Our_Popular_Courses/Expert_Tips_for_Answering_Common_Interview_Questions.jpg" alt="Course 2">
+                        <h3>Expert Tips for Answering Common Interview...</h3>
+                        <p>2,366,150 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Ken_Blanchard_on_Servant_Leadership.jpg" alt="Course 3">
-                    <h3>Ken Blanchard on Servant Leadership</h3>
-                    <p>2,045,573 viewers</p>
+                <div class="course" data-course-id="8">
+                    <a href="course8.html">
+                        <img src="../assets/img/Our_Popular_Courses/Ken_Blanchard_on_Servant_Leadership.jpg" alt="Course 3">
+                        <h3>Ken Blanchard on Servant Leadership</h3>
+                        <p>2,045,573 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Excel_Tips_Weekly.png" alt="Course 4">
-                    <h3>Excel Tips Weekly</h3>
-                    <p>1,862,544 viewers</p>
+                <div class="course" data-course-id="9">
+                    <a href="course9.html">
+                        <img src="../assets/img/Our_Popular_Courses/Excel_Tips_Weekly.png" alt="Course 4">
+                        <h3>Excel Tips Weekly</h3>
+                        <p>1,862,544 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/LOOKUP_Function_in_Excel.png" alt="Course 5">
-                    <h3>Excel: Lookup Functions in Depth</h3>
-                    <p>1,710,993 viewers</p>
+                <div class="course" data-course-id="10">
+                    <a href="course10.html">
+                        <img src="../assets/img/Our_Popular_Courses/LOOKUP_Function_in_Excel.png" alt="Course 5">
+                        <h3>Excel: Lookup Functions in Depth</h3>
+                        <p>1,710,993 viewers</p>
+                    </a>
                 </div>
             </div>
         </div>
         <div id="technology" class="tab-content">
             <h2>Trending Technology Courses</h2>
             <div class="course-list">
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Introduction_to_Python.jpg" alt="Course 1">
-                    <h3>Introduction to Python</h3>
-                    <p>1,234,567 viewers</p>
+                <div class="course" data-course-id="11">
+                    <a href="course11.html">
+                        <img src="../assets/img/Our_Popular_Courses/Introduction_to_Python.jpg" alt="Course 1">
+                        <h3>Introduction to Python</h3>
+                        <p>1,234,567 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Advanced_Java_Programming.jpg" alt="Course 2">
-                    <h3>Advanced Java Programming</h3>
-                    <p>987,654 viewers</p>
+                <div class="course" data-course-id="12">
+                    <a href="course12.html">
+                        <img src="../assets/img/Our_Popular_Courses/Advanced_Java_Programming.jpg" alt="Course 2">
+                        <h3>Advanced Java Programming</h3>
+                        <p>987,654 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Machine_Learning_Basics.png" alt="Course 3">
-                    <h3>Machine Learning Basics</h3>
-                    <p>1,111,222 viewers</p>
+                <div class="course" data-course-id="13">
+                    <a href="course13.html">
+                        <img src="../assets/img/Our_Popular_Courses/Machine_Learning_Basics.png" alt="Course 3">
+                        <h3>Machine Learning Basics</h3>
+                        <p>1,111,222 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Web_Development.jpg" alt="Course 4">
-                    <h3>Web Development with HTML, CSS, and JavaScript</h3>
-                    <p>1,333,444 viewers</p>
+                <div class="course" data-course-id="14">
+                    <a href="course14.html">
+                        <img src="../assets/img/Our_Popular_Courses/Web_Development.jpg" alt="Course 4">
+                        <h3>Web Development with HTML, CSS, and JavaScript</h3>
+                        <p>1,333,444 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Data_Science_with_R.jpg" alt="Course 5">
-                    <h3>Data Science with R</h3>
-                    <p>999,888 viewers</p>
+                <div class="course" data-course-id="15">
+                    <a href="course15.html">
+                        <img src="../assets/img/Our_Popular_Courses/Data_Science_with_R.jpg" alt="Course 5">
+                        <h3>Data Science with R</h3>
+                        <p>999,888 viewers</p>
+                    </a>
                 </div>
             </div>
         </div>
         <div id="creative" class="tab-content">
             <h2>Trending Creative Courses</h2>
             <div class="course-list">
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Graphic_Design_Fundamentals.png" alt="Course 1">
-                    <h3>Graphic Design Fundamentals</h3>
-                    <p>567,890 viewers</p>
+                <div class="course" data-course-id="16">
+                    <a href="course16.html">
+                        <img src="../assets/img/Our_Popular_Courses/Graphic_Design_Fundamentals.png" alt="Course 1">
+                        <h3>Graphic Design Fundamentals</h3>
+                        <p>567,890 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Photography_Essentials.jpg" alt="Course 2">
-                    <h3>Photography Essentials</h3>
-                    <p>432,109 viewers</p>
+                <div class="course" data-course-id="17">
+                    <a href="course17.html">
+                        <img src="../assets/img/Our_Popular_Courses/Photography_Essentials.jpg" alt="Course 2">
+                        <h3>Photography Essentials</h3>
+                        <p>432,109 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Introduction_to_Video_Editing_2.png" alt="Course 3">
-                    <h3>Introduction to Video Editing</h3>
-                    <p>654,321 viewers</p>
+                <div class="course" data-course-id="18">
+                    <a href="course18.html">
+                        <img src="../assets/img/Our_Popular_Courses/Introduction_to_Video_Editing_2.png" alt="Course 3">
+                        <h3>Introduction to Video Editing</h3>
+                        <p>654,321 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Creative_Writing_Techniques.jpg" alt="Course 4">
-                    <h3>Creative Writing Techniques</h3>
-                    <p>876,543 viewers</p>
+                <div class="course" data-course-id="19">
+                    <a href="course19.html">
+                        <img src="../assets/img/Our_Popular_Courses/Creative_Writing_Techniques.jpg" alt="Course 4">
+                        <h3>Creative Writing Techniques</h3>
+                        <p>876,543 viewers</p>
+                    </a>
                 </div>
-                <div class="course">
-                    <img src="../assets/img/Our_Popular_Courses/Music_Production_Basics.jpg" alt="Course 5">
-                    <h3>Music Production Basics</h3>
-                    <p>765,432 viewers</p>
+                <div class="course" data-course-id="20">
+                    <a href="course20.html">
+                        <img src="../assets/img/Our_Popular_Courses/Music_Production_Basics.jpg" alt="Course 5">
+                        <h3>Music Production Basics</h3>
+                        <p>765,432 viewers</p>
+                    </a>
                 </div>
             </div>
         </div>
-    </div><br>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -223,6 +263,81 @@ $courses_result = $conn->query($courses_sql);
                     // Show the corresponding tab content
                     const tabId = this.getAttribute('href');
                     document.querySelector(tabId).classList.add('active');
+                });
+            });
+
+            // Handle click on each course to navigate to a new page
+            const courses = document.querySelectorAll('.course');
+            courses.forEach(course => {
+                course.addEventListener('click', function() {
+                    // Get the course ID or any other identifier
+                    const courseId = this.getAttribute('data-course-id');
+
+                    // Navigate to the respective course page ---------------------------- Methanata courses pages tika danna thiyenne
+                    switch (courseId) {
+                        case '1':
+                            window.location.href = 'course1.html';
+                            break;
+                        case '2':
+                            window.location.href = 'course2.html';
+                            break;
+                        case '3':
+                            window.location.href = 'course3.html';
+                            break;
+                        case '4':
+                            window.location.href = 'course4.html';
+                            break;
+                        case '5':
+                            window.location.href = 'course5.html';
+                            break;
+                        case '6':
+                            window.location.href = 'course6.html';
+                            break;
+                        case '7':
+                            window.location.href = 'course7.html';
+                            break;
+                        case '8':
+                            window.location.href = 'course8.html';
+                            break;
+                        case '9':
+                            window.location.href = 'course9.html';
+                            break;
+                        case '10':
+                            window.location.href = 'course10.html';
+                            break;
+                        case '11':
+                            window.location.href = 'course11.html';
+                            break;
+                        case '12':
+                            window.location.href = 'course12.html';
+                            break;
+                        case '13':
+                            window.location.href = 'course13.html';
+                            break;
+                        case '14':
+                            window.location.href = 'course14.html';
+                            break;
+                        case '15':
+                            window.location.href = 'course15.html';
+                            break;
+                        case '16':
+                            window.location.href = 'course16.html';
+                            break;
+                        case '17':
+                            window.location.href = 'course17.html';
+                            break;
+                        case '18':
+                            window.location.href = 'course18.html';
+                            break;
+                        case '19':
+                            window.location.href = 'course19.html';
+                            break;
+                        case '20':
+                            window.location.href = 'course20.html';
+                            break;
+                        default:
+                            break;
+                    }
                 });
             });
         });

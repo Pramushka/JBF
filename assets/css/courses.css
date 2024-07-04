@@ -144,13 +144,6 @@ body {
 
 
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -210,8 +203,13 @@ nav ul li a.active {
     text-align: center;
     flex: 0 0 auto;
     width: 200px;
+    cursor: pointer; /* Add cursor pointer for interaction */
+    transition: transform 0.2s ease-in-out;
 }
 
+.course:hover {
+    transform: scale(1.05); /* Scale up on hover for visual feedback */
+}
 .course img {
     width: 100%;
     height: auto;
