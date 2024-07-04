@@ -16,7 +16,7 @@ nav {
     margin-top: 0.25px;
     background: #00b7ff;
     width: 100%;
-    padding: 10px 10%;
+    padding: 10px 7%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -42,8 +42,8 @@ nav ul li {
 
 nav ul li a {
     color: #fff;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 300;
     padding: 10px 5px;
     text-decoration: none;
     display: block;
@@ -107,4 +107,83 @@ nav ul li a:hover {
     border-radius: 30px;
     transition: 0.5s;
     background-color: #a4dcf1;
+}
+
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    max-width: 100%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 10px;
+    width: 60%;
+    max-width: 1000px;
+    height: 50px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+
+.search-field {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    flex: 10;
+    border-right: 1px solid #ccc;
+}
+
+.search-field:last-child {
+    border-right: none;
+}
+
+.search-field i {
+    margin-right: 10px;
+    color: #888;
+}
+
+.form-control {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 15px;
+    width: 100%;
+}
+
+.search-field input {
+    width: 100%;
+    padding: 0 10px;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 13px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #042938;
+    color: #fff;
+    border-radius: 20px;
+    transition: background-color 0.5s ease;
+}
+
+.search-button:hover {
+    background-color: #54c4ec;
+}
+
+.search-button i {
+    font-size: 15px;
 }
