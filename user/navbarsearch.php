@@ -29,7 +29,7 @@ while ($row = $positionResult->fetch_assoc()) {
     
 <div class="navi">
     <nav>
-        <img src="../assets/img/twitter.png" class="logo">
+        <a href="./home.php"><img src="../assets/img/twitter.png" class="logo"></a>
         <ul>
         <div class="search-container">
          <form action="jobsearch.php" method="GET" class="search-form">
@@ -63,22 +63,22 @@ while ($row = $positionResult->fetch_assoc()) {
         </div>
         </form>
         </div>
-            <li><a href="#">Search Jobs</a></li>
+           <li><a href="./jobsearch.php">Search jobs</a></li>
             <li class="dropdown">
                 <a href="#">Organizations</a>
                 <div class="dropdown-content">
-                    <a href="#">User</a>
-                    <a href="#">Admin</a>
+                    <a href="./allorganization.php">Top Hiring</a>
+                    <a href="./uOrganizationList.php">My Companies</a>
                 </div>
             </li>
-            <li><a href="#">Learning Courses</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="./course_dashboard.php">Learning courses</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact us</a></li>
             <li class="dropdown">
-                <a href="#" class="user-profile-link"><i class="fas fa-user"></i></a>
+            <a href="#" class="user-profile-link"><i class="fas fa-user"></i></a>
                 <div class="dropdown-content">
-                    <a href="#">User Profile</a>
-                    <a href="#">Settings</a>
+                    <a href="./userprofile2.php">User Profile</a>
+                    <a href="#">Log Out</a>
                 </div>
             </li>
         </ul>

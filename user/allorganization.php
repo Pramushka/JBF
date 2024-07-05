@@ -21,43 +21,84 @@ $stmt->close();
     <meta charset="UTF-8">
     <title>All Organizations</title>
     <style>
-        .container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
 
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-around;
-}
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+    }
 
-.card {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    background-color: #fff;
-}
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center; /* Center align cards */
+    }
 
-.card h2 {
-    color: #333;
-    font-size: 20px;
-}
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 50px; /* Increase padding for larger cards */
+        width: 350px; /* Increase width for larger cards */
+        background-color: #333;
+        color: #fff;
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+    }
 
-.card p {
-    font-size: 16px;
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 10px;
-}
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
 
+    .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background: linear-gradient(to bottom, #ff416c, #ff4b2b);
+        border-radius: 10px 0 0 10px;
+    }
+
+    .card h2 {
+        color: #fff;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        color: #bbb;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 8px;
+    }
+
+    .card .btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: linear-gradient(to right, #ff416c, #ff4b2b);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+
+    .card .btn:hover {
+        background: linear-gradient(to right, #ff4b2b, #ff416c);
+    }
     </style>
 </head>
 <body>
-<?php include 'navbar.php'; ?>
+<?php include 'navbarsearch.php'; ?>
 
     <div class="container">
         <h1>All Organizations</h1>
@@ -74,5 +115,6 @@ $stmt->close();
             <?php endforeach; ?>
         </div>
     </div>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

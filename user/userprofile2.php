@@ -210,6 +210,9 @@ $progress = (count($completed_sections) / count($sections)) * 100;
 </head>
 
 <body>
+
+<?php include 'navbarsearch.php'; ?>
+
     <div class="container">
         <div class="row">
             <div class="col-xl-8">

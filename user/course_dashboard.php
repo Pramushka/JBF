@@ -19,6 +19,7 @@ $courses_result = $conn->query($courses_sql);
 </head>
 
 <body>
+<?php include 'navbarsearch.php'; ?>
 
     <div class="popular_courses">
         <div class="container">
