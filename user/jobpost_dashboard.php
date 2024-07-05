@@ -114,6 +114,7 @@ if ($result === false) {
                     echo "<p>$" . number_format($row['salary']) . "</p>";
                     echo "<div class='d-flex justify-content-between align-items-center'>";
                     echo "<a href='edit_jobpost.php?job_id=" . htmlspecialchars($row['id']) . "&org_id=$org_id' class='btn btn-outline-primary'>View</a>";
+                    echo "<a href='view_applicants.php?job_id=" . htmlspecialchars($row['id']) . "' class='btn btn-info'>View Applicants</a>"; 
                     echo "</div>";
                     echo "</div>";
                     echo "</div>";
