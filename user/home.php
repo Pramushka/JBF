@@ -29,22 +29,23 @@ while ($row = $positionResult->fetch_assoc()) {
 $userIndustryResult = $conn->query("SELECT Job_Industry FROM user WHERE ID = $user_id");
 $userIndustry = $userIndustryResult->fetch_assoc()['Job_Industry'];
 
-// SQL to fetch top organization either from the same industry or just the most recent ones
-$sql = "SELECT Org_Name, Org_Location, Org_Industry FROM organization WHERE Org_Industry = ? ORDER BY ID DESC LIMIT 5";
+// SQL to fetch top organizations either from the same industry or just the most recent ones, now including the ID
+$sql = "SELECT ID, Org_Name, Org_Location, Org_Industry FROM organization WHERE Org_Industry = ? ORDER BY ID DESC LIMIT 5";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $userIndustry);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows == 0) {
-    // If no organization found in the user's industry, fetch the most recent organization instead
-    $result = $conn->query("SELECT Org_Name, Org_Location, Org_Industry FROM organization ORDER BY ID DESC LIMIT 5");
+    // If no organization found in the user's industry, fetch the most recent organizations instead
+    $result = $conn->query("SELECT ID, Org_Name, Org_Location, Org_Industry FROM organization ORDER BY ID DESC LIMIT 5");
 }
 
 $companies = [];
 while ($row = $result->fetch_assoc()) {
     $companies[] = $row;
 }
+
 
 
 // Fetch courses either from the same industry or just the most recent ones
@@ -179,7 +180,7 @@ if (isset($_SESSION['alert'])) {
                 <p style="margin-bottom: 5px;"><strong>Industry:</strong> <?= htmlspecialchars($company['Org_Industry']) ?></p>
                 <p style="margin-bottom: 10px;"><?= htmlspecialchars($company['Org_Location']) ?></p>
                 <!-- Button to view jobs, linking to a job search page filtered by this company -->
-                <button onclick="window.location.href='jobsearch.php?company=<?= urlencode($company['Org_Name']) ?>'" style="padding: 8px 16px; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">View Jobs</button>
+                <button onclick="window.location.href='single_organization.php?id=<?= $company['ID'] ?>'" style="padding: 8px 16px; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">View Jobs</button>
             </div>
         <?php endforeach; ?>
     </div>

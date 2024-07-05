@@ -23,6 +23,7 @@ if (!$organization) {
     exit;
 }
 
+
 // Fetch user details
 $sqlUser = "SELECT * FROM user WHERE ID = ?";
 $stmtUser = $conn->prepare($sqlUser);
@@ -30,6 +31,24 @@ $stmtUser->bind_param('i', $organization['UserID']);
 $stmtUser->execute();
 $user = $stmtUser->get_result()->fetch_assoc();
 $stmtUser->close();
+
+$showJobPostsButton = isset($_SESSION['user_id']) && $_SESSION['user_id'] == $organization['UserID'];
+
+// Fetch job posts for the organization
+$sqlJobs = "SELECT jp.* FROM jobpost jp 
+            JOIN org_post op ON jp.id = op.JobPostID
+            WHERE op.OrgID = ? AND jp.IsDeleted = 0
+            ORDER BY jp.CreatedOn DESC LIMIT 10";
+$stmtJobs = $conn->prepare($sqlJobs);
+$stmtJobs->bind_param('i', $orgId);
+$stmtJobs->execute();
+$jobPostsResult = $stmtJobs->get_result();
+$jobPosts = [];
+while ($jobPost = $jobPostsResult->fetch_assoc()) {
+    $jobPosts[] = $jobPost;
+}
+$stmtJobs->close();
+
 ?>
 
 
@@ -64,8 +83,30 @@ $stmtUser->close();
     <p>Created by: <?= htmlspecialchars($user['First_Name']) ?> <?= htmlspecialchars($user['Last_Name']) ?> (<?= htmlspecialchars($user['Email']) ?>)</p>
 </div>
 
-<a href="jobpost_dashboard.php?org_id=<?= $orgId ?>">View Job Posts</a>
 
+
+<?php if ($showJobPostsButton): ?>
+        <a href="jobpost_dashboard.php?org_id=<?= $orgId ?>" class="btn btn-primary">View Job Posts</a>
+    <?php endif; ?>
+
+    <!-- Job Posts Section -->
+    <div class="job-posts">
+        <h2>Recent Job Posts</h2>
+        <?php foreach ($jobPosts as $jobPost): ?>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title"><?= htmlspecialchars($jobPost['job_positions']) ?></h5>
+                    <p class="card-text"><?= htmlspecialchars($jobPost['Post_Description']) ?></p>
+                    <p class="card-text"><small class="text-muted">Posted on <?= date('F j, Y', strtotime($jobPost['CreatedOn'])) ?></small></p>
+                    <!--<a href="apply_job.php?job_id=<?= $jobPost['id'] ?>" class="btn btn-primary">Apply Now</a>-->
+                </div>
+            </div>
+        <?php endforeach; ?>
+        <?php if (empty($jobPosts)): ?>
+            <p>No job posts found.</p>
+        <?php endif; ?>
+    </div>
+    </div>
 
 <?php include  'footer.php'; ?>
 
