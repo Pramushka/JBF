@@ -8,6 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
+$org_id = $_GET['org_id'] ?? ($_POST['org_id'] ?? '');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $job_positions = $_POST['job_title'];
@@ -15,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $recruitment = $_POST['recruiter'];
     $Benifits = $_POST['benefits'];
     $job_category = $_POST['job_type'];
-    $Contact_Info = '';
     $location = $_POST['location'];
     $education = $_POST['education'];
     $salary = $_POST['salary_from'];
@@ -23,19 +23,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $CreatedOn = date('Y-m-d H:i:s');
     $CreatedBy = $user_id;
 
-    $sql = "INSERT INTO jobpost (job_positions, Post_Description, recruitment, Benifits, job_category, Contact_Info, location, education, salary, IsDeleted, CreatedOn, CreatedBy) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $conn->begin_transaction();
+
+    $sql = "INSERT INTO jobpost (job_positions, Post_Description, recruitment, Benifits, job_category, location, education, salary, IsDeleted, CreatedOn, CreatedBy) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssssisss", $job_positions, $Post_Description, $recruitment, $Benifits, $job_category, $Contact_Info, $location, $education, $salary, $IsDeleted, $CreatedOn, $CreatedBy);
+    $stmt->bind_param("sssssssisis", $job_positions, $Post_Description, $recruitment, $Benifits, $job_category, $location, $education, $salary, $IsDeleted, $CreatedOn, $CreatedBy);
 
     if ($stmt->execute()) {
-        echo "<script>alert('New job post created successfully');</script>";
-        session_destroy(); // Consider if session_destroy() is needed here
+        $last_insert_id = $stmt->insert_id;  // Move this line here after execute()
+    
+        $sqlOrgPost = "INSERT INTO org_post (JobPostID, OrgID) VALUES (?, ?)";
+        $stmtOrgPost = $conn->prepare($sqlOrgPost);
+        $stmtOrgPost->bind_param("ii", $last_insert_id, $org_id);
+    
+        if ($stmtOrgPost->execute()) {
+            $conn->commit();
+            echo "<script>alert('New job post created successfully and linked to the organization');</script>";
+        } else {
+            $conn->rollback();
+            echo "<script>alert('Error linking job post to organization: " . $stmtOrgPost->error . "');</script>";
+        }
+        $stmtOrgPost->close();
     } else {
-        echo "<script>alert('Error: " . $stmt->error . "');</script>";
+        echo "<script>alert('Error creating job post: " . $stmt->error . "');</script>";
+        $conn->rollback();
     }
-}
+    $stmt->close();
+}    
 
 $industries_sql = "SELECT id, industry_name FROM job_industries";
 $industries_result = $conn->query($industries_sql);
@@ -74,6 +90,8 @@ $positions_result = $conn->query($positions_sql);
                         ?>
                     </select>
                 </div>
+                <input type="hidden" name="org_id" value="<?= htmlspecialchars($org_id) ?>">
+
                 <div class="job-post-group">
                     <label for="recruiter">Recruiter </label>
                     <input type="text" id="recruiter" name="recruiter" required class="job-post-input">
@@ -136,8 +154,8 @@ $positions_result = $conn->query($positions_sql);
                 </select>
             </div>
             <div class="d-flex justify-content-between mt-3">
-                <a href="jobpost_dashboard.php" class="btn btn-secondary">Back to Dashboard</a>
-                <button type="submit" class="btn btn-primary">Save Vacancy</button>
+            <a href="jobpost_dashboard.php?org_id=<?= htmlspecialchars($org_id) ?>" class="btn btn-secondary">Back to Dashboard</a>
+            <button type="submit" class="btn btn-primary">Save Vacancy</button>
             </div>
         </form>
     </div>

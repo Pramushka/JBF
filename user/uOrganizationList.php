@@ -48,7 +48,7 @@ $stmt->close();
 </head>
 <body>
 
-<?php include 'navbar.php'; ?>
+<?php include 'navbarsearch.php'; ?>
 
 
 <div class="container">

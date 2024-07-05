@@ -98,7 +98,7 @@ $stmt->close();
     </style>
 </head>
 <body>
-<?php include 'navbar.php'; ?>
+<?php include 'navbarsearch.php'; ?>
 
     <div class="container">
         <h1>All Organizations</h1>
