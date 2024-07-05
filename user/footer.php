@@ -48,8 +48,8 @@
             </div>
             <div class="footer-app">
                 <p>Apply on the go<br>Get real-time job updates on our App</p>
-                <a href="#"><img src="google-play.png" alt="Google Play"></a>
-                <a href="#"><img src="app-store.png" alt="App Store"></a>
+                <a href="#"><img src="" alt="Google Play"></a>
+                <a href="#"><img src="" alt="App Store"></a>
             </div>
         </div>
         <div class="footer-bottom">

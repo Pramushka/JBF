@@ -25,7 +25,7 @@
             </li>
             <li><a href="./course_dashboard.php">Learning courses</a></li>
             <li><a href="#">About us</a></li>
-            <li><a href="#">Contact us</a></li>
+            <li><a href="contact.php">Contact us</a></li>
             <li class="dropdown">
             <a href="#" class="user-profile-link"><i class="fas fa-user"></i></a>
                 <div class="dropdown-content">
