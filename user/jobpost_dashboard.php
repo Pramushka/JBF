@@ -29,26 +29,35 @@ if ($user_result === false || $user_result->num_rows == 0) {
 $user_row = $user_result->fetch_assoc();
 $username = $user_row['username'];
 
-// Fetch job posts and the organization name created by the specific user for a specific organization
-$sql = "SELECT jp.id, jp.job_positions, jp.job_category, jp.Benifits, jp.salary, org.Org_Name
-        FROM jobpost jp 
-        JOIN org_post op ON jp.id = op.JobPostID
-        JOIN organization org ON op.OrgID = org.ID
-        WHERE jp.IsDeleted = 0 AND jp.CreatedBy = ? AND op.OrgID = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ii", $user_id, $org_id);
-$stmt->execute();
-$result = $stmt->get_result();
+// Fetch organization details
+$sqlOrg = "SELECT * FROM organization WHERE ID = ?";
+$stmtOrg = $conn->prepare($sqlOrg);
+$stmtOrg->bind_param('i', $org_id);
+$stmtOrg->execute();
+$organization = $stmtOrg->get_result()->fetch_assoc();
+$stmtOrg->close();
 
-$organizationName = "";
-if ($row = $result->fetch_assoc()) {
-    $organizationName = $row['Org_Name']; // Fetch the organization name from the first row
+// Check if organization exists
+if (!$organization) {
+    die("Organization not found.");
 }
 
-
-if ($result === false) {
-    die("Error executing query: " . $stmt->error);
+// Fetch job posts for the organization
+$sqlJobs = "SELECT jp.id, jp.job_positions, jp.job_category, jp.Benifits, jp.salary, org.Org_Name
+            FROM jobpost jp 
+            JOIN org_post op ON jp.id = op.JobPostID
+            JOIN organization org ON op.OrgID = org.ID
+            WHERE op.OrgID = ? AND jp.IsDeleted = 0
+            ORDER BY jp.CreatedOn DESC";
+$stmtJobs = $conn->prepare($sqlJobs);
+$stmtJobs->bind_param('i', $org_id);
+$stmtJobs->execute();
+$jobPostsResult = $stmtJobs->get_result();
+$jobPosts = [];
+while ($jobPost = $jobPostsResult->fetch_assoc()) {
+    $jobPosts[] = $jobPost;
 }
+$stmtJobs->close();
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +68,6 @@ if ($result === false) {
     <title>Job Post Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/jobpostdash.css">
-
 </head>
 <body>
 
@@ -77,12 +85,12 @@ if ($result === false) {
                                 <img src="https://bootdey.com/img/Content/avatar/avatar8.png" class="avatar-xxl rounded-circle border border-2" alt="Image">
                             </div>
                             <div class="lh-1">
-                            <h2 class="mb-0"><?= htmlspecialchars($organizationName) ?> Post Dashboard</h2>
-                            <p class="mb-0 d-block">@<?php echo htmlspecialchars($username); ?></p>
+                                <h2 class="mb-0"><?= htmlspecialchars($organization['Org_Name']) ?> Post Dashboard</h2>
+                                <p class="mb-0 d-block">@<?php echo htmlspecialchars($username); ?></p>
                             </div>
                         </div>
                         <div>
-                        <a href="job_post.php?org_id=<?= htmlspecialchars($org_id) ?>" class="btn btn-outline-primary">Create Job Post</a>
+                            <a href="job_post.php?org_id=<?= htmlspecialchars($org_id) ?>" class="btn btn-outline-primary">Create Job Post</a>
                         </div>
                     </div>
                     <ul class="nav nav-lt-tab px-4" id="pills-tab" role="tablist">
@@ -96,34 +104,29 @@ if ($result === false) {
         <div class="py-6">
             <div class="row">
                 <?php
-               if ($result->num_rows > 0) {
-                $first = true;
-                while ($row = $result->fetch_assoc()) {
-                    if ($first) {
-                        $organizationName = $row['Org_Name'];  // Fetch organization name from the first result
-                        $first = false;
+                if (!empty($jobPosts)) {
+                    foreach ($jobPosts as $jobPost) {
+                        echo "<div class='col-lg-4 col-12'>";
+                        echo "<div class='card mb-5 rounded-3'>";
+                        echo "<div><img src='https://bootdey.com/image/480x180/191970/ffffff' alt='Image' class='img-fluid rounded-top'></div>";
+                        echo "<div class='avatar avatar-xl mt-n7 ms-4'><img src='https://bootdey.com/img/Content/avatar/avatar1.png' alt='Image' class='rounded-circle border-4 border-white-color-40'></div>";
+                        echo "<div class='card-body'>";
+                        echo "<h4 class='mb-1'>" . htmlspecialchars($jobPost['job_positions']) . "</h4>";
+                        echo "<p>" . htmlspecialchars($jobPost['job_category']) . "</p>";
+                        echo "<p>" . htmlspecialchars($jobPost['Benifits']) . "</p>";
+                        echo "<p>$" . number_format($jobPost['salary']) . "</p>";
+                        echo "<div class='d-flex justify-content-between align-items-center'>";
+                        echo "<a href='edit_jobpost.php?job_id=" . htmlspecialchars($jobPost['id']) . "&org_id=" . htmlspecialchars($org_id) . "' class='btn btn-outline-primary'>View</a>";
+                        echo "<a href='view_applicants.php?job_id=" . htmlspecialchars($jobPost['id']) . "' class='btn btn-info'>View Applicants</a>"; 
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
                     }
-                    echo "<div class='col-lg-4 col-12'>";
-                    echo "<div class='card mb-5 rounded-3'>";
-                    echo "<div><img src='https://bootdey.com/image/480x180/191970/ffffff' alt='Image' class='img-fluid rounded-top'></div>";
-                    echo "<div class='avatar avatar-xl mt-n7 ms-4'><img src='https://bootdey.com/img/Content/avatar/avatar1.png' alt='Image' class='rounded-circle border-4 border-white-color-40'></div>";
-                    echo "<div class='card-body'>";
-                    echo "<h4 class='mb-1'>" . htmlspecialchars($row['job_positions']) . "</h4>";
-                    echo "<p>" . htmlspecialchars($row['job_category']) . "</p>";
-                    echo "<p>" . htmlspecialchars($row['Benifits']) . "</p>";
-                    echo "<p>$" . number_format($row['salary']) . "</p>";
-                    echo "<div class='d-flex justify-content-between align-items-center'>";
-                    echo "<a href='edit_jobpost.php?job_id=" . htmlspecialchars($row['id']) . "&org_id=$org_id' class='btn btn-outline-primary'>View</a>";
-                    echo "<a href='view_applicants.php?job_id=" . htmlspecialchars($row['id']) . "' class='btn btn-info'>View Applicants</a>"; 
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
+                } else {
+                    echo "<p>No job posts found.</p>";
                 }
-            } else {
-                echo "<p>No job posts found.</p>";
-            }
-            
+
                 $conn->close();
                 ?>
             </div>

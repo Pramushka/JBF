@@ -72,7 +72,7 @@ while ($row = $positionResult->fetch_assoc()) {
                 </div>
             </li>
             <li><a href="./course_dashboard.php">Learning courses</a></li>
-            <li><a href="#">About us</a></li>
+            <li><a href="./about_us.php">About us</a></li>
             <li><a href="./contact.php">Contact us</a></li>
             <li class="dropdown">
             <a href="#" class="user-profile-link"><i class="fas fa-user"></i></a>
