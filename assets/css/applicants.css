@@ -1,0 +1,86 @@
+/* Container styling */
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center children horizontally */
+}
+
+/* Center text styling */
+.center-text {
+    text-align: center;
+    width: 100%;
+}
+
+/* Applicants table styling */
+.applicants-table {
+    width: 100%;
+    max-width: 1500px; /* Increased table width */
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.applicants-table th, .applicants-table td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top; /* Align content at the top */
+    word-wrap: break-word; /* Wrap long words */
+    max-width: 0; /* Ensure content wraps instead of stretching */
+}
+
+.applicants-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Give the About column more space */
+.applicants-table th:nth-child(4), .applicants-table td:nth-child(4) {
+    width: 40%;
+}
+
+/* Button styling */
+.applicants-table button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto; /* This centers the button horizontally */
+}
+
+
+.applicants-table button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .applicants-table {
+        overflow-x: auto; /* Enable horizontal scrolling */
+    }
+
+    .applicants-table th, .applicants-table td {
+        word-break: break-word; /* Allow long words to break */
+        text-align: center; /* Center align text */
+        padding: 8px; /* Adjust padding for spacing */
+    }
+
+    .applicants-table th {
+        min-width: 120px; /* Minimum width for headers */
+        font-size: 14px; /* Adjust font size for headers */
+    }
+
+    .applicants-table td {
+        min-width: 120px; /* Minimum width for cells */
+        font-size: 14px; /* Adjust font size for cells */
+    }
+
+    .applicants-table td button {
+        width: auto; /* Allow button to size according to content */
+        margin-top: 0; /* Adjust margin as needed */
+    }
+}

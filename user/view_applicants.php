@@ -20,6 +20,7 @@ $applicants = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 $stmt->close();
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,23 +28,42 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Applicants</title>
     <link rel="stylesheet" href="../assets/css/jobsearch.css">
+    <link rel="stylesheet" href="../assets/css/applicants.css"> <!-- Link to the new CSS file -->
 </head>
 <body>
 <?php include 'navbarsearch.php'; ?>
 
 <div class="container">
-    <h2>Applicants for the Job Post</h2>
-    <?php foreach ($applicants as $applicant): ?>
-        <div class="applicant">
-            <h5><?= htmlspecialchars($applicant['First_Name']) . ' ' . htmlspecialchars($applicant['Last_Name']) ?></h5>
-            <p>Email: <?= htmlspecialchars($applicant['Email']) ?></p>
-            <p>Skills: <?= htmlspecialchars($applicant['Skill']) ?></p>
-            <p>About: <?= htmlspecialchars($applicant['about']) ?></p>
-        </div>
-    <?php endforeach; ?>
-    <?php if (empty($applicants)): ?>
-        <p>No applicants found.</p>
-    <?php endif; ?>
+    <h2 class="center-text">Applicants for the Job Post</h2>
+    <table class="applicants-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Skills</th>
+                <th>About</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($applicants as $applicant): ?>
+                <tr>
+                    <td><?= htmlspecialchars($applicant['First_Name']) . ' ' . htmlspecialchars($applicant['Last_Name']) ?></td>
+                    <td><?= htmlspecialchars($applicant['Email']) ?></td>
+                    <td><?= htmlspecialchars($applicant['Skill']) ?></td>
+                    <td><?= htmlspecialchars($applicant['about']) ?></td>
+                    <td>
+                        <button onclick="location.href='cv.php?user_id=<?= htmlspecialchars($applicant['ID']) ?>'">Go to CV</button>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            <?php if (empty($applicants)): ?>
+                <tr>
+                    <td colspan="5">No applicants found.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
