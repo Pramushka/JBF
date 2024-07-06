@@ -1,3 +1,4 @@
+/* Base styles */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +8,7 @@
 
 .navi {
     width: 100%;
-    min-height: 8vh;
+    min-height: 6vh;
     background: #ffffff;
     color: rgb(0, 0, 0);
 }
@@ -16,7 +17,7 @@ nav {
     margin-top: 0.25px;
     background: #00b7ff;
     width: 100%;
-    padding: 10px 7%;
+    padding: 5px 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,7 +25,7 @@ nav {
 }
 
 .logo {
-    width: 60px;
+    width: 50px;
     border-radius: 50%;
 }
 
@@ -116,7 +117,7 @@ nav ul li a:hover {
     width: 100%;
     margin-top: 100px;
     margin-bottom: 20px;
-    max-width: 100%;
+ 
 }
 
 .search-bar {
@@ -126,15 +127,13 @@ nav ul li a:hover {
     padding: 10px;
     width: 60%;
     max-width: 1000px;
-    height: 50px;
+    height: 30px;
     margin: 0 auto;
     border: 1px solid #ccc;
     border-radius: 30px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
-
-
 .search-field {
     display: flex;
     align-items: center;
@@ -187,3 +186,4 @@ nav ul li a:hover {
 .search-button i {
     font-size: 15px;
 }
+

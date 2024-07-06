@@ -89,30 +89,92 @@ header('Content-Type: application/json'); // Ensure JSON content type
     <title>JobForce</title>
     <!--<link rel="stylesheet" href="../assets/css/organization.css">-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/s-organization.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <?php include 'navbarsearch.php'; ?>
 
+<section class="background">
+        <div class="back">
+        <a href="#"><img src="" alt=""></a>  
+        </div> 
+</section>
+
 <section class="main-banner">
     <div class="banner-content">
-        <h1><?= htmlspecialchars($organization['Org_Name']) ?></h1>
+        <div class="org-details">
+            <img src="../assets/img/company_logo.png" alt="Organization Logo" class="org-logo">
+            <div>
+                <h1 class="org-name"><?= htmlspecialchars($organization['Org_Name']) ?></h1>
+                <div class="org-meta">
+                    <span class="org-rating">4.0</span>
+                    <span class="org-reviews">(10 reviews)</span>
+                </div>
+                <div class="org-tags">
+                    <span class="badge bg-secondary">Iron & Steel</span>
+                    <span class="badge bg-secondary">Public</span>
+                    <span class="badge bg-secondary">Corporate</span>
+                    <span class="badge bg-secondary">B2B</span>
+                </div>
+            </div>
+        </div>
+        <div class="org-actions">
+        
+        <?php if ($showJobPostsButton): ?>
+        <a href="jobpost_dashboard.php?org_id=<?= $orgId ?>" class="btn btn-primary">Edit</a>
+        <?php endif; ?>
+
+        </div>
     </div>
 </section>
 
 <div class="container mt-5">
-    <p>Email: <?= htmlspecialchars($organization['Org_Email']) ?></p>
-    <p>Location: <?= htmlspecialchars($organization['Org_Location']) ?></p>
-    <p>Industry: <?= htmlspecialchars($organization['Org_Industry']) ?></p>
-    <p>Registration No: <?= htmlspecialchars($organization['Org_Register_no']) ?></p>
-    <p>Contact: <?= htmlspecialchars($organization['Verification_Contact']) ?></p>
-    <p>Created by: <?= htmlspecialchars($user['First_Name']) ?> <?= htmlspecialchars($user['Last_Name']) ?> (<?= htmlspecialchars($user['Email']) ?>)</p>
+    <h2>About our organization</h2>
+    <div class="cards">
+        <div class="card-body">
+            <p>Mahamaya Group deals in manufacture of sponge iron, power, steel, structures etc. The turnover of the group is around 1000 crore.
+            Mahamaya Steel Industry a major industry in the group is a 15 years young company, manufacturing steel structures in the shape of Angles, Beams, Joist, Channels, Rounds, Flats, Railway sleepers etc. It has high capacity structural rolling mills with full fledged supportive SMS.
+            Mahamaya has many prestigious customers ranging from BHEL, BHPV, MAHAGENCO, CSPDCL, TNEB, GETCO, MSPDCL, MPPDCL, ONGC, RAILWAYS, RELIANCE, JINDAL etc. It is also conversion agent of SAIL, JINDAL.
+            Mahamaya is one of the few in the country who manufactures 600 MM joist and 250 MM angles . Mahamaya has kept pace with modern time, by continuously modernizing its plant and equipment so that its product confires to specification as required by different customers. The product are inspected by world renowned inspection agencies like – BIS,TUV,DNV,BUREAU VARITAS, SGS, LLOYDS, ABS, RDSO etc.</p>
+            <!-- Placeholder content for initially hidden details -->
+            <div id="organizationDetails" style="display: none;">
+                <p><strong>Email:</strong> <?= htmlspecialchars($organization['Org_Email']) ?></p>
+                <p><strong>Location:</strong> <?= htmlspecialchars($organization['Org_Location']) ?></p>
+                <p><strong>Industry:</strong> <?= htmlspecialchars($organization['Org_Industry']) ?></p>
+                <p><strong>Registration No:</strong> <?= htmlspecialchars($organization['Org_Register_no']) ?></p>
+                <p><strong>Contact:</strong> <?= htmlspecialchars($organization['Verification_Contact']) ?></p>
+                <p><strong>Created by:</strong> <?= htmlspecialchars($user['First_Name']) ?> <?= htmlspecialchars($user['Last_Name']) ?> (<?= htmlspecialchars($user['Email']) ?>)</p>
+            </div>
+            <button class="btn btn-primary" id="showDetailsBtn" onclick="toggleDetails()">See Organization Overview</button>
+        </div>
+    </div>
 </div>
 
-<?php if ($showJobPostsButton): ?>
-    <a href="jobpost_dashboard.php?org_id=<?= $orgId ?>" class="btn btn-primary">View Job Posts</a>
-<?php endif; ?>
+<!-- Modal for organization -->
+<div class="modal fade" id="organizationModal" tabindex="-1" aria-labelledby="organizationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="organizationModalLabel">Organization Overview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="cardo">
+                    <div class="card-body">
+                        <p><strong>Email:</strong> <?= htmlspecialchars($organization['Org_Email']) ?></p>
+                        <p><strong>Location:</strong> <?= htmlspecialchars($organization['Org_Location']) ?></p>
+                        <p><strong>Industry:</strong> <?= htmlspecialchars($organization['Org_Industry']) ?></p>
+                        <p><strong>Registration No:</strong> <?= htmlspecialchars($organization['Org_Register_no']) ?></p>
+                        <p><strong>Contact:</strong> <?= htmlspecialchars($organization['Verification_Contact']) ?></p>
+                        <p><strong>Created by:</strong> <?= htmlspecialchars($user['First_Name']) ?> <?= htmlspecialchars($user['Last_Name']) ?> (<?= htmlspecialchars($user['Email']) ?>)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Job Posts Section -->
 <div class="job-posts container mt-4">
@@ -136,6 +198,9 @@ header('Content-Type: application/json'); // Ensure JSON content type
     </div>
 </div>
 
+<br>
+<br>
+
 <?php include 'footer.php'; ?>
 
 <!-- Modal for Job Application -->
@@ -151,6 +216,9 @@ header('Content-Type: application/json'); // Ensure JSON content type
                 <p id="jobDescription"></p>
                 <p id="jobLocation"></p>
                 <p id="jobSalary"></p>
+                <div class="alert alert-warning" role="alert">
+                    We hope that you finish your user profile or you might get rejected because your data won't go to the recruiter properly. We recommend you complete the user profile completely.
+                </div>
                 <button class="btn btn-secondary">Upload CV (Placeholder)</button>
             </div>
             <div class="modal-footer">
@@ -202,7 +270,20 @@ function sendApplication() {
         }
     });
 }
+
+
+
+function toggleDetails() {
+    var organizationModal = new bootstrap.Modal(document.getElementById('organizationModal'), {
+        keyboard: false
+    });
+    organizationModal.show();
+}
+
 </script>
+
+
+
 
 </body>
 </html>

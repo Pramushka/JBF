@@ -1,6 +1,8 @@
 body {
-    margin-top: 20px;
+    font-family: Arial, sans-serif;
     background-color:#038edc;
+    margin: 0;
+    padding: 0;
 }
 
 .avatar-xxl {
