@@ -30,7 +30,7 @@
             <a href="#" class="user-profile-link"><i class="fas fa-user"></i></a>
                 <div class="dropdown-content">
                     <a href="./userprofile2.php">User Profile</a>
-                    <a href="#">Log Out</a>
+                    <a href="./logout.php">Log Out</a>
                 </div>
             </li>
         </ul>
