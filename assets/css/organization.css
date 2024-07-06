@@ -1,109 +1,170 @@
 body {
-    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Light grey background */
+    height: 100vh;
     margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.main-banner {
-    background-image: url('../img/Jobforce_Logo2.png');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 200px 20px 100px;
-    text-align: center;
-    margin-top: -630px; /* Remove the gap by setting margin-top to 0 */
+h1 {
+    font-weight: bold;
 }
 
-.main-banner h1 {
-    margin: 0;
-    font-size: 36px;
+.container {
+    margin-top: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align items at the top */
 }
 
-.main-banner h2 {
-    margin: 10px 0 0;
-    font-size: 24px;
-}
-
-.company-info {
-    padding: 40px;
-    text-align: center;
-}
-
-.company-details {
+.organization-details {
+    position: relative;
+    width: 100%;
+    max-width: 830px; /* Adjusted maximum width */
+    height: 400px;
+    color: #fff;
+    transition: 0.5s;
+    cursor: pointer;
+    margin: 20px 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: #fff;
-    padding: 40px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    max-width: 800px;
-    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Match span background-color */
+    border-radius: 1em;
+    padding: 10px;
 }
 
-.company-logo {
-    width: 120px;
-    height: auto;
-    margin-left: 10px;
+.organization-details:hover {
+    transform: translateY(-20px);
 }
 
-.company-text {
-    flex: 1;
+.organization-details::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, #084462, #03045E);
+    border-radius: 1.2em;
+    z-index: -1;
 }
 
-.company-text h1 {
-    margin: 0 0 10px;
-    font-size: 28px;
+.organization-details::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #084462, #03045E);
+    filter: blur(30px);
+    z-index: -2;
 }
 
-.rating {
+.organization-name {
+    font-size: 40px;
     font-weight: bold;
-    color: #ffa500;
+    text-align: center;
+    flex: 1;
+    z-index: 1;
 }
 
-.tags {
-    margin: 10px 0;
+.divider {
+    border-left: 2px solid #fff; /* Adjusted to match card style */
+    height: 100%;
+    margin: 0 40px;
+    z-index: 1;
 }
 
-.tags span {
-    display: inline-block;
-    background-color: #eee;
-    padding: 5px 10px;
-    border-radius: 4px;
-    margin: 5px;
+.details {
+    flex: 2;
+    z-index: 1;
+    margin-left: 80px; /* Adjust the value as needed */
 }
 
-.follow-btn {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
+.create-button {
+    text-align: center;
+    margin-top: 20px;
+    color: white;
     border: none;
+    padding: 12px 20px;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 1em;
+    margin: 20px 0;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px; /* Add margin to the left */
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .organization-details {
+        height: 250px; /* Adjust height for smaller screens */
+        padding: 15px; /* Adjust padding for better spacing */
+    }
+
+    .organization-name {
+        font-size: 30px;
+    }
+
+    .divider {
+        margin: 0 30px;
+    }
+
+    .details {
+        margin-left: 40px; /* Adjust the value as needed */
+    }
+}
+
+@media (max-width: 992px) {
+    .organization-details {
+        flex-direction: column;
+        height: auto;
+        padding: 20px; /* Increase padding for smaller screens */
+    }
+
+    .organization-name {
+        font-size: 28px;
+    }
+
+    .divider {
+        display: none; /* Hide divider on smaller screens */
+    }
+
+    .details {
+        margin-top: 10px;
+    }
 }
 
 @media (max-width: 768px) {
-    .company-details {
-        flex-direction: column;
+    .organization-details {
+        padding: 15px;
     }
-    .company-logo {
-        margin-bottom: 20px;
+
+    .organization-name {
+        font-size: 24px;
+    }
+
+    .create-button {
+        font-size: 0.9em;
+        padding: 10px 15px;
     }
 }
 
 @media (max-width: 576px) {
-    .footer-logo img {
-        width: 60px;
+    .organization-details {
+        padding: 10px;
     }
-    .footer-social a img {
-        width: 20px;
-        height: 20px;
+
+    .organization-name {
+        font-size: 20px;
     }
-    .footer-app a img {
-        width: 80px;
-    }
-    .footer-business a img {
-        width: 60px;
+
+    .create-button {
+        font-size: 0.8em;
+        padding: 8px 12px;
     }
 }
