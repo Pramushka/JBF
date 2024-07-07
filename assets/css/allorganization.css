@@ -37,7 +37,7 @@ body {
     overflow: hidden;
     line-height: 1.6;
     transition: all 0.3s ease; /* Smooth transition */
-    background-color: #48CAE4; /* Default background color */
+    background-color: #c6e3f8ef; /* Default background color */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     cursor: pointer; /* Change cursor on hover */
 }
