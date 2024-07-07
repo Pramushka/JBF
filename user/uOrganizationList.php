@@ -53,7 +53,9 @@ $stmt->close();
 <?php include 'navbarsearch.php'; ?>
 
 <div class="container">
-    <br><br><h1>My Organizations</h1><br>
+    <br><br>
+    <h1 style="font-weight: bold;">My Organizations</h1>
+
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <?php foreach ($organizations as $org): ?>

@@ -7,7 +7,10 @@ body {
 }
 
 h1 {
-    font-weight: bold;
+    font-family: 'Roboto', sans-serif; /* Change font to Roboto */
+    font-weight: bold; /* Make it bold */
+    font-size: 2em; /* Adjust the font size */
+    color: #333; /* Change font color to dark gray (#333) */
 }
 
 .container {
@@ -21,11 +24,11 @@ h1 {
 }
 
 .swiper-container {
-    width: 100%; /* Use full width */
-    max-width: 1100px; /* Maximum width to ensure proper centering */
-    overflow: visible; /* Allow visibility of overflow for gaps */
-    padding: 0 50px; /* Add padding for gaps on both sides */
-    box-sizing: border-box; /* Include padding in width calculation */
+    width: 100%;
+    max-width: 1000px; /* Maximum width to ensure proper centering - change between gap, you can change it */
+    overflow: visible;
+    padding: 0 50px;
+    box-sizing: border-box;
 }
 
 .swiper-wrapper {
@@ -48,7 +51,7 @@ h1 {
     font-weight: bold;
     transition: 0.5s;
     cursor: pointer;
-    margin: 20px; /* Margin to create gaps between slides */
+    margin: 30px; /* Margin to create gaps between slides */
     display: flex;
     align-items: center;
     background-color: #c6e3f8ef; /* Match span background-color */
