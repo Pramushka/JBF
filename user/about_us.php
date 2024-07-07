@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <!-- Include header -->
+
     <?php include 'navbar.php'; ?>
 
     <section class="hero">
@@ -62,17 +62,17 @@
         <div class="review-card">
             <h3>Work Quality</h3>
             <p>The job postings are accurate and up-to-date. Highly recommend Jobforce.</p>
-            <p><strong>Jerome Bell</strong> - March 14, 2023</p>
+            <p><strong>Jerome Bell</strong> - July 14, 2024</p>
         </div>
         <div class="review-card">
             <h3>Job Matches</h3>
             <p>Found my dream job through Jobforce. The matching algorithm is spot on.</p>
-            <p><strong>Albert Flores</strong> - February 26, 2023</p>
+            <p><strong>Albert Flores</strong> - July 02, 2024</p>
         </div>
         <div class="review-card">
             <h3>Professionalism</h3>
             <p>Highly professional and responsive support team. Great experience.</p>
-            <p><strong>Ralph Edwards</strong> - February 10, 2023</p>
+            <p><strong>Ralph Edwards</strong> - July 10, 2024</p>
         </div>
     </section>
 
@@ -106,40 +106,41 @@
                 <h3>Nineth Pramushka</h3>
                 <p>Project Manager & Back</p>
                 <div class="contact-icons">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
             <div class="card">
                 <h3>Kavindu Pabasara</h3>
                 <p>Back-end Developer</p>
                 <div class="contact-icons">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
             <div class="card">
                 <h3>Chasira Sahas</h3>
                 <p>Front-end Developer & System Analyst</p>
                 <div class="contact-icons">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
             <div class="card">
                 <h3>sashen kavinda</h3>
                 <p>Front-end Developer & System Analyst</p>
                 <div class="contact-icons">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
             <div class="card">
                 <h3>Chalaka Ranathunga</h3>
                 <p>Front-end Developer & QA Engineer</p>
                 <div class="contact-icons">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -148,15 +149,9 @@
     <section class="contact">
         <h2>Interested in Posting a Job?</h2>
         <p>Get in touch with Jobforce for inquiries and collaborations.</p>
-        <a href="#" class="btn">Contact Us</a>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-        </div>
+        <a href="../user/contact.php" class="btn">Contact Us</a>
     </section>
 
-    <!-- Include footer -->
     <?php include 'footer.php'; ?>
 </body>
 </html>

@@ -12,7 +12,8 @@ section {
 }
 
 .logo {
-    width: 150px; /* Adjust width as per your preference */
+    width: 100%; /* Responsive width */
+    max-width: 200px; /* Adjust maximum width as needed */
     height: auto; /* Maintain aspect ratio */
     margin-bottom: 20px; /* Optional: Adjust margin as needed */
 }
@@ -22,6 +23,7 @@ section {
     text-align: center;
     background: #003366;
     color: #fff;
+    padding: 50px 20px; /* Adjust padding for better spacing */
 }
 
 .hero h1 {
@@ -61,7 +63,7 @@ section {
 }
 
 .about-jobforce p {
-    font-size: 18px; /* Adjust the font size as per your preference */
+    font-size: 17px; /* Adjust the font size as per your preference */
     color: #CAF0F8;
 }
 
@@ -155,6 +157,7 @@ section {
     border-radius: 10px;
     width: 220px;
     text-align: center;
+    box-shadow: 0 6px 12px #3cbbff;
 }
 
 .number-card h3 {
@@ -170,33 +173,43 @@ section {
 .reviews {
     text-align: center;
     background: #f7f7f7;
+    padding: 50px 20px; /* Adjust padding as per your design */
+    box-sizing: border-box;
 }
 
 .reviews h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .review-card {
-    background: #fff;
+    background: #e7ecef;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 20px;
-    margin: 20px;
-    text-align: left;
-    width: calc(100% - 40px);
+    margin: 20px auto; /* Center the review cards horizontally */
+    max-width: 600px;
+    height: auto; /* Adjust height as per content */
     box-sizing: border-box;
+    text-align: left; /* Adjust text alignment as needed */
+    box-shadow: 0 6px 12px #0000001a;
 }
 
+
 .review-card h3 {
-    font-size: 1.5rem;
+    font-size: 30px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .review-card p {
     font-size: 1.2rem;
     margin-bottom: 5px;
+    text-align: center;
 }
+
+
 
 .portfolio-gallery {
     text-align: center;
@@ -221,6 +234,13 @@ section {
     border-radius: 10px;
     width: 220px;
     text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.54);
+    
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .gallery-card h3 {
@@ -263,6 +283,7 @@ section {
     color: #fff;
     text-align: center;
     box-sizing: border-box;
+    box-shadow: 0 6px 12px #4cafff63;
 }
 
 .team-cards .card h3 {
@@ -271,8 +292,9 @@ section {
 }
 
 .team-cards .card p {
-    font-size: 1.2rem;
+    font-size: 15px;
     margin-bottom: 20px;
+    color: #CAF0F8;
 }
 
 .contact-icons a {
@@ -304,10 +326,11 @@ section {
     padding: 15px 30px;
     font-size: 1.2rem;
     color: #fff;
-    background: #007BFF;
+    background: #4c48c5;
     border: none;
     border-radius: 5px;
     text-decoration: none;
+    box-shadow: 0 6px 12px #0000009a;
 }
 
 .social-links a {
@@ -316,7 +339,6 @@ section {
     font-size: 1.8rem;
     text-decoration: none;
 }
-
 
 
 @media (max-width: 768px) {
@@ -335,5 +357,27 @@ section {
         width: 100%;
         height: 2px;
         margin: 10px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero .about-jobforce h2 {
+        font-size: 28px; /* Adjust font size for smaller screens */
+    }
+
+    .hero .vision h3,
+    .hero .mission h4 {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+
+    .review-card {
+        width: 100%; /* Full width on smaller screens */
+        max-width: none; /* Adjust maximum width as needed */
     }
 }

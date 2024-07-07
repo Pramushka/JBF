@@ -30,7 +30,7 @@ $stmt->close();
             <?php foreach ($organizations as $org): ?>
                 <div class="card">
                     <div class="content">
-                        <h2><?= htmlspecialchars($org['Org_Name']) ?></h2>
+                        <h2><?= htmlspecialchars($org['Org_Name']) ?></h2><br>
                         <p>Email: <?= htmlspecialchars($org['Org_Email']) ?></p>
                         <p>Location: <?= htmlspecialchars($org['Org_Location']) ?: 'Not Specified' ?></p>
                         <p>Industry: <?= htmlspecialchars($org['Org_Industry']) ?: 'Not Specified' ?></p>
