@@ -84,12 +84,47 @@ while ($row = $project_result->fetch_assoc()) {
 $job_sql = "SELECT jobpost.id, jobpost.job_positions, jobpost.job_category, jobpost.Benifits, jobpost.salary, jobpost.CreatedBy, user.username 
             FROM jobpost 
             INNER JOIN user ON jobpost.CreatedBy = user.id 
-            WHERE jobpost.IsDeleted = 0";
+            WHERE jobpost.IsDeleted = 0
+            LIMIT 4";
 $job_result = $conn->query($job_sql);
 
 if ($job_result === false) {
     die("Error executing query: " . $conn->error);
 }
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'apply_for_job') {
+    if (!isset($_SESSION['user_id'])) {
+        echo json_encode(['error' => 'You need to log in to apply.']);
+        exit;
+    }
+header('Content-Type: application/json'); // Ensure JSON content type
+
+    $jobPostId = $_POST['jobPostId'] ?? null;
+    $userId = $_SESSION['user_id'];
+
+    if (empty($jobPostId)) {
+        echo json_encode(['error' => 'Job Post ID is required']);
+        exit;
+    }
+
+    $sql = "INSERT INTO job_appliers (JobPostID, UserID) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    if ($stmt) {
+        $stmt->bind_param("ii", $jobPostId, $userId);
+        $stmt->execute();
+        if ($stmt->affected_rows > 0) {
+            echo json_encode(['success' => 'Application submitted successfully!']);
+        } else {
+            echo json_encode(['error' => 'Failed to submit application. Error: ' . $stmt->error]);
+        }
+        $stmt->close();
+    } else {
+        echo json_encode(['error' => 'Failed to prepare the statement. Error: ' . $conn->error]);
+    }
+    exit;
+}
+
 
 // Fetch courses
 $courses_sql = "SELECT Course_Name, Skill, Industry, Description, Price FROM learning_courses";

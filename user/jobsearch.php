@@ -106,6 +106,7 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Search Results</title>
     <link rel="stylesheet" href="../assets/css/jobsearch.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -211,6 +212,9 @@ $stmt->close();
                 <p id="jobDescription"></p>
                 <p id="jobLocation"></p>
                 <p id="jobSalary"></p>
+                <div class="alert alert-warning" role="alert">
+                    We hope that you finish your user profile or you might get rejected because your data won't go to the recruiter properly. We recommend you complete the user profile completely.
+                </div>
                 <button class="btn btn-secondary">Upload CV (Placeholder)</button>
             </div>
             <div class="modal-footer">

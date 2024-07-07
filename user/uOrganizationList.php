@@ -103,6 +103,10 @@ $stmt->close();
                         <input type="text" class="form-control" id="orgName" name="orgName" required>
                     </div>
                     <div class="mb-3">
+                        <label for="orgDes" class="form-label">About Organization:</label>
+                        <textarea class="form-control" id="orgDes" name="orgDes" rows="4" required></textarea>
+                    </div>
+                    <div class="mb-3">
                         <label for="orgEmail" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="orgEmail" name="orgEmail" required>
                     </div>

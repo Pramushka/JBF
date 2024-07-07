@@ -91,6 +91,30 @@ header('Content-Type: application/json'); // Ensure JSON content type
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/s-organization.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        .short-text {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            position: relative;
+        }
+        .short-text::after {
+            content: '... ';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        .full-text {
+            display: none;
+        }
+        .toggle-link {
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
@@ -134,11 +158,14 @@ header('Content-Type: application/json'); // Ensure JSON content type
     <h2>About our organization</h2>
     <div class="cards">
         <div class="card-body">
-            <p>Mahamaya Group deals in manufacture of sponge iron, power, steel, structures etc. The turnover of the group is around 1000 crore.
-            Mahamaya Steel Industry a major industry in the group is a 15 years young company, manufacturing steel structures in the shape of Angles, Beams, Joist, Channels, Rounds, Flats, Railway sleepers etc. It has high capacity structural rolling mills with full fledged supportive SMS.
-            Mahamaya has many prestigious customers ranging from BHEL, BHPV, MAHAGENCO, CSPDCL, TNEB, GETCO, MSPDCL, MPPDCL, ONGC, RAILWAYS, RELIANCE, JINDAL etc. It is also conversion agent of SAIL, JINDAL.
-            Mahamaya is one of the few in the country who manufactures 600 MM joist and 250 MM angles . Mahamaya has kept pace with modern time, by continuously modernizing its plant and equipment so that its product confires to specification as required by different customers. The product are inspected by world renowned inspection agencies like – BIS,TUV,DNV,BUREAU VARITAS, SGS, LLOYDS, ABS, RDSO etc.</p>
-            <!-- Placeholder content for initially hidden details -->
+        <p class="short-text" id="shortDescription">
+            <?= htmlspecialchars($organization['Org_descript']) ?>
+            </p>
+            <p class="full-text" id="fullDescription">
+            <?= htmlspecialchars($organization['Org_descript']) ?>
+            </p>
+            <span class="toggle-link" id="toggleLink" onclick="toggleText()">See More</span>
+       
             <div id="organizationDetails" style="display: none;">
                 <p><strong>Email:</strong> <?= htmlspecialchars($organization['Org_Email']) ?></p>
                 <p><strong>Location:</strong> <?= htmlspecialchars($organization['Org_Location']) ?></p>
@@ -283,7 +310,22 @@ function toggleDetails() {
 </script>
 
 
-
-
+<script>
+        function toggleText() {
+            const shortDescription = document.getElementById('shortDescription');
+            const fullDescription = document.getElementById('fullDescription');
+            const toggleLink = document.getElementById('toggleLink');
+            
+            if (fullDescription.style.display === "none") {
+                fullDescription.style.display = "block";
+                shortDescription.style.display = "none";
+                toggleLink.textContent = "See Less";
+            } else {
+                fullDescription.style.display = "none";
+                shortDescription.style.display = "-webkit-box";
+                toggleLink.textContent = "See More";
+            }
+        }
+    </script>
 </body>
 </html>
