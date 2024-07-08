@@ -111,7 +111,7 @@ $stmt->close();
 </head>
 <body>
 
-<?php include 'navbarsearch.php'; ?>
+<?php include 'text.php'; ?>
 
 
 <div class="container-fluid">

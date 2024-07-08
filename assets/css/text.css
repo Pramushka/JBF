@@ -1,17 +1,18 @@
 /* General reset */
 * {
-    margin: 0 ;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
     font-family: Arial, sans-serif;
+    width: 100%;
 }
 
 .navbar {
     background-color: #f0f0f0;
-    padding: 12px 20px;
+    padding: 12px 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,12 +41,12 @@ body {
     flex-wrap: wrap;
 }
 
-.navbar .search-form .search-field {
+.navbar .search-form .custom-search-field {
     position: relative;
     margin-right: 10px;
 }
 
-.navbar .search-form .search-field i {
+.navbar .search-form .custom-search-field i {
     position: absolute;
     top: 50%;
     left: 10px;
@@ -53,15 +54,15 @@ body {
     color: #aaa;
 }
 
-.navbar .search-form .search-field select,
-.navbar .search-form .search-field input {
+.navbar .search-form .custom-search-field select,
+.navbar .search-form .custom-input-location {
     padding: 5px 10px 5px 30px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 14px;
+    border: 1px solid #1bc4f8;
+    border-radius: 10px;
+    font-size: 10px;
 }
 
-.navbar .search-form .search-button {
+.navbar .search-form .custom-search-button {
     padding: 5px 10px;
     background-color: #1bc4f8;
     color: #fff;
@@ -70,25 +71,25 @@ body {
     cursor: pointer;
 }
 
-.navbar .nav-links {
+.navbar .custom-nav-links {
     display: flex;
     list-style: none;
     margin-left: 20px;
     flex-wrap: wrap;
 }
 
-.navbar .nav-links li {
+.navbar .custom-nav-links li {
     margin-left: 10px;
 }
 
-.navbar .nav-links a {
+.navbar .custom-nav-links a {
     color: #000000;
     text-decoration: none;
     padding: 5px 10px;
     transition: background-color 1s ease;
 }
 
-.navbar .nav-links a:hover {
+.navbar .custom-nav-links a:hover {
     background-color: #1bc4f8;
     border-radius: 3px;
 }
@@ -101,53 +102,4 @@ body {
 .menu-toggle .fas {
     font-size: 24px;
     color: #000;
-}
-
-@media screen and (max-width: 768px) {
-    .navbar {
-        padding: 12px 10px;
-    }
-
-    .navbar .logo {
-        flex: 1 1 100%;
-        text-align: center;
-        margin-bottom: 10px;
-    }
-
-    .navbar .search-form {
-        flex: 1 1 100%;
-        margin-bottom: 10px;
-        justify-content: center;
-    }
-
-    .navbar .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .navbar .nav-links.active {
-        display: flex;
-    }
-
-    .navbar .nav-links li {
-        text-align: center;
-        margin: 5px 0;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .navbar .search-form .search-field select,
-    .navbar .search-form .search-field input {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .navbar .search-form .search-button {
-        width: 100%;
-    }
 }
