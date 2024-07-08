@@ -25,31 +25,21 @@
             <div class="footer-links">
                 <div class="footer-column">
                     <h3>About us</h3>
-                    <a href="#">About us</a>
-                    <a href="#">Careers</a>
-                    <a href="#">Employer home</a>
-                    <a href="#">Sitemap</a>
-                    <a href="#">Credits</a>
+                    <a href="../user/about_us.php">About us</a>
+                    <a href="../user/sitemap.php">Sitemap</a>
                 </div>
                 <div class="footer-column">
                     <h3>Help center</h3>
-                    <a href="#">Help center</a>
-                    <a href="#">Summons/Notices</a>
-                    <a href="#">Grievances</a>
-                    <a href="#">Report issue</a>
+                    <a href="../user/contact.php">Help center</a>
                 </div>
                 <div class="footer-column">
                     <h3>Privacy policy</h3>
-                    <a href="#">Privacy policy</a>
-                    <a href="#">Terms & conditions</a>
-                    <a href="#">Fraud alert</a>
-                    <a href="#">Trust & safety</a>
+                    <a href="../user/privacy_policy.php">Privacy policy</a>
+                    <a href="../user/terms_and_conditions.php">Terms & conditions</a>
                 </div>
             </div>
             <div class="footer-app">
-                <p>Apply on the go<br>Get real-time job updates on our App</p>
-                <a href="#"><img src="" alt="Google Play"></a>
-                <a href="#"><img src="" alt="App Store"></a>
+                <p>Explore endless career opportunities<br> with Jobforce, where your next<br> job is just a click away.</p>
             </div>
         </div>
         <div class="footer-bottom">

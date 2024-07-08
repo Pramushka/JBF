@@ -150,7 +150,7 @@
         <h2>Interested in Posting a Job?</h2>
         <p>Get in touch with Jobforce for inquiries and collaborations.</p>
         <a href="../user/contact.php" class="btn">Contact Us</a>
-    </section>
+    </section><br>
 
     <?php include 'footer.php'; ?>
 </body>

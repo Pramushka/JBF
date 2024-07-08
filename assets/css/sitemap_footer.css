@@ -1,0 +1,59 @@
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+    padding-top: 10px;
+}
+
+.footer-bottom p {
+    margin: 10px 0;
+}
+
+.footer-business {
+    display: flex;
+    justify-content: center;
+    gap: 0; /* Adjust if necessary */
+    margin-top: 10px; /* Add margin to separate from the footer content */
+}
+
+.footer-business a {
+    display: block;
+}
+
+.footer-business a img {
+    width: 100px;
+    height: auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer-bottom {
+        padding-top: 20px; /* Adjust padding for better spacing */
+    }
+
+    .footer-business {
+        flex-wrap: wrap;
+        gap: 10px; /* Adjust gap for smaller screens */
+    }
+
+    .footer-business a {
+        flex: 1 0 50%; /* Make logos stack in two columns on smaller screens */
+        max-width: 100px; /* Adjust maximum width of business logos */
+        margin-bottom: 10px; /* Add margin for spacing between logos */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .footer-bottom {
+        padding-top: 30px; /* Further adjust padding for smaller screens */
+    }
+
+    .footer-business a {
+        flex: 1 0 100%; /* Make logos stack in one column on the smallest screens */
+        max-width: 80px; /* Adjust maximum width of business logos */
+    }
+}

@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1190px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #1d015d;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.sitemap-intro {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #fff;
+    max-width: 100%;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: #fff;
+    box-sizing: border-box;
+}
+
+.sitemap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.sitemap-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.sitemap-section h2 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.sitemap-section ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.sitemap-section ul li {
+    margin-bottom: 8px;
+}
+
+.sitemap-section ul li a {
+    text-decoration: none;
+    color: #3498DB;
+    font-size: 16px;
+}
+
+.sitemap-section ul li a:hover {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    
+    .card {
+        padding: 15px;
+        border-radius: 15px;
+    }
+    
+    .sitemap-section {
+        flex-basis: 100%;
+        margin: 10px 0;
+    }
+    
+    .sitemap-section h2 {
+        font-size: 18px;
+    }
+    
+    .sitemap-section ul li a {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    .card {
+        padding: 10px;
+        border-radius: 10px;
+    }
+    
+    .sitemap-section {
+        flex-basis: 100%;
+        margin: 10px 0;
+    }
+    
+    .sitemap-section h2 {
+        font-size: 16px;
+    }
+    
+    .sitemap-section ul li a {
+        font-size: 12px;
+    }
+}
