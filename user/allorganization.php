@@ -22,13 +22,14 @@ $stmt->close();
     <link rel="stylesheet" href="../assets/css/allorganization.css">
 </head>
 <body>
-<?php include 'navbarsearch.php'; ?>
+<?php include 'navbarsearch.php'; ?><br>
 
     <div class="container">
         <h1 class="center-title">All Organizations</h1>
         <div class="cards">
             <?php foreach ($organizations as $org): ?>
                 <div class="card">
+                <span class="image"></span> <!-- Add this line / If you want to add photo -->
                     <div class="content">
                         <h2><?= htmlspecialchars($org['Org_Name']) ?></h2><br>
                         <p>Email: <?= htmlspecialchars($org['Org_Email']) ?></p>

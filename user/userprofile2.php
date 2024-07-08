@@ -804,6 +804,7 @@ $progress = (count($completed_sections) / count($sections)) * 100;
             container.appendChild(newEntry);
         });
     </script>
+        <?php include 'footer.php'; ?>
 </body>
 
 </html>
