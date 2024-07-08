@@ -13,10 +13,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $verificationContact = $_POST['verificationContact'];
 
     // Assuming all necessary validations and sanitation are done before inserting
-    $query = "INSERT INTO organization (UserID, Org_Name, Org_descript, Org_Email, Org_Register_no, Org_Location, Org_Industry, Verification_Contact) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO organization (UserID, Org_Name, Org_Descript, Org_Email, Org_Register_no, Org_Location, Org_Industry, Verification_Contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
+    if (!$stmt) {
+        echo "Error preparing statement: " . $conn->error;
+        exit;
+    }
+
     $userId = $_SESSION['user_id'];  // Assuming user's ID is stored in session
-    $stmt->bind_param("issssss", $userId, $orgName, $orgDes, $orgEmail, $orgRegisterNo, $orgLocation, $orgIndustry, $verificationContact);
+    // Make sure to check that session variable is set before using it to avoid errors
+    if (!isset($userId)) {
+        echo "User not logged in";
+        exit;
+    }
+
+    // Ensure correct types are used: 'i' for integer and 's' for string
+    $stmt->bind_param("isssssss", $userId, $orgName, $orgDes, $orgEmail, $orgRegisterNo, $orgLocation, $orgIndustry, $verificationContact);
 
     if ($stmt->execute()) {
         echo "Organization created successfully.";
@@ -24,7 +36,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error creating organization: " . $stmt->error;
     }
     $stmt->close();
-    exit;
 }
 ?>
-
