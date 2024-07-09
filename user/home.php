@@ -287,12 +287,12 @@ if (isset($_SESSION['alert'])) {
             <h2>Contact Help Desk</h2>
             <form action="home.php" method="POST">
                 <div class="inputGroup">
-                    <input type="email" id="email" name="email" required="" autocomplete="off">
-                    <label for="email">email</label>
+                    <input type="email" id="email" name="email" required="" autocomplete="off" placeholder="Email">
+                    <label for="email"></label>
                 </div>
                 <div class="inputGroup">
-                    <input type="textarea" id="description" name="description" required="" autocomplete="off">
-                    <label for="description">Message</label>
+                    <input type="textarea" id="description" name="description" required="" autocomplete="off" placeholder="Message">
+                    <label for="description"></label>
                 </div>
 
                 <button  class="btn" type="submit">Submit</button>
