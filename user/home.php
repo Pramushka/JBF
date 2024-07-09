@@ -226,8 +226,57 @@ if (isset($_SESSION['alert'])) {
 
 <br>
 <br>
+
+    <!-- Job Section -------------------------------------------------------------------------------------->
+        <div class="job-section">
+ 
+        <h1>The Fastest Track to Your Next Job</h1>
+    
+    <!-- Create your Profile -->
+        <div class="job-item">
+            <img src="../assets/img/home_page/create_your_profile.png" alt="Create your Profile">
+            <h2>Create your Profile</h2>
+            <p>Craft a Personalized Profile: Showcase Your Skills, Achievements, and Ambitions.</p>
+        </div>
+
+    <!-- Explore job -->
+        <div class="job-item">
+            <img src="../assets/img/home_page/explore_job.jpg" alt="Explore job">
+            <h2>Explore job</h2>
+            <p>Unlock Your Career Potential: Find, Apply, and Succeed - Make it Simple and Effective.</p>
+        </div>
+
+    <!-- Get hired -->
+        <div class="job-item">
+            <img src="../assets/img/home_page/get_heired.jpg" alt="Get heired">
+            <h2>Get heired</h2>
+            <p>Discover Opportunities, Apply with Confidence, and Secure Your Dream Job. Your Next Career Move is Just a Click Away.</p>
+        </div>
+    </div>
+
 <br>
 <br>
+    <!-- Build Post Section -->
+<div class="build-post">
+    <!-- Topic: You want to add topic addddddddddd --------------------------------------------->
+    <h1></h1>
+    
+    <div class="post-item">
+        <img src="../assets/img/others/image1.png" alt="Build Your Job Post">
+        <div>
+            <h2>Build Your Job Post</h2>
+            <p>Join our dynamic team and be a part of a vibrant workplace that values innovation, collaboration, and growth. We are seeking enthusiastic individuals with a passion for Developer to contribute their skills and expertise.</p>
+        </div>
+    </div>
+    <div class="post-item">
+        <img src="../assets/img/others/image2.png" alt="Post Your Job">
+        <div>
+            <h2>Post Your Job</h2>
+            <p>Join our dynamic team and be a part of a vibrant workplace that values innovation, collaboration, and growth. We are seeking enthusiastic individuals with a passion for Developer to contribute their skills and expertise.</p>
+        </div>
+    </div>
+</div>
+
 <br>
 <br>
 
@@ -274,7 +323,7 @@ $(document).ready(function() {
     });
 });
 </script>
-
+<br>
 <?php include 'footer.php'; ?>
 
 </body>
