@@ -13,7 +13,7 @@
 <div class="navi">
 
     <nav>
-        <a href="./home.php"><img src="../assets/img/twitter.png" class="logo"></a>
+        <a href="./home.php"><img src="../assets/img/logo/jobforce01.jpg" class="logo"></a>
         <ul>
             <li><a href="./jobsearch.php">Search jobs</a></li>
             <li class="dropdown">

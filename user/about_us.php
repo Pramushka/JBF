@@ -12,7 +12,7 @@
     <?php include 'navbar.php'; ?>
 
     <section class="hero">
-    <img src="../assets/img/Jobforce_Logo2.png" alt="[Your Company Name] Logo" class="logo">
+    <img src="../assets/img/logo/Jobforce01.jpg" alt="[Your Company Name] Logo" class="logo">
         <h1>Find Your Dream Job with Jobforce</h1>
         <p>Explore the best job opportunities that match your skills and aspirations.</p>
 

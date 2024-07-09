@@ -13,14 +13,14 @@
     <div class="footer-container">
         <div class="footer-main">
             <div class="footer-logo">
-                <img src="../assets/img/Jobforce_Logo2.png" alt="Jobforce Logo">
+                <img src="../assets/img/logo/jobforce01.jpg" alt="Jobforce Logo">
             </div>
             <div class="footer-social">
                 <p>Connect with us:</p>
-                <a href="#"><img src="../assets/img/Facebook_logo.png" alt="Facebook"></a>
-                <a href="#"><img src="../assets/img/Instagram_icon.png.webp" alt="Instagram"></a>
-                <a href="#"><img src="../assets/img/twitter.png" alt="Twitter"></a>
-                <a href="#"><img src="../assets/img/youtube1.png" alt="LinkedIn"></a>
+                <a href="#"><img src="../assets/img/footer/Facebook_logo.png" alt="Facebook"></a>
+                <a href="#"><img src="../assets/img/footer/Instagram_icon.png.webp" alt="Instagram"></a>
+                <a href="#"><img src="../assets/img/footer/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="../assets/img/footer/youtube1.png" alt="LinkedIn"></a>
             </div>
             <div class="footer-links">
                 <div class="footer-column">
@@ -45,10 +45,10 @@
         <div class="footer-bottom">
             <p>All trademarks are the property of their respective owners.<br>All rights reserved © 2024 Info Edge (Sri Lanka) Ltd.</p>
             <div class="footer-business">
-                <a href="#"><img src="../assets/img/Our_Popular_Courses/fiverr_logo.gif" alt="hireskilling"></a>
-                <a href="#"><img src="../assets/img/Mastercard.gif" alt="nrigulf.com"></a>
-                <a href="#"><img src="../assets/img/Spotify.gif" alt="shiksha"></a>
-                <a href="#"><img src="../assets/img/codecycle_logo_animation.gif" alt="iimjobs.com"></a>
+                <a href="#"><img src="../assets/img/footer/fiverr_logo.gif" alt="fiverrlogo"></a>
+                <a href="#"><img src="../assets/img/footer/Mastercard.gif" alt="Mastercardlogo"></a>
+                <a href="#"><img src="../assets/img/footer/Spotify.gif" alt="Spotifylogo"></a>
+                <a href="#"><img src="../assets/img/footer/codecycle_logo_animation.gif" alt="codecycle_logo"></a>
             </div>
         </div>
     </div>

@@ -9,8 +9,19 @@ body {
 section {
     padding: 50px 20px;
     box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(50px); /* Slide-in from bottom */
+    animation: fadeInSlideUp 1s forwards;
 }
 
+@keyframes fadeInSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ensure the logo is responsive and centered */
 .logo {
     width: 100%; 
     max-width: 200px;
@@ -18,13 +29,28 @@ section {
     margin-bottom: 20px; /* Optional: Adjust margin as needed */
 }
 
-
 .hero {
     text-align: center;
     background: #003366;
     color: #fff;
-    padding: 50px 20px; /* Adjust padding for better spacing */
+    padding: 100px 20px; /* Increase padding for better spacing */
+    min-height: 500px; /* Set a minimum height */
+    transform: translateX(-50px); /* Slide-in from left */
+    opacity: 0;
+    animation: slideInFromLeft 1.5s forwards;
 }
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 
 .hero h1 {
     font-size: 3rem;
@@ -36,7 +62,6 @@ section {
     margin-bottom: 20px;
     color: #CAF0F8;
 }
-
 
 /* New CSS for About Jobforce, Vision, and Mission sections */
 .hero {
@@ -54,6 +79,7 @@ section {
     background: #003366;
     color: #ffffff;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero .about-jobforce {
@@ -71,7 +97,6 @@ section {
     margin-bottom: 10px;
 }
 
-
 .hero .vision,
 .hero .mission {
     max-width: 400px;
@@ -85,6 +110,7 @@ section {
     text-align: left;
     margin-right: 300px;
 }
+
 .hero h3 {
     font-size: 30px;
     margin-bottom: 10px;
@@ -95,15 +121,11 @@ section {
     color: #CAF0F8;
 }
 
-
 .hero .mission {
     order: 2;
     text-align: right;
     margin-left: 300px; /* Adjust margin-left as per your preference */
-    
 }
-
-
 
 .hero h4 {
     font-size: 30px;
@@ -114,7 +136,6 @@ section {
     font-size: 15px; /* Adjust the font size as per your preference */
     color: #CAF0F8;
 }
-
 
 .hero .bar {
     width: 2px;
@@ -129,8 +150,6 @@ section {
     justify-content: space-between;
 }
 
-
-
 .career-numbers,
 .reviews,
 .portfolio-gallery,
@@ -138,6 +157,16 @@ section {
 .contact {
     max-width: 1200px; /* Adjust max-width as per your preference */
     margin: 0 auto; /* Center align the sections */
+}
+
+/* Card Hover Animation: Lift and Shadow */
+.number-card, .review-card, .gallery-card, .team-cards .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.number-card:hover, .review-card:hover, .gallery-card:hover, .team-cards .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
 }
 
 .career-numbers {
@@ -195,7 +224,6 @@ section {
     box-shadow: 0 6px 12px #0000001a;
 }
 
-
 .review-card h3 {
     font-size: 30px;
     margin-bottom: 10px;
@@ -208,8 +236,6 @@ section {
     margin-bottom: 5px;
     text-align: center;
 }
-
-
 
 .portfolio-gallery {
     text-align: center;
@@ -235,7 +261,6 @@ section {
     width: 220px;
     text-align: center;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.54);
-    
 }
 
 .gallery-card:hover {
@@ -299,6 +324,26 @@ section {
     color: #CAF0F8;
 }
 
+/* Button Hover Animation: Grow and Change Color */
+.contact .btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #fff;
+    background: #4c48c5;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 0 6px 12px #0000009a;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact .btn:hover {
+    background-color: #3333ff; /* Change button color on hover */
+    transform: scale(1.1); /* Grow on hover */
+}
+
 .contact-icons a {
     color: #fff;
     margin: 0 10px;
@@ -322,26 +367,12 @@ section {
     margin-bottom: 30px;
 }
 
-.contact .btn {
-    display: inline-block;
-    margin: 10px;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    color: #fff;
-    background: #4c48c5;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    box-shadow: 0 6px 12px #0000009a;
-}
-
 .social-links a {
     color: #fff;
     margin: 0 15px;
     font-size: 1.8rem;
     text-decoration: none;
 }
-
 
 @media (max-width: 768px) {
     .hero .flex-container {
