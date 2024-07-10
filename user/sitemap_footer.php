@@ -13,10 +13,10 @@
 <div class="footer-bottom">
             <p>All trademarks are the property of their respective owners.<br>All rights reserved © 2024 Info Edge (Sri Lanka) Ltd.</p>
             <div class="footer-business">
-                <a href="#"><img src="../assets/img/Our_Popular_Courses/fiverr_logo.gif" alt="hireskilling"></a>
-                <a href="#"><img src="../assets/img/Mastercard.gif" alt="nrigulf.com"></a>
-                <a href="#"><img src="../assets/img/Spotify.gif" alt="shiksha"></a>
-                <a href="#"><img src="../assets/img/codecycle_logo_animation.gif" alt="iimjobs.com"></a>
+                <a href="#"><img src="../assets/img/footer/fiverr_logo.gif" alt="hireskilling"></a>
+                <a href="#"><img src="../assets/img/footer/Mastercard.gif" alt="nrigulf.com"></a>
+                <a href="#"><img src="../assets/img/footer/Spotify.gif" alt="shiksha"></a>
+                <a href="#"><img src="../assets/img/footer/codecycle_logo_animation.gif" alt="iimjobs.com"></a>
             </div>
         </div>
 </footer>

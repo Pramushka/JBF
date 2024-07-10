@@ -222,7 +222,44 @@ if (isset($_SESSION['alert'])) {
     </div>
 </div>
 
-
+<br>
+<br>
+    <!---------------------General Styles for the services---------------------------->
+    <div class="container">
+    <h1>Discover Our Services</h1><br>
+    <div class="services">
+        <div class="services-card">
+            <img src="../assets/img/services/resume_building.jpg" alt="Resume Building">
+            <h3>Resume Building</h3>
+            <p>Create a professional resume that stands out and impresses recruiters.</p>
+        </div>
+        <div class="services-card">
+            <img src="../assets/img/services/job_alerts.png" alt="Job Alerts">
+            <h3>Job Alerts</h3>
+            <p>Receive timely notifications about new job openings matching your skills.</p>
+        </div>
+        <div class="services-card">
+            <img src="../assets/img/services/interview_preparation.png" alt="Interview Preparation">
+            <h3>Interview Preparation</h3>
+            <p>Prepare thoroughly with expert tips and mock interview sessions.</p>
+        </div>
+        <div class="services-card">
+            <img src="../assets/img/services/career_counseling02.jpg" alt="Career Counseling">
+            <h3>Career Counseling</h3>
+            <p>Get personalized advice from career experts to navigate your career path.</p>
+        </div>
+        <div class="services-card">
+            <img src="../assets/img/services/skills.png" alt="Skill Development">
+            <h3>Skill Development</h3>
+            <p>Enhance your skills through certified courses tailored to industry demands.</p>
+        </div>
+        <div class="services-card">
+            <img src="../assets/img/services/network.png" alt="Networking Opportunities">
+            <h3>Networking Opportunities</h3>
+            <p>Build connections and network with professionals in your field.</p>
+        </div>
+    </div>
+</div>
 <br>
 <br>
 
