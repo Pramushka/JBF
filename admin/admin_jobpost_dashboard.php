@@ -3,6 +3,7 @@ include '../includes/dbconn.php';
 session_start();
 
 // Fetch all job posts and their corresponding user details
+
 $sql = "SELECT jobpost.id, jobpost.job_positions, jobpost.job_category, jobpost.Benifits, jobpost.salary, jobpost.CreatedBy, user.username 
         FROM jobpost 
         INNER JOIN user ON jobpost.CreatedBy = user.id 

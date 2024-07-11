@@ -53,7 +53,7 @@ $stmt->close();
                     <td><?= htmlspecialchars($applicant['Skill']) ?></td>
                     <td><?= htmlspecialchars($applicant['about']) ?></td>
                     <td>
-                        <button onclick="location.href='cv.php?user_id=<?= htmlspecialchars($applicant['ID']) ?>'">Go to CV</button>
+                        <button onclick="location.href='cv_generate.php?user_id=<?= htmlspecialchars($applicant['ID']) ?>'">Go to CV</button>
                     </td>
                 </tr>
             <?php endforeach; ?>

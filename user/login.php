@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
@@ -54,9 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     // Not a POST request, redirect back to login.php
     //header("Location: ../login.php");
-}//
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -127,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <i class="fab fa-facebook"></i>
                     </a>
                     <a href="#" class="social-icon">
-                        <i class="fab fa-twitter"></i>
+                        <i class "fab fa-twitter"></i>
                     </a>
                     <a href="#" class="social-icon">
                         <i class="fab fa-google"></i>

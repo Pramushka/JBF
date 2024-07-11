@@ -242,11 +242,13 @@ $progress = (count($completed_sections) / count($sections)) * 100;
             /* Adjust this value if you need more spacing between the button and progress bar */
         }
     </style>
+    
 </head>
 
-<body>
 
-<?php include 'navbarsearch.php'; ?>
+<body>
+<?php include 'navbar.php'; ?>
+
 
     <div class="container">
         <div class="row">

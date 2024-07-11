@@ -49,7 +49,7 @@ while ($row = $result->fetch_assoc()) {
 
 // Fetch courses either from the same industry or just the most recent ones
 $coursesSql = "SELECT Course_Name, Skill, Industry, Description, Price FROM learning_courses 
-               WHERE Industry = ? AND IsDeleted = 0 ORDER BY CreatedOn DESC LIMIT 5";
+               WHERE Industry = ? AND IsDeleted = 0 ORDER BY CreatedOn DESC LIMIT 6";
 $stmt = $conn->prepare($coursesSql);
 $stmt->bind_param("s", $userIndustry);
 $stmt->execute();
@@ -110,9 +110,111 @@ if (isset($_SESSION['alert'])) {
     <link rel="stylesheet" href="../assets/css/single_input.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../assets/css/cardtemp.css"> 
+   <!--- <link rel="stylesheet" href="../assets/css/cardtemp.css"> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+   
+    <style>
+       body {
+        font-family: 'Red Hat Display', sans-serif;
+        margin: 0;
+        }
+
+        .section-divider {
+            height: 10px;
+           
+            border: none;
+            margin: 0;
+        }
+
+        .sponsored-companies {
+           
+            padding: 40px 0;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+        }
+
+        .sponsore
+        .sponsored-companies h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #00B4D8;
+        }
+
+        .company-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .company-card {
+            width: 300px;
+            background-color: #f8f9fa;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .company-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .company-logo {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 10px;
+            border-radius: 50%;
+            border: 1px solid #f8f9fa;
+            background-color: #007bff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .company-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 20%;
+        }
+
+        .company-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .company-info {
+            margin-bottom: 10px;
+            color: #777;
+        }
+
+        .view-jobs-btn {
+            background-color: #00B4D8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 1;
+        }
+
+        .view-jobs-btn:hover {
+            background: linear-gradient(to right, #0096C7, #0077B6, #00B4D8, #90E0EF, #ADE8F4);
+            transform: scale(1.1);
+        }
+    </style>
+
     
 </head>
 <body>
@@ -122,7 +224,7 @@ if (isset($_SESSION['alert'])) {
 
     <section class="home">
         <div class="home-content">
-            <h1>Find your dream job now</h1>
+            <h1>FIND YOUR DREAM JOB NOW</h1>
         </div>
     </section>
     
@@ -166,31 +268,34 @@ if (isset($_SESSION['alert'])) {
 <br>
 <br>
 <br>
+
+
+<h1 style="color: black; font-family: 'Poppins', sans-serif; text-align: center; ;">LATEST COMPANIES HIRING NOW</h1>
 <div class="sponsored-companies">
-    <h2>Top companies hiring now</h2>
+   
     <div class="company-grid">
         <?php foreach ($companies as $company): ?>
-            <div class="company-card" style="background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
-                <!-- Using a default image if the specific company image does not exist -->
-                <img src="../assets/img/company_logo/C01.gif"  style="height: 100px; width: auto; margin-bottom: 10px;">
-                <h3 style="margin-top: 10px; margin-bottom: 5px;"><?= htmlspecialchars($company['Org_Name']) ?></h3>
-                <p style="margin-bottom: 5px;"><strong>Industry:</strong> <?= htmlspecialchars($company['Org_Industry']) ?></p>
-                <p style="margin-bottom: 10px;"><?= htmlspecialchars($company['Org_Location']) ?></p>
-                <!-- Button to view jobs, linking to a job search page filtered by this company -->
-                <button onclick="window.location.href='single_organization.php?id=<?= $company['ID'] ?>'" style="padding: 8px 16px; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">View Jobs</button>
+            <div class="company-card">
+                <div class="company-logo">
+                    <img src="../assets/img/company_logo/C01.gif" alt="<?= htmlspecialchars($company['Org_Name']) ?>">
+                </div>
+                <div class="company-name"><?= htmlspecialchars($company['Org_Name']) ?></div>
+                <div class="company-info"><?= htmlspecialchars($company['Org_Industry']) ?></div>
+                <div class="company-info"><?= htmlspecialchars($company['Org_Location']) ?></div>
+                <button class="view-jobs-btn" onclick="window.location.href='single_organization.php?id=<?= $company['ID'] ?>'">View Jobs</button>
             </div>
         <?php endforeach; ?>
     </div>
 </div>
 
-<br>
-<br>
-<br>
-<br>
+<hr class="section-divider">
+
+
+
 <br>
 <br>
         <!--This is the Course Content Section-->
-<div class="sponsored-companies">
+<div class="sponsored-companie">
     <h2>Top Learning Courses</h2>
     <div class="company-grid">
         <?php foreach ($courses as $course): ?>

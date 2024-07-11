@@ -1,0 +1,41 @@
+/* updatedcss.css */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.search-section {
+    background: url('/path/to/your/image.png') no-repeat center center/cover;
+    position: relative;
+    color: white;
+    padding: 100px 0;
+}
+
+.search-section .overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Optional overlay to make text more readable */
+    padding: 50px 0;
+}
+
+.search-section h1 {
+    font-weight: 600;
+    color: white;
+}
+
+.search-form .input-group-text {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.search-form .form-control {
+    border-left: 1px solid #007bff;
+}
+
+.search-form .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.search-form .btn-primary:hover {
+    background-color: #0056b3;
+}
