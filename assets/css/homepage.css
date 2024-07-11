@@ -1,16 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
 
 .search-bar-container {
     display: flex;
@@ -268,19 +255,8 @@ body {
     background: #0077B6;
 }
 
-/* General Styles for the services */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-}
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
-}
+
+
 h1 {
     font-size: 28px;
     font-weight: bold;
@@ -390,10 +366,6 @@ h1 {
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-    }
-
     .auth-buttons {
         flex-direction: column;
         margin-top: 10px;
@@ -444,13 +416,6 @@ h1 {
 }
 
 @media (max-width: 1024px) {
-    .header {
-        padding: 10px 20px;
-    }
-
-    .navbar {
-        left: 20px;
-    }
 
     .search-bar {
         padding: 12px;
@@ -462,21 +427,7 @@ h1 {
 }
 
 @media (max-width: 768px) {
-    .logo {
-        width: 60px;
-    }
 
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar {
-        position: relative;
-        left: 0;
-        flex: 1;
-        margin-top: 10px;
-    }
 
     .auth-buttons {
         margin-top: 10px;
@@ -547,13 +498,6 @@ h1 {
 }
 
 @media (max-width: 576px) {
-    .header {
-        padding: 10px;
-    }
-
-    .logo {
-        width: 50px;
-    }
 
     .search-bar {
         padding: 8px;
@@ -562,10 +506,6 @@ h1 {
     .search-button {
         padding: 8px 15px;
         font-size: 14px;
-    }
-
-    .home {
-        margin-top: 80px;
     }
 
     .home-content h1 {
@@ -602,27 +542,11 @@ h1 {
 }
 
 
-.main-section {
-    text-align: center;
-    padding: 40px;
-    background-color: #563d7c;
-    color: #fff;
-}
 
-.main-section h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
 
-.main-section p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
 
 @media (max-width: 768px) {
-    .main-section {
-        padding: 20px;
-    }
+
     
     .main-section h1 {
         font-size: 2em;

@@ -22,7 +22,7 @@ $stmt->close();
     <link rel="stylesheet" href="../assets/css/allorganization.css">
 </head>
 <body>
-<?php include 'navbarsearch.php'; ?><br>
+<?php include 'navbarsearch.php'; ?>
 
     <div class="container">
         <h1 class="center-title">All Organizations</h1>

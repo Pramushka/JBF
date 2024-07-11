@@ -45,6 +45,8 @@ $education = $_GET['education'] ?? '';
 $salary = $_GET['salary'] ?? '';
 $jobPositions = $_GET['jobPositions'] ?? '';
 
+
+
 // Prepare the SQL query dynamically
 $sql = "SELECT * FROM jobpost WHERE IsDeleted = 0";
 $conditions = [];
@@ -93,10 +95,16 @@ $stmt = $conn->prepare($sql);
 if (!empty($params)) {
     $stmt->bind_param(str_repeat("s", count($params)), ...$params);
 }
+
+
+
 $stmt->execute();
 $result = $stmt->get_result();
 $jobs = $result->fetch_all(MYSQLI_ASSOC);
 $stmt->close();
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -111,7 +119,7 @@ $stmt->close();
 </head>
 <body>
 
-<?php include 'text.php'; ?>
+<?php include 'navbarsearch.php'; ?>
 
 
 <div class="container-fluid">
@@ -231,16 +239,21 @@ var currentJobId = 0;
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     
-function applyFilters() {
+    function applyFilters() {
     $.ajax({
         url: 'jobsearch.php',
         type: 'GET',
         data: $('#filtersForm').serialize(),
         success: function(data) {
+            console.log("Received data: ", data); // Check what is being received.
             $('#jobListings').html($(data).find('#jobListings').html());
+        },
+        error: function(xhr) {
+            console.log("Error: ", xhr.statusText);
         }
     });
 }
+
 
 function resetFilters() {
     $('#filtersForm').find('input[type=text], input[type=number], select').val('');

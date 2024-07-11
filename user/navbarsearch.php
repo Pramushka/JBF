@@ -141,6 +141,7 @@ while ($row = $positionResult->fetch_assoc()) {
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item <?= ($current_page == 'home.php') ? 'active' : ''; ?>"><a href="home.php" class="nav-link">Home</a></li>
+                <li class="nav-item <?= ($current_page == 'jobsearch.php') ? 'active' : ''; ?>"><a href="jobsearch.php" class="nav-link">Search Jobs</a></li>
                 <li class="nav-item dropdown <?= ($current_page == 'allorganization.php' || $current_page == 'uOrganizationList.php') ? 'active' : ''; ?>">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Organization</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -171,7 +172,7 @@ while ($row = $positionResult->fetch_assoc()) {
                 <i class="fas fa-briefcase"></i>
                 <select class="form-control" id="industry_skill_position" name="industry_skill_position">
                     <?php foreach ($allOptions as $option): ?>
-                        <option value="<?= $option['ID'] ?>"><?= $option['name'] ?> (<?= $option['type'] ?>)</option>
+                        <option value="<?= $option['name'] ?>"><?= $option['name'] ?> (<?= $option['type'] ?>)</option>
                     <?php endforeach; ?>
                 </select>
             </div>

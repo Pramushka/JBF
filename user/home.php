@@ -30,7 +30,7 @@ $userIndustryResult = $conn->query("SELECT Job_Industry FROM user WHERE ID = $us
 $userIndustry = $userIndustryResult->fetch_assoc()['Job_Industry'];
 
 // SQL to fetch top organizations either from the same industry or just the most recent ones, now including the ID
-$sql = "SELECT ID, Org_Name, Org_Location, Org_Industry FROM organization WHERE Org_Industry = ? ORDER BY ID DESC LIMIT 5";
+$sql = "SELECT ID, Org_Name, Org_Location, Org_Industry FROM organization WHERE Org_Industry = ? ORDER BY ID DESC ";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $userIndustry);
 $stmt->execute();
@@ -38,14 +38,13 @@ $result = $stmt->get_result();
 
 if ($result->num_rows == 0) {
     // If no organization found in the user's industry, fetch the most recent organizations instead
-    $result = $conn->query("SELECT ID, Org_Name, Org_Location, Org_Industry FROM organization ORDER BY ID DESC LIMIT 5");
+    $result = $conn->query("SELECT ID, Org_Name, Org_Location, Org_Industry FROM organization ORDER BY ID DESC");
 }
 
 $companies = [];
 while ($row = $result->fetch_assoc()) {
     $companies[] = $row;
 }
-
 
 
 // Fetch courses either from the same industry or just the most recent ones
@@ -110,7 +109,6 @@ if (isset($_SESSION['alert'])) {
     <link rel="stylesheet" href="../assets/css/homepage.css">
     <link rel="stylesheet" href="../assets/css/single_input.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
-
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/cardtemp.css"> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -137,7 +135,7 @@ if (isset($_SESSION['alert'])) {
                 <i class="fas fa-briefcase"></i>
                 <select class="form-control" id="industry_skill_position" name="industry_skill_position">
                     <?php foreach ($allOptions as $option): ?>
-                        <option value="<?= $option['ID'] ?>"><?= $option['name'] ?> (<?= $option['type'] ?>)</option>
+                        <option value="<?= $option['name'] ?>"><?= $option['name'] ?> (<?= $option['type'] ?>)</option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -174,7 +172,7 @@ if (isset($_SESSION['alert'])) {
         <?php foreach ($companies as $company): ?>
             <div class="company-card" style="background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
                 <!-- Using a default image if the specific company image does not exist -->
-                <img src="../assets/img/default_company_logo.png" alt="<?= htmlspecialchars($company['Org_Name']) ?>" style="height: 100px; width: auto; margin-bottom: 10px;">
+                <img src="../assets/img/company_logo/C01.gif"  style="height: 100px; width: auto; margin-bottom: 10px;">
                 <h3 style="margin-top: 10px; margin-bottom: 5px;"><?= htmlspecialchars($company['Org_Name']) ?></h3>
                 <p style="margin-bottom: 5px;"><strong>Industry:</strong> <?= htmlspecialchars($company['Org_Industry']) ?></p>
                 <p style="margin-bottom: 10px;"><?= htmlspecialchars($company['Org_Location']) ?></p>
