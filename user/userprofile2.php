@@ -490,26 +490,27 @@ $progress = (count($completed_sections) / count($sections)) * 100;
         </div>
     </div>
 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <h4 class="card-title mb-4">My Company</h4>
-                        </div>
-                            <ul class="list-unstyled mb-0" id="organization-list">
-                                <?php if (!empty($organizations)): ?>
-                                <?php foreach ($organizations as $org): ?>
-                            <li class="organization-item">
-                                <a href="single_organization.php?org_id=<?= htmlspecialchars($org['ID']); ?>">
-                                <?= htmlspecialchars($org['Org_Name']); ?>
-                            </a>
-                        </li>
-                        <?php endforeach; ?>
-                        <?php else: ?>
-                            <li>No organizations found.</li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                </div>
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <h4 class="card-title mb-4">My Company</h4>
+        </div>
+        <ul class="list-unstyled mb-0" id="organization-list">
+            <?php if (!empty($organizations)): ?>
+                <?php foreach ($organizations as $org): ?>
+                    <li class="organization-item">
+                        <a href="single_organization.php?id=<?= htmlspecialchars($org['ID']); ?>">
+                            <?= htmlspecialchars($org['Org_Name']); ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <li>No organizations found.</li>
+            <?php endif; ?>
+        </ul>
+    </div>
+</div>
+
 
                 <div class="card">
                     <div class="card-body">

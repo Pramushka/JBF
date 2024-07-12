@@ -1,8 +1,16 @@
 <?php
 include '../includes/dbconn.php'; // Include the database connection file
 
-// Fetch courses
-$courses_sql = "SELECT Course_Name, Skill, Industry, Description, Price FROM learning_courses";
+// Fetch industries
+$industries_sql = "SELECT id, industry_name FROM job_industries";
+$industries_result = $conn->query($industries_sql);
+
+// Fetch courses based on industry if selected
+$industry_filter = isset($_GET['industry']) ? $_GET['industry'] : '';
+$courses_sql = "SELECT id, Course_Name, Skill, Industry, Description, Price FROM learning_courses";
+if ($industry_filter) {
+    $courses_sql .= " WHERE Industry = '$industry_filter'";
+}
 $courses_result = $conn->query($courses_sql);
 ?>
 
@@ -13,344 +21,382 @@ $courses_result = $conn->query($courses_sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href="../assets/css/courses.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .topnav {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .topnav a {
+            display: block;
+            color: #8d8b8b;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding: 14px 15px;
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            margin-right: 15px;
+        }
+
+        .topnav a:hover {
+            color: black;
+            border-bottom: 3px solid red;
+        }
+
+        .topnav .active {
+            color: black;
+            border-bottom: 3px solid red;
+        }
+
+        .category .job {
+            height: 280px;
+            border: 1px solid transparent;
+            padding: 30px 19px 25px 19px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            cursor: pointer;
+        }
+
+        .category .job:hover {
+            border: 1px solid #0d6efd;
+        }
+
+        .category .job span {
+            padding: 6px 20px;
+            font-weight: 400;
+            border-radius: 26px;
+            display: inline-block;
+        }
+
+        .category .job .colors1 {
+            font-weight: 800;
+            color: #F27E42;
+            background: #f27e4242;
+        }
+
+        .category .job .colors2 {
+            font-weight: 800;
+            color: #4294F2;
+            background: rgba(66, 148, 255, 0.26);
+        }
+
+        .category .job .colors3 {
+            font-weight: 800;
+            color: #2EB98D;
+            background: rgba(46, 185, 141, 0.03);
+        }
+
+        .category .job .colors4 {
+            font-weight: 800;
+            color: #6A42F2;
+            background: rgba(106, 66, 242, 0.07);
+        }
+
+        .category .job .colors5 {
+            font-weight: 800;
+            color: #F162BC;
+            background: rgba(241, 98, 188, 0.07);
+        }
+
+        .category .job .colors2 {
+            font-weight: 800;
+            color: #4294F2;
+            background: rgba(66, 148, 255, 0.26);
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            color: #071112;
+            text-transform: capitalize;
+            margin-bottom: 17px;
+            display: block;
+        }
+
+        .place {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            padding-left: 0px;
+            color: #76787A;
+        }
+
+        .left {
+            font-weight: 800;
+        }
+
+        .category .job span.time {
+            font-weight: 900;
+        }
+
+        .btn.btn-primary {
+            width: 150px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mt-30 {
+            margin-top: 30px;
+        }
+
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 24px;
+            color: black;
+        }
+
+        .navbar-brand:hover {
+            color: red;
+        }
+
+        .navbar-nav {
+            align-items: center;
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 15px;
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+        body {
+            background-color: #eeeeee;
+            font-family: 'Open Sans', serif;
+            font-size: 14px;
+        }
+
+        .container-fluid {
+            margin-top: 50px;
+        }
+
+        .footer-copyright {
+            margin-top: 13px;
+        }
+
+        a {
+            text-decoration: none !important;
+            color: #777a7c;
+        }
+
+        .description {
+            font-size: 12px;
+        }
+
+        .fa-facebook-f {
+            color: #3b5999;
+        }
+
+        .fa-instagram {
+            color: #e4405f;
+        }
+
+        .fa-youtube {
+            color: #cd201f;
+        }
+
+        .fa-twitter {
+            color: #55acee;
+        }
+
+        .logo-footer {
+            height: 30px;
+        }
+
+        .footer-copyright p {
+            margin-top: 10px;
+        }
+
+        .footer-top .row {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .footer-top .col-md-4,
+        .footer-top .col-sm-3 {
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
-<?php include 'navbarsearch.php'; ?>
-
-    <div class="popular_courses">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-5">
-                    <div class="main_title">
-                        <h2 class="mb-3">Our Popular Courses</h2>
-                        <p>
-                            Get access to videos in over 90% of courses, Specializations, and Professional Certificates taught by top instructors from leading universities and companies.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="owl-carousel active_course owl-loaded owl-drag">
-                        <div class="owl-stage-outer">
-                            <div class="owl-stage">
-                                <?php
-                                if ($courses_result->num_rows > 0) {
-                                    while ($course = $courses_result->fetch_assoc()) {
-                                        echo '<div class="owl-item" style="width: 350px; margin-right: 30px;">
-                                            <div class="single_course">
-                                                <div class="course_head">
-                                                    <img class="img-fluid" src="https://www.bootdey.com/image/350x280/FFB6C1/000000" alt="" />
-                                                </div>
-                                                <div class="course_content">
-                                                    <span class="price">$' . htmlspecialchars($course['Price']) . '</span>
-                                                    <span class="tag mb-4 d-inline-block">' . htmlspecialchars($course['Industry']) . '</span>
-                                                    <h4 class="mb-3">
-                                                        <a href="#">' . htmlspecialchars($course['Course_Name']) . '</a>
-                                                    </h4>
-                                                    <p>' . htmlspecialchars($course['Description']) . '</p>
-                                                    <p><strong>Skill:</strong> ' . htmlspecialchars($course['Skill']) . '</p>
-                                                    <div class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4">
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>';
-                                    }
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include 'navbar.php'; ?>
 
     <div class="container">
-        <h1>Explore courses</h1>
-        <nav>
-            <ul>
-                <li><a href="#all-courses" class="tab-link active">All courses</a></li>
-                <li><a href="#business" class="tab-link">Business</a></li>
-                <li><a href="#technology" class="tab-link">Technology</a></li>
-                <li><a href="#creative" class="tab-link">Creative</a></li>
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Courses</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav topnav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link <?php echo $industry_filter == '' ? 'active' : ''; ?>" href="course_dashboard.php">All<span>categories</span></a>
+                        </li>
+                        <?php
+                        if ($industries_result->num_rows > 0) {
+                            while ($industry = $industries_result->fetch_assoc()) {
+                                echo '<li class="nav-item">
+                                    <a class="nav-link ' . ($industry_filter == $industry['industry_name'] ? 'active' : '') . '" href="course_dashboard.php?industry=' . urlencode($industry['industry_name']) . '">' . htmlspecialchars($industry['industry_name']) . '</a>
+                                  </li>';
+                            }
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </div>
         </nav>
-        <div id="all-courses" class="tab-content active">
-            <h2>Trending Courses</h2>
-            <div class="course-list">
-                <div class="course" data-course-id="1">
-                    <a href="course1.html">
-                        <img src="../assets/img/Our_Popular_Courses/Career_Advice_from_Some_of _the_Biggest_Names_in_Business.jpg" alt="Course 1">
-                        <h3>Career Advice from Some of the Biggest Names in...</h3>
-                        <p>2,484,258 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="2">
-                    <a href="course2.html">
-                        <img src="../assets/img/Our_Popular_Courses/LOOKUP_Function_in_Excel.png" alt="Course 2">
-                        <h3>Excel: Lookup Functions in Depth</h3>
-                        <p>1,710,993 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="3">
-                    <a href="course3.html">
-                        <img src="../assets/img/Our_Popular_Courses/What_Is_Generative_AI.png" alt="Course 3">
-                        <h3>What Is Generative AI?</h3>
-                        <p>1,244,802 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="4">
-                    <a href="course4.html">
-                        <img src="../assets/img/Our_Popular_Courses/Expert_Tips_for_Answering_Common_Interview_Questions_2.jpg" alt="Course 4">
-                        <h3>Expert Tips for Answering Common Interview...</h3>
-                        <p>2,366,150 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="5">
-                    <a href="course5.html">
-                        <img src="../assets/img/Our_Popular_Courses/Electronics_Foundations_Basic_Circuits.jpg" alt="Course 5">
-                        <h3>Electronics Foundations: Basic Circuits</h3>
-                        <p>812,231 viewers</p>
-                    </a>
-                </div>
+        <div class="row">
+            <?php
+            if ($courses_result->num_rows > 0) {
+                while ($course = $courses_result->fetch_assoc()) {
+                    echo '<div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="category mb-30">
+                            <div class="job" data-bs-toggle="modal" data-bs-target="#courseModal" data-id="' . $course['id'] . '" data-name="' . htmlspecialchars($course['Course_Name']) . '" data-skill="' . htmlspecialchars($course['Skill']) . '" data-industry="' . htmlspecialchars($course['Industry']) . '" data-description="' . htmlspecialchars($course['Description']) . '" data-price="' . htmlspecialchars($course['Price']) . '">
+                                <span class="colors1 mb-4">' . htmlspecialchars($course['Industry']) . '</span>
+                                <h5><a href="#">' . htmlspecialchars($course['Course_Name']) . '</a></h5>
+                                <ul class="place">
+                                    <li>
+                                        <p><i class="fas fa-dollar-sign pe-2"></i> $' . htmlspecialchars($course['Price']) . '</p>
+                                    </li>
+                                </ul>
+
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="left">
+                                        <p>' . htmlspecialchars($course['Description']) . '</p>
+                                    </div>
+                                    <span class="skill">' . htmlspecialchars($course['Skill']) . '</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+                }
+            }
+            ?>
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                
             </div>
         </div>
-        <div id="business" class="tab-content">
-            <h2>Trending Business Courses</h2>
-            <div class="course-list">
-                <div class="course" data-course-id="6">
-                    <a href="course6.html">
-                        <img src="../assets/img/Our_Popular_Courses/Career_Advice_from_Some_of _the_Biggest_Names_in_Business.jpg" alt="Course 1">
-                        <h3>Career Advice from Some of the Biggest Names in...</h3>
-                        <p>2,484,258 viewers</p>
-                    </a>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="courseModalLabel">Course Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="course" data-course-id="7">
-                    <a href="course7.html">
-                        <img src="../assets/img/Our_Popular_Courses/Expert_Tips_for_Answering_Common_Interview_Questions.jpg" alt="Course 2">
-                        <h3>Expert Tips for Answering Common Interview...</h3>
-                        <p>2,366,150 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="8">
-                    <a href="course8.html">
-                        <img src="../assets/img/Our_Popular_Courses/Ken_Blanchard_on_Servant_Leadership.jpg" alt="Course 3">
-                        <h3>Ken Blanchard on Servant Leadership</h3>
-                        <p>2,045,573 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="9">
-                    <a href="course9.html">
-                        <img src="../assets/img/Our_Popular_Courses/Excel_Tips_Weekly.png" alt="Course 4">
-                        <h3>Excel Tips Weekly</h3>
-                        <p>1,862,544 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="10">
-                    <a href="course10.html">
-                        <img src="../assets/img/Our_Popular_Courses/LOOKUP_Function_in_Excel.png" alt="Course 5">
-                        <h3>Excel: Lookup Functions in Depth</h3>
-                        <p>1,710,993 viewers</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div id="technology" class="tab-content">
-            <h2>Trending Technology Courses</h2>
-            <div class="course-list">
-                <div class="course" data-course-id="11">
-                    <a href="course11.html">
-                        <img src="../assets/img/Our_Popular_Courses/Introduction_to_Python.jpg" alt="Course 1">
-                        <h3>Introduction to Python</h3>
-                        <p>1,234,567 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="12">
-                    <a href="course12.html">
-                        <img src="../assets/img/Our_Popular_Courses/Advanced_Java_Programming.jpg" alt="Course 2">
-                        <h3>Advanced Java Programming</h3>
-                        <p>987,654 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="13">
-                    <a href="course13.html">
-                        <img src="../assets/img/Our_Popular_Courses/Machine_Learning_Basics.png" alt="Course 3">
-                        <h3>Machine Learning Basics</h3>
-                        <p>1,111,222 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="14">
-                    <a href="course14.html">
-                        <img src="../assets/img/Our_Popular_Courses/Web_Development.jpg" alt="Course 4">
-                        <h3>Web Development with HTML, CSS, and JavaScript</h3>
-                        <p>1,333,444 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="15">
-                    <a href="course15.html">
-                        <img src="../assets/img/Our_Popular_Courses/Data_Science_with_R.jpg" alt="Course 5">
-                        <h3>Data Science with R</h3>
-                        <p>999,888 viewers</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div id="creative" class="tab-content">
-            <h2>Trending Creative Courses</h2>
-            <div class="course-list">
-                <div class="course" data-course-id="16">
-                    <a href="course16.html">
-                        <img src="../assets/img/Our_Popular_Courses/Graphic_Design_Fundamentals.png" alt="Course 1">
-                        <h3>Graphic Design Fundamentals</h3>
-                        <p>567,890 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="17">
-                    <a href="course17.html">
-                        <img src="../assets/img/Our_Popular_Courses/Photography_Essentials.jpg" alt="Course 2">
-                        <h3>Photography Essentials</h3>
-                        <p>432,109 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="18">
-                    <a href="course18.html">
-                        <img src="../assets/img/Our_Popular_Courses/Introduction_to_Video_Editing_2.png" alt="Course 3">
-                        <h3>Introduction to Video Editing</h3>
-                        <p>654,321 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="19">
-                    <a href="course19.html">
-                        <img src="../assets/img/Our_Popular_Courses/Creative_Writing_Techniques.jpg" alt="Course 4">
-                        <h3>Creative Writing Techniques</h3>
-                        <p>876,543 viewers</p>
-                    </a>
-                </div>
-                <div class="course" data-course-id="20">
-                    <a href="course20.html">
-                        <img src="../assets/img/Our_Popular_Courses/Music_Production_Basics.jpg" alt="Course 5">
-                        <h3>Music Production Basics</h3>
-                        <p>765,432 viewers</p>
-                    </a>
+                <div class="modal-body">
+                    <h5 id="modalCourseName"></h5>
+                    <p id="modalCourseIndustry"></p>
+                    <p id="modalCourseSkill"></p>
+                    <p id="modalCourseDescription"></p>
+                    <p id="modalCoursePrice"></p>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="container-fluid">
+        <footer class="section-footer border-top">
+            <div class="container-fluid">
+                <section class="footer-top padding-y">
+                    <div class="row">
+                        <aside class="col-md-4">
+                            <article class="mr-3">
+                                <img src="../assets/img/logo/jobforce01.jpg" class="logo-footer" alt="Jobforce Logo">
+                                <p class="mt-3 description">Some short text about the company like You might remember the Dell computer commercials in which a youth reports this exciting news to his friends.</p>
+                                <div>
+                                    <a class="btn btn-icon btn-light" title="Facebook" target="_blank" href="#" data-abc="true"><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-icon btn-light" title="Instagram" target="_blank" href="#" data-abc="true"><i class="fab fa-instagram"></i></a>
+                                    <a class="btn btn-icon btn-light" title="Youtube" target="_blank" href="#" data-abc="true"><i class="fab fa-youtube"></i></a>
+                                    <a class="btn btn-icon btn-light" title="Twitter" target="_blank" href="#" data-abc="true"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </article>
+                        </aside>
+                        <aside class="col-sm-3 col-md-2">
+                            <h6 class="title">About</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="../user/about_us.php" data-abc="true">About us</a></li>
+                                <li><a href="../user/sitemap.php" data-abc="true">Sitemap</a></li>
+                            </ul>
+                        </aside>
+                        <aside class="col-sm-3 col-md-2">
+                            <h6 class="title">Help center</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="../user/contact.php" data-abc="true">Help center</a></li>
+                            </ul>
+                        </aside>
+                        <aside class="col-sm-3 col-md-2">
+                            <h6 class="title">Privacy policy</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="../user/privacy_policy.php" data-abc="true">Privacy policy</a></li>
+                                <li><a href="../user/terms_and_conditions.php" data-abc="true">Terms & conditions</a></li>
+                            </ul>
+                        </aside>
+                    </div>
+                </section>
+                <section class="footer-copyright border-top">
+                    <p class="text-center text-muted">&copy; 2024 Jobforce (Sri Lanka) Ltd. All rights reserved.</p>
+                    <p target="_blank" class="text-center text-muted">
+                        
+                    </p>
+                </section>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabLinks = document.querySelectorAll('.tab-link');
-            const tabContents = document.querySelectorAll('.tab-content');
+        var courseModal = document.getElementById('courseModal')
+        courseModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget
+            var courseName = button.getAttribute('data-name')
+            var courseSkill = button.getAttribute('data-skill')
+            var courseIndustry = button.getAttribute('data-industry')
+            var courseDescription = button.getAttribute('data-description')
+            var coursePrice = button.getAttribute('data-price')
 
-            tabLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    event.preventDefault();
+            var modalCourseName = courseModal.querySelector('#modalCourseName')
+            var modalCourseSkill = courseModal.querySelector('#modalCourseSkill')
+            var modalCourseIndustry = courseModal.querySelector('#modalCourseIndustry')
+            var modalCourseDescription = courseModal.querySelector('#modalCourseDescription')
+            var modalCoursePrice = courseModal.querySelector('#modalCoursePrice')
 
-                    // Remove active class from all links
-                    tabLinks.forEach(link => link.classList.remove('active'));
-
-                    // Hide all tab contents
-                    tabContents.forEach(content => content.classList.remove('active'));
-
-                    // Add active class to the clicked link
-                    this.classList.add('active');
-
-                    // Show the corresponding tab content
-                    const tabId = this.getAttribute('href');
-                    document.querySelector(tabId).classList.add('active');
-                });
-            });
-
-            // Handle click on each course to navigate to a new page
-            const courses = document.querySelectorAll('.course');
-            courses.forEach(course => {
-                course.addEventListener('click', function() {
-                    // Get the course ID or any other identifier
-                    const courseId = this.getAttribute('data-course-id');
-
-                    // Navigate to the respective course page ---------------------------- Methanata courses pages tika danna thiyenne
-                    switch (courseId) {
-                        case '1':
-                            window.location.href = 'course1.html';
-                            break;
-                        case '2':
-                            window.location.href = 'course2.html';
-                            break;
-                        case '3':
-                            window.location.href = 'course3.html';
-                            break;
-                        case '4':
-                            window.location.href = 'course4.html';
-                            break;
-                        case '5':
-                            window.location.href = 'course5.html';
-                            break;
-                        case '6':
-                            window.location.href = 'course6.html';
-                            break;
-                        case '7':
-                            window.location.href = 'course7.html';
-                            break;
-                        case '8':
-                            window.location.href = 'course8.html';
-                            break;
-                        case '9':
-                            window.location.href = 'course9.html';
-                            break;
-                        case '10':
-                            window.location.href = 'course10.html';
-                            break;
-                        case '11':
-                            window.location.href = 'course11.html';
-                            break;
-                        case '12':
-                            window.location.href = 'course12.html';
-                            break;
-                        case '13':
-                            window.location.href = 'course13.html';
-                            break;
-                        case '14':
-                            window.location.href = 'course14.html';
-                            break;
-                        case '15':
-                            window.location.href = 'course15.html';
-                            break;
-                        case '16':
-                            window.location.href = 'course16.html';
-                            break;
-                        case '17':
-                            window.location.href = 'course17.html';
-                            break;
-                        case '18':
-                            window.location.href = 'course18.html';
-                            break;
-                        case '19':
-                            window.location.href = 'course19.html';
-                            break;
-                        case '20':
-                            window.location.href = 'course20.html';
-                            break;
-                        default:
-                            break;
-                    }
-                });
-            });
-        });
+            modalCourseName.textContent = courseName
+            modalCourseSkill.textContent = 'Skill: ' + courseSkill
+            modalCourseIndustry.textContent = 'Industry: ' + courseIndustry
+            modalCourseDescription.textContent = courseDescription
+            modalCoursePrice.textContent = 'Price: $' + coursePrice
+        })
     </script>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
-
-
-<?php include 'footer.php'; ?>
-
 </body>
 
 </html>
