@@ -124,7 +124,7 @@ $stmt->close();
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 sidebar">
             <form id="filtersForm" class="sticky-top">
                 <h2>All Filters</h2>
                 <div class="mb-3">
@@ -183,8 +183,8 @@ $stmt->close();
                 <button type="button" class="btn btn-secondary" onclick="resetFilters()">Reset Filters</button>
             </form>
         </div>
-        <div class="col-md-9">
-            <div id="jobListings" class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col-md-9 main-content">
+            <div id="jobListings" class="row row-cols-1 g-4">
                 <?php foreach ($jobs as $job): ?>
                     <div class="col">
                         <div class="card h-100">

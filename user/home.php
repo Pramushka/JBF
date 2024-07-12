@@ -106,173 +106,64 @@ if (isset($_SESSION['alert'])) {
 <head>
     <meta charset="UTF-8">
     <title>Home - JobForce</title>
-    <link rel="stylesheet" href="../assets/css/homepage.css">
-    <link rel="stylesheet" href="../assets/css/single_input.css">
+    <link rel="stylesheet" href="../assets/css/nhome.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-   <!--- <link rel="stylesheet" href="../assets/css/cardtemp.css"> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-   
-    <style>
-       body {
-        font-family: 'Red Hat Display', sans-serif;
-        margin: 0;
-        }
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-        .section-divider {
-            height: 10px;
-           
-            border: none;
-            margin: 0;
-        }
-
-        .sponsored-companies {
-           
-            padding: 40px 0;
-            text-align: center;
-            width: 100%;
-            margin: 0;
-        }
-
-        .sponsore
-        .sponsored-companies h1 {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #00B4D8;
-        }
-
-        .company-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .company-card {
-            width: 300px;
-            background-color: #f8f9fa;
-            border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .company-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .company-logo {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 10px;
-            border-radius: 50%;
-            border: 1px solid #f8f9fa;
-            background-color: #007bff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .company-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 20%;
-        }
-
-        .company-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .company-info {
-            margin-bottom: 10px;
-            color: #777;
-        }
-
-        .view-jobs-btn {
-            background-color: #00B4D8;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            z-index: 1;
-        }
-
-        .view-jobs-btn:hover {
-            background: linear-gradient(to right, #0096C7, #0077B6, #00B4D8, #90E0EF, #ADE8F4);
-            transform: scale(1.1);
-        }
-    </style>
-
-    
 </head>
 <body>
 
 <?php include 'navbar.php'; ?>
 
 
-    <section class="home">
-        <div class="home-content">
-            <h1>FIND YOUR DREAM JOB NOW</h1>
+<section class="home">
+    <div class="home-content">
+        <h1>FIND YOUR DREAM JOB NOW</h1>
+        <p>Welcome to Jobforce, the leading job searching network with a community of thousands of members in over 50 countries and territories worldwide</p>
+        <div class="form-container">
+            <form action="jobsearch.php" method="GET" class="search-form">
+                <div class="search-bar">
+                    <!-- Industry/Skill Position with Icon -->
+                    <div class="search-field">
+                        <i class="fas fa-briefcase"></i>
+                        <select class="form-control" id="industry_skill_position" name="industry_skill_position">
+                            <?php foreach ($allOptions as $option): ?>
+                                <option value="<?= $option['name'] ?>"><?= $option['name'] ?> (<?= $option['type'] ?>)</option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <!-- Experience with Icon -->
+                    <div class="search-field">
+                        <i class="fas fa-calendar-alt"></i>
+                        <select class="form-control" name="experience" id="experience">
+                            <option value="0">Fresher (less than a year)</option>
+                            <?php for ($i = 1; $i <= 30; $i++): ?>
+                                <option value="<?= $i ?>"><?= $i ?> Year<?= $i > 1 ? 's' : '' ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+                    <!-- Location with Icon -->
+                    <div class="search-field">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" name="location" placeholder="Enter Location">
+                    </div>
+                    <!-- Submit Button -->
+                    <button class="search-button">Find Jobs</button>
+                </div>
+            </form>
         </div>
-    </section>
-    
-<!-- Search Section -->
-<div class="search-container">
-    <form action="jobsearch.php" method="GET" class="search-form">
-        <div class="search-bar">
-            <!-- Industry/Skill Position with Icon -->
-            <div class="search-field">
-                <i class="fas fa-briefcase"></i>
-                <select class="form-control" id="industry_skill_position" name="industry_skill_position">
-                    <?php foreach ($allOptions as $option): ?>
-                        <option value="<?= $option['name'] ?>"><?= $option['name'] ?> (<?= $option['type'] ?>)</option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <!-- Experience with Icon -->
-            <div class="search-field">
-                <i class="fas fa-calendar-alt"></i>
-                <select class="form-control" name="experience" id="experience">
-                    <option value="0">Fresher (less than a year)</option>
-                    <?php for ($i = 1; $i <= 30; $i++): ?>
-                        <option value="<?= $i ?>"><?= $i ?> Year<?= $i > 1 ? 's' : '' ?></option>
-                    <?php endfor; ?>
-                </select>
-            </div>
-            <!-- Location with Icon -->
-            <div class="search-field">
-                <i class="fas fa-map-marker-alt"></i>
-                <input type="text" name="location" placeholder="Enter Location">
-            </div>
-            <!-- Submit Button -->
-            <button class="search-button">Find Jobs</button>
-        </div>
-    </form>
-</div>
+    </div>
+</section>
 
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-
-<h1 style="color: black; font-family: 'Poppins', sans-serif; text-align: center; ;">LATEST COMPANIES HIRING NOW</h1>
-<div class="sponsored-companies">
-   
+<h1 class="latest-companies-title">LATEST COMPANIES HIRING NOW</h1>
+<div class="latest-companies-container">
     <div class="company-grid">
         <?php foreach ($companies as $company): ?>
             <div class="company-card">
@@ -286,170 +177,127 @@ if (isset($_SESSION['alert'])) {
             </div>
         <?php endforeach; ?>
     </div>
+    
 </div>
 
-<hr class="section-divider">
 
+
+
+<div class="ser-container">
+        <h1 class="services-title">Discover Our Services</h1><br>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-file-alt"></i>
+                <h3>Resume Building</h3>
+                <p>Create a professional resume that stands out and impresses recruiters.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-bell"></i>
+                <h3>Job Alerts</h3>
+                <p>Receive timely notifications about new job openings matching your skills.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h3>Interview Preparation</h3>
+                <p>Prepare thoroughly with expert tips and mock interview sessions.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-user-tie"></i>
+                <h3>Career Counseling</h3>
+                <p>Get personalized advice from career experts to navigate your career path.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Skill Development</h3>
+                <p>Enhance your skills through certified courses tailored to industry demands.</p>
+            </div>
+        </div>
+        <br>
+    </div>
 
 
 <br>
 <br>
-        <!--This is the Course Content Section-->
-<div class="sponsored-companie">
-    <h2>Top Learning Courses</h2>
-    <div class="company-grid">
-        <?php foreach ($courses as $course): ?>
-            <div class="card" >
-                <!-- Placeholder for course image or icon -->
-                <img class="image">
-                <div class="content">
-                    <a href="#">
-                        <span class="title">
-                            <?= htmlspecialchars($course['Course_Name']) ?>
-                        </span>
-                    </a>   
-                    <p><strong>Skill Focus:</strong> <?= htmlspecialchars($course['Skill']) ?></p>
-                    <p><strong>Industry:</strong> <?= htmlspecialchars($course['Industry']) ?></p>
-                    <p><?= htmlspecialchars($course['Description']) ?></p>
-                    <p><strong>Price:</strong> $<?= number_format($course['Price'], 2) ?></p>
-                    <!-- Optional button if you want to add actions like 'Enroll Now' -->
-                    <a class="action" href="#">
-                        Find out more
-                        <span aria-hidden="true">
-        →
-                        </span>
-                    </a>
+
+<div class="learning-courses-section">
+        <div class="learning-courses-container">
+            <div class="courses-carousel">
+                <h2 class="courses-title">Top Learning Courses</h2>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($courses as $course): ?>
+                            <div class="swiper-slide course-card">
+                                <a href="#">
+                                    <span class="title"><?= htmlspecialchars($course['Course_Name']) ?></span>
+                                </a>
+                                <p><strong>Skill Focus:</strong> <?= htmlspecialchars($course['Skill']) ?></p>
+                                <p><strong>Industry:</strong> <?= htmlspecialchars($course['Industry']) ?></p>
+                                <p><?= htmlspecialchars($course['Description']) ?></p>
+                                <p><strong>Price:</strong> $<?= number_format($course['Price'], 2) ?></p>
+                                <a class="action" href="#">Find out more</a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
-        <?php endforeach; ?>
-    </div>
-</div>
-
-<br>
-<br>
-    <!---------------------General Styles for the services---------------------------->
-    <div class="container">
-    <h1>Discover Our Services</h1><br>
-    <div class="services">
-        <div class="services-card">
-            <img src="../assets/img/services/resume_building.jpg" alt="Resume Building">
-            <h3>Resume Building</h3>
-            <p>Create a professional resume that stands out and impresses recruiters.</p>
-        </div>
-        <div class="services-card">
-            <img src="../assets/img/services/job_alerts.png" alt="Job Alerts">
-            <h3>Job Alerts</h3>
-            <p>Receive timely notifications about new job openings matching your skills.</p>
-        </div>
-        <div class="services-card">
-            <img src="../assets/img/services/interview_preparation.png" alt="Interview Preparation">
-            <h3>Interview Preparation</h3>
-            <p>Prepare thoroughly with expert tips and mock interview sessions.</p>
-        </div>
-        <div class="services-card">
-            <img src="../assets/img/services/career_counseling02.jpg" alt="Career Counseling">
-            <h3>Career Counseling</h3>
-            <p>Get personalized advice from career experts to navigate your career path.</p>
-        </div>
-        <div class="services-card">
-            <img src="../assets/img/services/skills.png" alt="Skill Development">
-            <h3>Skill Development</h3>
-            <p>Enhance your skills through certified courses tailored to industry demands.</p>
-        </div>
-        <div class="services-card">
-            <img src="../assets/img/services/network.png" alt="Networking Opportunities">
-            <h3>Networking Opportunities</h3>
-            <p>Build connections and network with professionals in your field.</p>
-        </div>
-    </div>
-</div>
-<br>
-<br>
-
-    <!-- Job Section -------------------------------------------------------------------------------------->
-        <div class="job-section">
- 
-        <h1>The Fastest Track to Your Next Job</h1>
-    
-    <!-- Create your Profile -->
-        <div class="job-item">
-            <img src="../assets/img/home_page/create_your_profile.png" alt="Create your Profile">
-            <h2>Create your Profile</h2>
-            <p>Craft a Personalized Profile: Showcase Your Skills, Achievements, and Ambitions.</p>
-        </div>
-
-    <!-- Explore job -->
-        <div class="job-item">
-            <img src="../assets/img/home_page/explore_job.jpg" alt="Explore job">
-            <h2>Explore job</h2>
-            <p>Unlock Your Career Potential: Find, Apply, and Succeed - Make it Simple and Effective.</p>
-        </div>
-
-    <!-- Get hired -->
-        <div class="job-item">
-            <img src="../assets/img/home_page/get_heired.jpg" alt="Get heired">
-            <h2>Get heired</h2>
-            <p>Discover Opportunities, Apply with Confidence, and Secure Your Dream Job. Your Next Career Move is Just a Click Away.</p>
         </div>
     </div>
 
+
+
 <br>
 <br>
-    <!-- Build Post Section -->
-<div class="build-post">
-    <!-- Topic: You want to add topic addddddddddd --------------------------------------------->
-    <h1></h1>
-    
-    <div class="post-item">
-        <img src="../assets/img/others/image1.png" alt="Build Your Job Post">
-        <div>
-            <h2>Build Your Job Post</h2>
-            <p>Join our dynamic team and be a part of a vibrant workplace that values innovation, collaboration, and growth. We are seeking enthusiastic individuals with a passion for Developer to contribute their skills and expertise.</p>
+
+
+<div class="helpdesk-form-section">
+        <div class="helpdesk-form-container">
+            <div class="form-column">
+                <h2>Stay Updated with Our Latest News</h2>
+                <form action="home.php" method="POST">
+                    <div class="inputGroup">
+                        <input type="email" id="email" name="email" required autocomplete="off" placeholder="Email">
+                    </div>
+                    <div class="inputGroup">
+                        <input type="textarea" id="description" name="description" required autocomplete="off" placeholder="Message">
+                    </div>
+                    <button class="btn" type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="text-column">
+                <p>Subscribe to our newsletter to receive the latest updates, news, and special offers directly in your inbox. Simply fill out the form below with your email address and message, and we'll make sure you're always in the know.</p>
+            </div>
         </div>
     </div>
-    <div class="post-item">
-        <img src="../assets/img/others/image2.png" alt="Post Your Job">
-        <div>
-            <h2>Post Your Job</h2>
-            <p>Join our dynamic team and be a part of a vibrant workplace that values innovation, collaboration, and growth. We are seeking enthusiastic individuals with a passion for Developer to contribute their skills and expertise.</p>
-        </div>
-    </div>
-</div>
 
-<br>
-<br>
-
-<div class="helpdesk-form-container" style="background-color: #f2f2f2; height: 400px; display: flex; align-items: center; justify-content: center;">
-    <div style="width: 100%; max-width: 1200px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px;">
-        <!-- Contact Form -->
-        <div>
-            <h2>Contact Help Desk</h2>
-            <form action="home.php" method="POST">
-                <div class="inputGroup">
-                    <input type="email" id="email" name="email" required="" autocomplete="off" placeholder="Email">
-                    <label for="email"></label>
-                </div>
-                <div class="inputGroup">
-                    <input type="textarea" id="description" name="description" required="" autocomplete="off" placeholder="Message">
-                    <label for="description"></label>
-                </div>
-
-                <button  class="btn" type="submit">Submit</button>
-            </form>
-        </div>
-        <!-- Instructions or Additional Content -->
-        <div>
-            <h2>How can we help you?</h2>
-            <br>
-            <p>Please fill out the form with your query or any issue you are facing, and our helpdesk team will get back to you as soon as possible.</p>
-            <br>
-            <p>By fillig this you will automatically accept our policies and you will recive our new updates and news to youre email</p>
-        </div>
-    </div>
-</div>
-
-
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                1024: {
+                    slidesPerView: 'auto',
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 'auto',
+                    spaceBetween: 15,
+                },
+                640: {
+                    slidesPerView: 'auto',
+                    spaceBetween: 10,
+                }
+            }
+        });
+    </script>
+    <script>
 $(document).ready(function() {
     $('#industry_skill_position').select2({
         placeholder: 'Select Industry/Skill/Position',
