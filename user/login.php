@@ -6,6 +6,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
+    if ($username == 'admin' && $password == 'admin123') {
+        // Redirect admin directly to the admin index page
+        header("Location: ../admin/admin_index.php");
+        exit;
+    }
+
     $sql = "SELECT ID, Password FROM User WHERE username = ?";
     $stmt = mysqli_prepare($conn, $sql);
     if ($stmt) {
@@ -51,9 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
         echo "<p>Error preparing statement: " . mysqli_error($conn) . "</p>";
     }
     mysqli_close($conn);
-} else {
-    // Not a POST request, redirect back to login.php
-    //header("Location: ../login.php");
 }
 ?>
 
