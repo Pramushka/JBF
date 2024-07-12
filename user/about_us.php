@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+             @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
         .social-link {
             width: 30px;
             height: 30px;
@@ -33,6 +43,37 @@
             width: 120px;
             height: 120px;
         }
+        .counter-box {
+	display: block;
+	background: #f6f6f6;
+	padding: 40px 20px 37px;
+	text-align: center
+}
+
+.counter-box p {
+	margin: 5px 0 0;
+	padding: 0;
+	
+	font-size: 18px;
+	font-weight: 500
+}
+
+.counter-box i {
+	font-size: 60px;
+	margin: 0 0 15px;
+	
+}
+
+.counter { 
+	display: block;
+	font-size: 32px;
+	font-weight: 700;
+	color: #666;
+	line-height: 28px
+}
+
+
+
     </style>
 </head>
 
@@ -57,38 +98,37 @@
 
     <!-- About 1 - Bootstrap Brain Component -->
     <section class="py-3 py-md-5">
-        <div class="container">
-            <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-                <div class="col-12 col-lg-6 col-xl-5">
-                    <img class="img-fluid rounded" loading="lazy" src="../assets/img/logo/jobforce01.jpg" alt="About 1">
-                </div>
-                <div class="col-12 col-lg-6 col-xl-7">
-                    <div class="row justify-content-xl-center">
-                        <div class="col-12 col-xl-11">
-                            <h2 class="mb-3">Who Are We?</h2>
-                            <p class="lead fs-4 text-secondary mb-3">We help people to build incredible brands and superior products. Our goal is to provide outstanding, captivating services.</p>
-                            <p class="mb-5">We are a fast-growing company, but we have never lost sight of our core values. We believe in collaboration, innovation, and customer satisfaction. We are always looking for new ways to improve our products and services.</p>
-                            <div class="row gy-4 gy-md-0 gx-xxl-5">
-                                <div class="col-12 col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-4 text-primary">
-                                            
-                                        </div>
-                                        <div>
-                                            <h2 class="h4 mb-3">Versatile Brand</h2>
-                                            <p class="text-secondary mb-0">We are crafting a digital method that thrives across all mediums.</p>
-                                        </div>
+    <div class="container">
+        <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
+            <div class="col-12 col-lg-6 col-xl-5">
+                <img style="max-width: 80%; max-height: 80%;" class="img-fluid rounded" loading="lazy" src="../assets/img/logo/jobforce01.jpg" alt="About 1">
+            </div>
+            <div class="col-12 col-lg-6 col-xl-7">
+                <div class="row justify-content-xl-center">
+                    <div class="col-12 col-xl-11">
+                        <h2 class="mb-3">Who Are We?</h2>
+                        <p class="lead fs-4 text-secondary mb-3">Job Force is a dynamic job portal where candidates can search for their dream jobs and recruiting companies can find their perfect candidates.</p>
+                        <p class="mb-5">We also offer a comprehensive learning section to help users enhance their skills and improve their employability. Our goal is to provide outstanding, captivating services.</p>
+                        <div class="row gy-4 gy-md-0 gx-xxl-5">
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex">
+                                    <div class="me-4 text-primary">
+                                        <!-- Add icon or image if needed -->
+                                    </div>
+                                    <div>
+                                        <h2 class="h4 mb-3">Empowering Careers</h2>
+                                        <p class="text-secondary mb-0">We are dedicated to creating a seamless and effective platform for both job seekers and employers across all mediums</p>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-4 text-primary">
-                                           
-                                        </div>
-                                        <div>
-                                            <h2 class="h4 mb-3">Digital Agency</h2>
-                                            <p class="text-secondary mb-0">We believe in innovation by merging primary with elaborate ideas.</p>
-                                        </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex">
+                                    <div class="me-4 text-primary">
+                                        <!-- Add icon or image if needed -->
+                                    </div>
+                                    <div>
+                                        <h2 class="h4 mb-3">Innovative Learning</h2>
+                                        <p class="text-secondary mb-0">We believe in innovation by merging primary skills with elaborate ideas.</p>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +137,67 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+    <div class="container">
+    
+    <div class="row">
+
+	<div class="four col-md-3">
+		<div class="counter-box colored">
+			<i class="fa fa-thumbs-o-up"></i>
+			<span class="counter">2147</span>
+			<p>Happy Customers</p>
+		</div>
+	</div>
+	<div class="four col-md-3">
+		<div class="counter-box">
+			<i class="fa fa-group"></i>
+			<span class="counter">3275</span>
+			<p>Registered Organizations</p>
+		</div>
+	</div>
+	<div class="four col-md-3">
+		<div class="counter-box">
+			<i class="fa  fa-shopping-cart"></i>
+			<span class="counter">289</span>
+			<p>Sold cources</p>
+		</div>
+	</div>
+	<div class="four col-md-3">
+		<div class="counter-box">
+			<i class="fa  fa-user"></i>
+			<span class="counter">1563</span>
+			<p>Registered Users</p>
+		</div>
+	</div>
+  </div>
+  <script>
+    
+        
+        
+$(document).ready(function() {
+
+$('.counter').each(function () {
+$(this).prop('Counter',0).animate({
+Counter: $(this).text()
+}, {
+duration: 4000,
+easing: 'swing',
+step: function (now) {
+    $(this).text(Math.ceil(now));
+}
+});
+});
+
+});  
+
+
+
+
+  </script>	
+</div>
 
     <div class="bg-white py-5">
         <div class="container py-5">
@@ -124,16 +224,16 @@
     <div class="bg-light py-5">
     <div class="container py-5">
         <div class="row mb-4">
-            <div class="col-lg-5">
+            <div class="col-lg-12 text-center">
                 <h2 class="display-4 font-weight-light">Our Team</h2>
                 <p class="font-italic text-muted">Meet Jobforce's Team</p>
             </div>
         </div>
         <div class="row text-center">
             <!-- Team item-->
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-5">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
                 <div class="bg-white rounded shadow-sm py-5 px-4 team-member">
-                    <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-4.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                    <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-2.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Nineth Pramushka</h5>
                     <span class="small text-uppercase text-muted">Project Manager & Backend Developer</span>
                     <ul class="social mb-0 list-inline mt-3">
@@ -144,7 +244,7 @@
             </div>
             <!-- End-->
             <!-- Team item-->
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-5">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
                 <div class="bg-white rounded shadow-sm py-5 px-4 team-member">
                     <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-3.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Kavindu Pabasara</h5>
@@ -157,7 +257,7 @@
             </div>
             <!-- End-->
             <!-- Team item-->
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-5">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
                 <div class="bg-white rounded shadow-sm py-5 px-4 team-member">
                     <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-2.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Chasira Sahas</h5>
@@ -170,7 +270,7 @@
             </div>
             <!-- End-->
             <!-- Team item-->
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-5">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
                 <div class="bg-white rounded shadow-sm py-5 px-4 team-member">
                     <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Chalaka Ranathunga</h5>
@@ -183,8 +283,10 @@
                 </div>
             </div>
             <!-- End-->
+        </div>
+        <div class="row text-center justify-content-center">
             <!-- Team item-->
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-5">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
                 <div class="bg-white rounded shadow-sm py-5 px-4 team-member">
                     <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Sashen Kavinda</h5>
@@ -202,15 +304,11 @@
 </div>
 
 
-    <footer class="bg-light pb-5">
-        <div class="container text-center">
-            <p class="font-italic text-muted mb-0">&copy; 2024 Jobforce (Sri Lanka) Ltd. All rights reserved.</p>
-        </div>
-    </footer>
 
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
+<?php include 'footer.php'; ?>
 </html>
