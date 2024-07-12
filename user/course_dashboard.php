@@ -331,7 +331,8 @@ $courses_result = $conn->query($courses_sql);
                         <aside class="col-md-4">
                             <article class="mr-3">
                                 <img src="../assets/img/logo/jobforce01.jpg" class="logo-footer" alt="Jobforce Logo">
-                                <p class="mt-3 description">Some short text about the company like You might remember the Dell computer commercials in which a youth reports this exciting news to his friends.</p>
+                                <p class="mt-3 description">Welcome to Jobforce, the leading job searching network with a community of thousands of members in over 50 countries and territories worldwide.</p>
+                                </p>
                                 <div>
                                     <a class="btn btn-icon btn-light" title="Facebook" target="_blank" href="#" data-abc="true"><i class="fab fa-facebook-f"></i></a>
                                     <a class="btn btn-icon btn-light" title="Instagram" target="_blank" href="#" data-abc="true"><i class="fab fa-instagram"></i></a>
