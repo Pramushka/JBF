@@ -40,78 +40,111 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Tickets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #e0e4ff;
-            padding: 20px;
-            height: 100vh;
-        }
-        .sidebar h2 {
-            color: #333;
-        }
-        .container {
-            flex: 1;
-            background-color: #ffffff;
-            padding: 20px;
-        }
-        .ticket {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .ticket h3 {
-            margin: 0 0 10px;
-        }
-        .ticket p {
-            margin: 0;
-        }
-        .btn {
-            display: block;
-            padding: 10px;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 5px;
-            color: #ffffff;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-            text-align: center;
-        }
-        .btn:hover {
-            background-color: #45a049;
-        }
-        .filter-form {
-            margin-bottom: 20px;
-        }
-        .filter-form select {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            margin-right: 10px;
-        }
-        .filter-form select:focus {
-            border-color: #4CAF50;
-            outline: none;
-        }
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.sideba {
+    position: fixed; /* Ensure the sidebar is fixed */
+    left: 1700px; /* Move the sidebar 20px from the left */
+    top: 0;
+    width: 200px;
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Add a subtle shadow for better separation */
+}
+
+.sideba h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.sideba button {
+    width: 100%;
+}
+
+.container {
+    left: 390px; 
+    background-color: #ffffff;
+    padding: 30px;
+    flex: 1;
+}
+
+.ticket {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ticket h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+.ticket p {
+    margin: 0;
+    font-size: 16px;
+    color: #666;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #007bff;
+}
+
+.filter-form {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.filter-form select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    min-width: 150px;
+}
+
+.filter-form select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
     </style>
 </head>
 <body>
-
-<div class="sidebar">
+<?php include 'sidebar.php'; ?>
+<div class="sideba">
     <h2>HELP DESK</h2>
-    <button onclick="window.location.href='submit_ticket.php'" class="btn">Submit new request</button>
+    <button onclick="window.location.href='submit_ticket.php'" class="btn btn-primary"><i class="fas fa-plus"></i> Submit new request</button>
 </div>
 
 <div class="container">
@@ -134,7 +167,7 @@ $result = $stmt->get_result();
         <div class="ticket">
             <h3><?php echo $row['category']; ?></h3>
             <p><?php echo $row['Description']; ?></p>
-            <button onclick="openTicket(<?php echo $row['ID']; ?>)" class="btn">View</button>
+            <button onclick="openTicket(<?php echo $row['ID']; ?>)" class="btn btn-primary">View</button>
         </div>
     <?php } ?>
 </div>

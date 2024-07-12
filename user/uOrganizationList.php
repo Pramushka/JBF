@@ -20,7 +20,7 @@ while ($industry = $industryResult->fetch_assoc()) {
 $user_id = $_SESSION['user_id'];
 
 // Fetch organizations for the logged-in user
-$sql = "SELECT * FROM organization WHERE UserID = ? ";  // Assuming there's an IsDeleted column to check logical deletion
+$sql = "SELECT * FROM organization WHERE UserID = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('i', $user_id);
 $stmt->execute();
@@ -40,52 +40,175 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Organizations</title>
-    <link rel="stylesheet" href="../assets/css/organization.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9fa;
+        }
 
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    
+        .padding {
+            padding: 3rem !important;
+        }
 
+        .user-card-full {
+            overflow: hidden;
+        }
+
+        .card {
+            border-radius: 5px;
+            -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+            box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .m-r-0 {
+            margin-right: 0px;
+        }
+
+        .m-l-0 {
+            margin-left: 0px;
+        }
+
+        .user-card-full .user-profile {
+            border-radius: 5px 0 0 5px;
+        }
+
+        .bg-c-lite-green {
+            background: linear-gradient(to right, #ee5a6f, #f29263);
+        }
+
+        .user-profile {
+            padding: 20px 0;
+        }
+
+        .card-block {
+            padding: 1.25rem;
+        }
+
+        .m-b-25 {
+            margin-bottom: 25px;
+        }
+
+        .img-radius {
+            border-radius: 5px;
+        }
+
+        h6 {
+            font-size: 14px;
+        }
+
+        .card .card-block p {
+            line-height: 25px;
+        }
+
+        @media only screen and (min-width: 1400px){
+            p {
+                font-size: 14px;
+            }
+        }
+
+        .b-b-default {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .f-w-600 {
+            font-weight: 600;
+        }
+
+        .m-b-20 {
+            margin-bottom: 20px;
+        }
+
+        .p-b-5 {
+            padding-bottom: 5px !important;
+        }
+
+        .m-b-10 {
+            margin-bottom: 10px;
+        }
+
+        .text-muted {
+            color: #919aa3 !important;
+        }
+
+        .m-t-40 {
+            margin-top: 20px;
+        }
+
+        .user-card-full .social-link li {
+            display: inline-block;
+        }
+
+        .user-card-full .social-link li a {
+            font-size: 20px;
+            margin: 0 10px 0 0;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
 </head>
 <body>
 
 <?php include 'navbarsearch.php'; ?>
 
-<div class="container">
-    <br><br>
-    <h1 style="font-weight: bold;">My Organizations</h1>
-
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
+<div class="page-content page-container" id="page-content">
+    
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
             <?php foreach ($organizations as $org): ?>
-                <div class="swiper-slide">
-                    <div class="organization-details">
-                        <div class="organization-name">
-                            <a href="single_organization.php?id=<?= $org['ID'] ?>"><?= htmlspecialchars($org['Org_Name']) ?></a>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="details">
-                            <p>Email: <?= htmlspecialchars($org['Org_Email']) ?></p>
-                            <p>Location: <?= htmlspecialchars($org['Org_Location']) ?></p>
-                            <p>Industry: <?= htmlspecialchars($org['Org_Industry']) ?></p>
-                            <p>Registration No: <?= htmlspecialchars($org['Org_Register_no']) ?></p>
-                            <p>Contact: <?= htmlspecialchars($org['Verification_Contact']) ?></p>
+                <div class="col-xl-6 col-md-12">
+                    <div class="card user-card-full">
+                        <div class="row m-l-0 m-r-0">
+                            <div class="col-sm-4 bg-c-lite-green user-profile">
+                                <div class="card-block text-center text-white">
+                                    <div class="m-b-25">
+                                        <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                                    </div>
+                                    <h6 class="f-w-600"><?= htmlspecialchars($org['Org_Name']) ?></h6>
+                                    <p><?= htmlspecialchars($org['Org_Industry']) ?: 'Not Specified' ?></p>
+                                    <a href="single_organization.php?id=<?= $org['ID'] ?>" class="btn btn-light">View Details</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="card-block">
+                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">Email</p>
+                                            <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Org_Email']) ?></h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">Phone</p>
+                                            <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Verification_Contact']) ?: 'Not Specified' ?></h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">Location</p>
+                                            <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Org_Location']) ?: 'Not Specified' ?></h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">Registration No</p>
+                                            <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Org_Register_no']) ?></h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                       
+                                    </div>
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-        <!-- Add Navigation Buttons -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
     </div>
 </div>
-<br>
-<div class="create-button">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createOrgModal">
+<div class="create-button text-center">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createOrgModal">
         Create New Organization
     </button>
 </div>
@@ -96,7 +219,9 @@ $stmt->close();
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="createOrgModalLabel">New Organization</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form id="createOrgForm">
@@ -140,28 +265,11 @@ $stmt->close();
 </div>
 
 <!-- Include Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-<!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<!-- Initialize Swiper -->
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 'auto',
-            spaceBetween: 20,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    });
-
     function submitOrgForm() {
         var formData = new FormData(document.getElementById('createOrgForm'));
         fetch('createOrganization.php', {
@@ -171,7 +279,7 @@ $stmt->close();
         .then(response => response.text())
         .then(data => {
             alert(data); // Show response from the PHP script
-            bootstrap.Modal.getInstance(document.getElementById('createOrgModal')).hide(); // Hide modal using Bootstrap's JS
+            $('#createOrgModal').modal('hide'); // Hide modal using Bootstrap's JS
             location.reload(); // Reload the page to show the new organization
         })
         .catch(error => {
@@ -179,7 +287,12 @@ $stmt->close();
         });
     }
 </script>
+<!-- Include Bootstrap Bundle with Popper -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<?php include 'footer.php'; ?>
+<!-- Initialize Swiper -->
+
 </body>
+<?php include 'footer.php'; ?>
 </html>

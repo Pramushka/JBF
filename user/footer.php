@@ -42,15 +42,7 @@
                 <p>Explore endless career opportunities<br> with Jobforce, where your next<br> job is just a click away.</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>All trademarks are the property of their respective owners.<br>All rights reserved © 2024 Info Edge (Sri Lanka) Ltd.</p>
-            <div class="footer-business">
-                <a href="#"><img src="../assets/img/footer/fiverr_logo.gif" alt="fiverrlogo"></a>
-                <a href="#"><img src="../assets/img/footer/Mastercard.gif" alt="Mastercardlogo"></a>
-                <a href="#"><img src="../assets/img/footer/Spotify.gif" alt="Spotifylogo"></a>
-                <a href="#"><img src="../assets/img/footer/codecycle_logo_animation.gif" alt="codecycle_logo"></a>
-            </div>
-        </div>
+       
     </div>
 </footer>
 </body>
