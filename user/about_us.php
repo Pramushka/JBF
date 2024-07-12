@@ -1,156 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobforce - Job Searching Web Page</title>
     <link rel="stylesheet" href="../assets/css/about_us.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .social-link {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            border-radius: 50%;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover,
+        .social-link:focus {
+            background: #ddd;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+        }
+    </style>
 </head>
+
 <body>
 
     <?php include 'navbar.php'; ?>
 
-    <section class="hero">
-    <img src="../assets/img/logo/Jobforce01.jpg" alt="jobforce Logo" class="logo">
-        <h1>Find Your Dream Job with Jobforce</h1>
-        <p>Explore the best job opportunities that match your skills and aspirations.</p>
-
-        <div class="about-jobforce">
-            <h2>About Jobforce</h2>
-            <p>Welcome to Jobforce, the leading job searching network with a community of thousands of members in over 50 countries and territories worldwide.</p>
-        </div>
-
-        <div class="flex-container">
-            <div class="vision">
-                <h3>Vision</h3>
-                <p>Create meaningful career opportunities for every member of the global job-seeking community.</p>
-            </div>
-
-            <div class="bar"></div>
-
-            <div class="mission">
-                <h4>Mission</h4>
-                <p>Our mission is simple: connect professionals in various industries to make them more productive and successful.</p>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="career-numbers">
-        <div class="number-card">
-            <h3>Jobs Posted</h3>
-            <p>5,000+</p>
-        </div>
-        <div class="number-card">
-            <h3>Companies</h3>
-            <p>1,000+</p>
-        </div>
-        <div class="number-card">
-            <h3>Active Users</h3>
-            <p>50,000+</p>
-        </div>
-        <div class="number-card">
-            <h3>Successful Hires</h3>
-            <p>10,000+</p>
-        </div>
-    </section>
-
-    <section class="reviews">
-        <h2>Job Seeker Reviews</h2>
-        <div class="review-card">
-            <h3>Work Quality</h3>
-            <p>The job postings are accurate and up-to-date. Highly recommend Jobforce.</p>
-            <p><strong>Jerome Bell</strong> - July 14, 2024</p>
-        </div>
-        <div class="review-card">
-            <h3>Job Matches</h3>
-            <p>Found my dream job through Jobforce. The matching algorithm is spot on.</p>
-            <p><strong>Albert Flores</strong> - July 02, 2024</p>
-        </div>
-        <div class="review-card">
-            <h3>Professionalism</h3>
-            <p>Highly professional and responsive support team. Great experience.</p>
-            <p><strong>Ralph Edwards</strong> - July 10, 2024</p>
-        </div>
-    </section>
-
-    <section class="portfolio-gallery">
-        <h2>Jobforce Success Stories</h2>
-        <div class="gallery-cards">
-            <div class="gallery-card">
-                <h3>Career Growth</h3>
-                <p>A showcase of successful career transitions through Jobforce.</p>
-            </div>
-            <div class="gallery-card">
-                <h3>Innovative Solutions</h3>
-                <p>Highlights of cutting-edge solutions provided by Jobforce.</p>
-            </div>
-            <div class="gallery-card">
-                <h3>Hiring Success</h3>
-                <p>Stories of companies finding the perfect candidates through Jobforce.</p>
-            </div>
-            <div class="gallery-card">
-                <h3>User Satisfaction</h3>
-                <p>Positive feedback from users who found their ideal jobs.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="team-section">
-        <h2>Meet Jobforce's Team</h2>
-        <p>The dedicated professionals working to connect you with your ideal job.</p>
-        <div class="team-cards">
-            <div class="card">
-                <h3>Nineth Pramushka</h3>
-                <p>Project Manager & Back</p>
-                <div class="contact-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+    <div class="bg-light">
+        <div class="container py-5">
+            <div class="row h-100 align-items-center py-5">
+                <div class="col-lg-6">
+                    <h1 class="display-4">About Us</h1>
+                    <p class="lead text-muted mb-0">Find Your Dream Job with Jobforce</p>
+                    <p class="lead text-muted">Explore the best job opportunities that match your skills and aspirations.</p>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <img src="https://bootstrapious.com/i/snippets/sn-about/illus.png" alt="" class="img-fluid">
                 </div>
             </div>
-            <div class="card">
-                <h3>Kavindu Pabasara</h3>
-                <p>Back-end Developer</p>
-                <div class="contact-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+
+    <!-- About 1 - Bootstrap Brain Component -->
+    <section class="py-3 py-md-5">
+        <div class="container">
+            <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
+                <div class="col-12 col-lg-6 col-xl-5">
+                    <img class="img-fluid rounded" loading="lazy" src="../assets/img/logo/jobforce01.jpg" alt="About 1">
                 </div>
-            </div>
-            <div class="card">
-                <h3>Chasira Sahas</h3>
-                <p>Front-end Developer & System Analyst</p>
-                <div class="contact-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="card">
-                <h3>sashen kavinda</h3>
-                <p>Front-end Developer & System Analyst</p>
-                <div class="contact-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Chalaka Ranathunga</h3>
-                <p>Front-end Developer & QA Engineer</p>
-                <div class="contact-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <div class="col-12 col-lg-6 col-xl-7">
+                    <div class="row justify-content-xl-center">
+                        <div class="col-12 col-xl-11">
+                            <h2 class="mb-3">Who Are We?</h2>
+                            <p class="lead fs-4 text-secondary mb-3">We help people to build incredible brands and superior products. Our goal is to provide outstanding, captivating services.</p>
+                            <p class="mb-5">We are a fast-growing company, but we have never lost sight of our core values. We believe in collaboration, innovation, and customer satisfaction. We are always looking for new ways to improve our products and services.</p>
+                            <div class="row gy-4 gy-md-0 gx-xxl-5">
+                                <div class="col-12 col-md-6">
+                                    <div class="d-flex">
+                                        <div class="me-4 text-primary">
+                                            
+                                        </div>
+                                        <div>
+                                            <h2 class="h4 mb-3">Versatile Brand</h2>
+                                            <p class="text-secondary mb-0">We are crafting a digital method that thrives across all mediums.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="d-flex">
+                                        <div class="me-4 text-primary">
+                                           
+                                        </div>
+                                        <div>
+                                            <h2 class="h4 mb-3">Digital Agency</h2>
+                                            <p class="text-secondary mb-0">We believe in innovation by merging primary with elaborate ideas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact">
-        <h2>Interested in Posting a Job?</h2>
-        <p>Get in touch with Jobforce for inquiries and collaborations.</p>
-        <a href="../user/contact.php" class="btn">Contact Us</a>
-    </section><br>
+    <div class="bg-white py-5">
+        <div class="container py-5">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6 order-2 order-lg-1">
+                    <h2 class="font-weight-light">Vision</h2>
+                    <p class="font-italic text-muted mb-4">Our vision is to create a global platform that bridges the gap between job seekers and employers. We strive to provide an environment where every individual has the opportunity to realize their career aspirations. We believe in empowering professionals with the right resources, support, and guidance to achieve their full potential in the job market.</p>
+                </div>
+                <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2">
+                    <img src="https://bootstrapious.com/i/snippets/sn-about/img-1.jpg" alt="" class="img-fluid mb-4 mb-lg-0">
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-5 px-5 mx-auto">
+                    <img src="https://bootstrapious.com/i/snippets/sn-about/img-2.jpg" alt="" class="img-fluid mb-4 mb-lg-0">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="font-weight-light">Mission</h2>
+                    <p class="font-italic text-muted mb-4">Our mission is simple: connect professionals in various industries to make them more productive and successful. We aim to be the leading job search platform that not only helps people find jobs but also provides tools and resources to enhance their career development. We are dedicated to fostering a community where job seekers can grow, learn, and succeed in their careers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-light py-5">
+    <div class="container py-5">
+        <div class="row mb-4">
+            <div class="col-lg-5">
+                <h2 class="display-4 font-weight-light">Our Team</h2>
+                <p class="font-italic text-muted">Meet Jobforce's Team</p>
+            </div>
+        </div>
+        <div class="row text-center">
+            <!-- Team item-->
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-5">
+                <div class="bg-white rounded shadow-sm py-5 px-4 team-member">
+                    <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-4.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                    <h5 class="mb-0">Nineth Pramushka</h5>
+                    <span class="small text-uppercase text-muted">Project Manager & Backend Developer</span>
+                    <ul class="social mb-0 list-inline mt-3">
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End-->
+            <!-- Team item-->
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-5">
+                <div class="bg-white rounded shadow-sm py-5 px-4 team-member">
+                    <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-3.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                    <h5 class="mb-0">Kavindu Pabasara</h5>
+                    <span class="small text-uppercase text-muted">Fullstack Developer and Database Engineer</span>
+                    <ul class="social mb-0 list-inline mt-3">
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End-->
+            <!-- Team item-->
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-5">
+                <div class="bg-white rounded shadow-sm py-5 px-4 team-member">
+                    <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-2.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                    <h5 class="mb-0">Chasira Sahas</h5>
+                    <span class="small text-uppercase text-muted">Front-end Developer & System Analyst</span>
+                    <ul class="social mb-0 list-inline mt-3">
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End-->
+            <!-- Team item-->
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-5">
+                <div class="bg-white rounded shadow-sm py-5 px-4 team-member">
+                    <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                    <h5 class="mb-0">Chalaka Ranathunga</h5>
+                    <span class="small text-uppercase text-muted">Front-end Developer & QA Engineer</span>
+                    <ul class="social mb-0 list-inline mt-3">
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End-->
+            <!-- Team item-->
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-5">
+                <div class="bg-white rounded shadow-sm py-5 px-4 team-member">
+                    <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                    <h5 class="mb-0">Sashen Kavinda</h5>
+                    <span class="small text-uppercase text-muted">Front-end Developer & QA Engineer</span>
+                    <ul class="social mb-0 list-inline mt-3">
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End-->
+        </div>
+    </div>
+</div>
 
-    <?php include 'footer.php'; ?>
+
+    <footer class="bg-light pb-5">
+        <div class="container text-center">
+            <p class="font-italic text-muted mb-0">&copy; 2024 Jobforce (Sri Lanka) Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
