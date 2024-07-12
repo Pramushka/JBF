@@ -19,6 +19,7 @@ $industries_result = $conn->query($industries_sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Learning Course</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,71 +28,78 @@ $industries_result = $conn->query($industries_sql);
             padding: 0;
         }
         .container {
-            width: 50%;
-            margin: 50px auto;
-            padding: 20px;
-            background: #fff;
+            padding: 50px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            margin-top: 20px;
         }
         form {
-            display: flex;
-            flex-direction: column;
+            margin-top: 20px;
         }
         label {
             margin-bottom: 5px;
+            font-weight: bold;
         }
         input, textarea, select {
-            margin-bottom: 10px;
-            padding: 8px;
+            margin-bottom: 15px;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
         button {
-            padding: 10px;
-            background: #5cb85c;
+            padding: 10px 20px;
+            background-color: #007bff;
             border: none;
             color: #fff;
             cursor: pointer;
             border-radius: 4px;
         }
         button:hover {
-            background: #4cae4c;
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-
+<?php include 'sidebar.php'; ?>
 <div class="container">
     <h2>Add New Learning Course</h2>
     <form action="post_courses.php" method="POST">
-        <label for="Course_Name">Course Name:</label>
-        <input type="text" id="Course_Name" name="Course_Name" required>
+        <div class="form-group">
+            <label for="Course_Name">Course Name:</label>
+            <input type="text" class="form-control" id="Course_Name" name="Course_Name" required>
+        </div>
 
-        <label for="Skill">Skill:</label>
-        <input type="text" id="Skill" name="Skill" required>
+        <div class="form-group">
+            <label for="Skill">Skill:</label>
+            <input type="text" class="form-control" id="Skill" name="Skill" required>
+        </div>
 
-        <label for="Industry">Industry:</label>
-        <select id="Industry" name="Industry" required>
-            <option value="">Select Industry</option>
-            <?php
-            if ($industries_result->num_rows > 0) {
-                while($row = $industries_result->fetch_assoc()) {
-                    echo "<option value='".$row['industry_name']."'>".$row['industry_name']."</option>";
+        <div class="form-group">
+            <label for="Industry">Industry:</label>
+            <select class="form-control" id="Industry" name="Industry" required>
+                <option value="">Select Industry</option>
+                <?php
+                if ($industries_result->num_rows > 0) {
+                    while($row = $industries_result->fetch_assoc()) {
+                        echo "<option value='".$row['industry_name']."'>".$row['industry_name']."</option>";
+                    }
                 }
-            }
-            ?>
-        </select>
+                ?>
+            </select>
+        </div>
 
-        <label for="Description">Description:</label>
-        <textarea id="Description" name="Description" rows="4" required></textarea>
+        <div class="form-group">
+            <label for="Description">Description:</label>
+            <textarea class="form-control" id="Description" name="Description" rows="4" required></textarea>
+        </div>
 
-        <label for="Price">Price:</label>
-        <input type="number" id="Price" name="Price" step="0.01" required>
+        <div class="form-group">
+            <label for="Price">Price:</label>
+            <input type="number" class="form-control" id="Price" name="Price" step="0.01" required>
+        </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 
