@@ -42,40 +42,60 @@ $reply_result = $reply_stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
             padding: 0;
             display: flex;
         }
-        .sidebar {
-            width: 250px;
-            background-color: #e0e4ff;
+        .sidebarr {
+            position: fixed;
+            left: 1700px;
+            top: 0;
+            width: 200px;
+            background-color: #343a40;
+            color: #fff;
             padding: 20px;
             height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
         }
-        .sidebar h2 {
-            color: #333;
+        .sidebarr h2 {
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        .sidebarr button {
+            color: #fff;
+            width: 100%;
         }
         .container {
-            flex: 1;
+            margin-left: 240px;
             background-color: #ffffff;
-            padding: 20px;
+            padding: 30px;
+            flex: 1;
         }
         .ticket-details {
             background-color: #f9f9f9;
             padding: 20px;
             border-radius: 8px;
-            margin-bottom: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .ticket-details h3 {
-            margin: 0 0 10px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #333;
         }
         .ticket-details p {
             margin: 0;
+            font-size: 16px;
+            color: #666;
         }
         .reply-section {
             margin-top: 20px;
@@ -99,7 +119,6 @@ $reply_result = $reply_stmt->get_result();
         .btn {
             display: block;
             padding: 10px;
-            background-color: #4CAF50;
             border: none;
             border-radius: 5px;
             color: #ffffff;
@@ -109,15 +128,16 @@ $reply_result = $reply_stmt->get_result();
             text-align: center;
         }
         .btn:hover {
-            background-color: #45a049;
+            background-color: #007bff;
         }
     </style>
 </head>
 <body>
+<?php include 'sidebar.php'; ?>
 
-<div class="sidebar">
+<div class="sidebarr">
     <h2>HELP DESK</h2>
-    <button onclick="window.location.href='open_tickets.php'" class="btn">View Tickets</button>
+    <button onclick="window.location.href='open_tickets.php'" class="btn"><i class="fas fa-arrow-left"></i> View Tickets</button>
 </div>
 
 <div class="container">
