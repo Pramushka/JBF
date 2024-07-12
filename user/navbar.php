@@ -4,17 +4,7 @@ include '../includes/dbconn.php';
 // Fetching for this Serch bar
 // Get the name of the current script to dynamically set active class
 $current_page = basename($_SERVER['SCRIPT_NAME']);
-$industryResult = $conn->query("SELECT ID, industry_name as name, 'industry' as type FROM job_industries");
-$positionResult = $conn->query("SELECT ID, position_name as name, 'position' as type FROM job_positions");
 
-$allOptions = [];
-
-while ($row = $industryResult->fetch_assoc()) {
-    $allOptions[] = $row;
-}
-while ($row = $positionResult->fetch_assoc()) {
-    $allOptions[] = $row;
-}
 ?>
 
 
@@ -28,7 +18,6 @@ while ($row = $positionResult->fetch_assoc()) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/text.css">
-    <link rel="stylesheet" href="../assets/css/navbarsearch.css">
 </head>
 <body>
     <div class="wrap">
@@ -79,8 +68,7 @@ while ($row = $positionResult->fetch_assoc()) {
                 </li>
             </ul>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/popper.js"></script>

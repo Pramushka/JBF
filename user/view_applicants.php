@@ -27,7 +27,6 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Applicants</title>
-    <link rel="stylesheet" href="../assets/css/jobsearch.css">
     <link rel="stylesheet" href="../assets/css/applicants.css"> <!-- Link to the new CSS file -->
 </head>
 <body>
