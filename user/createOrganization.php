@@ -32,6 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         echo "Organization created successfully.";
+        // Redirect to uOrganizationList.php after successful creation
+        header("Location: uOrganizationList.php");
+        exit;
     } else {
         echo "Error creating organization: " . $stmt->error;
     }

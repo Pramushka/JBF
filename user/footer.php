@@ -30,7 +30,7 @@
                 </div>
                 <div class="footer-column">
                     <h3>Help center</h3>
-                    <a href="../user/contact.php">Help center</a>
+                    <a href="../user/view_tickets.php">Help center</a>
                 </div>
                 <div class="footer-column">
                     <h3>Privacy policy</h3>

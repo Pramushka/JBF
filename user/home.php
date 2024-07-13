@@ -30,7 +30,7 @@ $userIndustryResult = $conn->query("SELECT Job_Industry FROM user WHERE ID = $us
 $userIndustry = $userIndustryResult->fetch_assoc()['Job_Industry'];
 
 // SQL to fetch top organizations either from the same industry or just the most recent ones, now including the ID
-$sql = "SELECT ID, Org_Name, Org_Location, Org_Industry FROM organization WHERE Org_Industry = ? ORDER BY ID DESC ";
+$sql = "SELECT ID, Org_Name, Org_Location, Org_Industry FROM organization WHERE Org_Industry = ? ORDER BY ID DESC LIMIT 6";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $userIndustry);
 $stmt->execute();
@@ -38,7 +38,7 @@ $result = $stmt->get_result();
 
 if ($result->num_rows == 0) {
     // If no organization found in the user's industry, fetch the most recent organizations instead
-    $result = $conn->query("SELECT ID, Org_Name, Org_Location, Org_Industry FROM organization ORDER BY ID DESC");
+    $result = $conn->query("SELECT ID, Org_Name, Org_Location, Org_Industry FROM organization ORDER BY ID DESC LIMIT 6");
 }
 
 $companies = [];
@@ -64,6 +64,45 @@ while ($row = $coursesResult->fetch_assoc()) {
     $courses[] = $row;
 }
 
+// Fetch the user's job position and industry
+$userQuery = $conn->query("SELECT Job_Position, Job_Industry FROM user WHERE ID = $user_id");
+$userData = $userQuery->fetch_assoc();
+$userPosition = $userData['Job_Position'];
+$userIndustry = $userData['Job_Industry'];
+
+// SQL to fetch job posts related to the user's job position and industry
+$jobPostsSql = "SELECT ID, job_positions, Post_Description, recruitment, Benifits, job_category, location, Experience, education, salary 
+                FROM jobpost 
+                WHERE (job_positions = ? OR Industry = ?) AND IsDeleted = 0 
+                ORDER BY CreatedOn DESC 
+                LIMIT 4";
+$stmt = $conn->prepare($jobPostsSql);
+$stmt->bind_param("ss", $userPosition, $userIndustry);
+$stmt->execute();
+$jobPostsResult = $stmt->get_result();
+
+$jobPosts = [];
+while ($row = $jobPostsResult->fetch_assoc()) {
+    $jobPosts[] = $row;
+}
+
+// If fewer than 4 matching job posts are found, fetch the most recent job posts to fill the remaining slots
+if (count($jobPosts) < 4) {
+    $additionalJobPostsSql = "SELECT ID, job_positions, Post_Description, recruitment, Benifits, job_category, location, Experience, education, salary 
+                              FROM jobpost 
+                              WHERE IsDeleted = 0 
+                              ORDER BY CreatedOn DESC 
+                              LIMIT ?";
+    $remainingSlots = 4 - count($jobPosts);
+    $stmt = $conn->prepare($additionalJobPostsSql);
+    $stmt->bind_param("i", $remainingSlots);
+    $stmt->execute();
+    $additionalJobPostsResult = $stmt->get_result();
+
+    while ($row = $additionalJobPostsResult->fetch_assoc()) {
+        $jobPosts[] = $row;
+    }
+}
 
 // Check if the Inqury form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -219,6 +258,29 @@ if (isset($_SESSION['alert'])) {
 <br>
 <br>
 
+<div class="job-posts-section">
+    <h2 class="section-title">Recommended Job Posts</h2>
+    <div class="job-posts-container">
+        <?php foreach ($jobPosts as $job): ?>
+            <div class="job-post-card">
+                <div class="job-post-card-body">
+                    <h5 class="job-post-title"><?= htmlspecialchars($job['job_positions']) ?></h5>
+                    <p class="job-post-description"><?= htmlspecialchars($job['Post_Description']) ?></p>
+                    <p class="job-post-info"><small class="text-muted"><?= htmlspecialchars($job['location']) ?> - <?= htmlspecialchars($job['education']) ?></small></p>
+                    <p class="job-post-salary">Salary: <?= htmlspecialchars($job['salary']) ?></p>
+                </div>
+                <div class="job-post-card-footer">
+                <button class="btn btn-primary apply-btn" onclick='showApplyModal(<?= json_encode($job) ?>)'>Apply Now</button>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        <?php if (empty($jobPosts)): ?>
+            <p>No job posts found.</p>
+        <?php endif; ?>
+    </div>
+</div>
+
+
 <div class="learning-courses-section">
         <div class="learning-courses-container">
             <div class="courses-carousel">
@@ -272,6 +334,31 @@ if (isset($_SESSION['alert'])) {
         </div>
     </div>
 
+    <div class="modal fade" id="applyJobModal" tabindex="-1" aria-labelledby="applyJobModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="applyJobModalLabel">Apply for Job</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 id="jobTitle"></h4>
+                <p id="jobDescription"></p>
+                <p id="jobLocation"></p>
+                <p id="jobSalary"></p>
+                <div class="alert alert-warning" role="alert">
+                    We hope that you finish your user profile or you might get rejected because your data won't go to the recruiter properly. We recommend you complete the user profile completely.
+                </div>
+                <button class="btn btn-secondary">Upload CV (Placeholder)</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="sendApplication()">Send Application</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
         var swiper = new Swiper('.swiper-container', {
@@ -309,6 +396,67 @@ $(document).ready(function() {
         allowClear: true
     });
 });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    
+    function applyFilters() {
+    $.ajax({
+        url: 'jobsearch.php',
+        type: 'GET',
+        data: $('#filtersForm').serialize(),
+        success: function(data) {
+            console.log("Received data: ", data); // Check what is being received.
+            $('#jobListings').html($(data).find('#jobListings').html());
+        },
+        error: function(xhr) {
+            console.log("Error: ", xhr.statusText);
+        }
+    });
+}
+
+
+function showApplyModal(job) {
+    currentJobId = job.ID;  // Ensure this matches the ID attribute in your job objects
+
+    document.getElementById('jobTitle').textContent = job.job_positions;
+    document.getElementById('jobDescription').textContent = job.Post_Description;
+    document.getElementById('jobLocation').textContent = job.location + " - " + job.education;
+    document.getElementById('jobSalary').textContent = "Salary: " + job.salary;
+
+    var applyModal = new bootstrap.Modal(document.getElementById('applyJobModal'));
+    applyModal.show();
+}
+
+
+function sendApplication() {
+    $.ajax({
+        url: 'jobsearch.php',
+        type: 'POST',
+        data: {
+            action: 'apply_for_job',
+            jobPostId: currentJobId,
+            userId: <?= json_encode($_SESSION['user_id']) ?>
+        },
+        dataType: 'json', // Expect JSON response
+        success: function(result) {
+    console.log(result); // Log to console to inspect the actual response
+    if (result.success) {
+        alert(result.success);
+    } else if (result.error) {
+        alert(result.error);
+    }
+    var applyModal = bootstrap.Modal.getInstance(document.getElementById('applyJobModal'));
+    applyModal.hide();
+},
+
+        error: function(xhr, status, error) {
+            alert('Failed to submit application: ' + xhr.responseText || error);
+        }
+    });
+}
+
 </script>
 <br>
 <?php include 'footer.php'; ?>
