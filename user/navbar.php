@@ -63,6 +63,7 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
                     <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></a>
                     <div class="dropdown-menu" aria-labelledby="profileDropdown">
                         <a class="dropdown-item" href="userprofile2.php">Profile</a>
+                        <a class="dropdown-item" href="user_courses.php">My courses</a>
                         <a class="dropdown-item" href="logout.php">LogOut</a>
                     </div>
                 </li>

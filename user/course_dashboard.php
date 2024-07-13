@@ -1,5 +1,8 @@
 <?php
+
 include '../includes/dbconn.php'; // Include the database connection file
+session_start();
+$user_id = $_SESSION['user_id']; // Assuming you store the user's ID in the session
 
 // Fetch industries
 $industries_sql = "SELECT id, industry_name FROM job_industries";
@@ -12,6 +15,27 @@ if ($industry_filter) {
     $courses_sql .= " WHERE Industry = '$industry_filter'";
 }
 $courses_result = $conn->query($courses_sql);
+
+
+// Enrollment handling
+if (isset($_POST['enroll'])) {
+    $course_id = $_POST['course_id'];
+
+    // Check if already enrolled
+    $check_sql = "SELECT * FROM user_enrollments WHERE user_id = $user_id AND course_id = $course_id";
+    $result = $conn->query($check_sql);
+    if ($result->num_rows > 0) {
+        echo "<script>alert('You are already enrolled in this course.');</script>";
+    } else {
+        $enroll_sql = "INSERT INTO user_enrollments (user_id, course_id) VALUES ($user_id, $course_id)";
+        if ($conn->query($enroll_sql) === TRUE) {
+            echo "<script>alert('Enrollment successful!');</script>";
+        } else {
+            echo "<script>alert('Error enrolling in course: " . $conn->error . "');</script>";
+        }
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -318,6 +342,11 @@ $courses_result = $conn->query($courses_sql);
                     <p id="modalCourseSkill"></p>
                     <p id="modalCourseDescription"></p>
                     <p id="modalCoursePrice"></p>
+                    <form method="POST" action="course_dashboard.php">
+                        <input type="hidden" name="course_id" id="modalCourseId">
+                        <button type="submit" name="enroll" class="btn btn-primary">Enroll</button>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -379,18 +408,21 @@ $courses_result = $conn->query($courses_sql);
         var courseModal = document.getElementById('courseModal')
         courseModal.addEventListener('show.bs.modal', function (event) {
             var button = event.relatedTarget
+            var courseId = button.getAttribute('data-id')
             var courseName = button.getAttribute('data-name')
             var courseSkill = button.getAttribute('data-skill')
             var courseIndustry = button.getAttribute('data-industry')
             var courseDescription = button.getAttribute('data-description')
             var coursePrice = button.getAttribute('data-price')
 
+            var modalCourseId = courseModal.querySelector('#modalCourseId')
             var modalCourseName = courseModal.querySelector('#modalCourseName')
             var modalCourseSkill = courseModal.querySelector('#modalCourseSkill')
             var modalCourseIndustry = courseModal.querySelector('#modalCourseIndustry')
             var modalCourseDescription = courseModal.querySelector('#modalCourseDescription')
             var modalCoursePrice = courseModal.querySelector('#modalCoursePrice')
 
+            modalCourseId.value = courseId
             modalCourseName.textContent = courseName
             modalCourseSkill.textContent = 'Skill: ' + courseSkill
             modalCourseIndustry.textContent = 'Industry: ' + courseIndustry
@@ -398,6 +430,7 @@ $courses_result = $conn->query($courses_sql);
             modalCoursePrice.textContent = 'Price: $' + coursePrice
         })
     </script>
+
 </body>
 
 </html>
