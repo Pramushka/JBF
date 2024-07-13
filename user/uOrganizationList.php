@@ -42,6 +42,7 @@ $stmt->close();
     <title>My Organizations</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
         body {
             background-color: #f9f9fa;
@@ -154,56 +155,60 @@ $stmt->close();
 <?php include 'navbarsearch.php'; ?>
 
 <div class="page-content page-container" id="page-content">
-    
     <div class="padding">
-        <div class="row container d-flex justify-content-center">
-            <?php foreach ($organizations as $org): ?>
-                <div class="col-xl-6 col-md-12">
-                    <div class="card user-card-full">
-                        <div class="row m-l-0 m-r-0">
-                            <div class="col-sm-4 bg-c-lite-green user-profile">
-                                <div class="card-block text-center text-white">
-                                    <div class="m-b-25">
-                                        <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
-                                    </div>
-                                    <h6 class="f-w-600"><?= htmlspecialchars($org['Org_Name']) ?></h6>
-                                    <p><?= htmlspecialchars($org['Org_Industry']) ?: 'Not Specified' ?></p>
-                                    <a href="single_organization.php?id=<?= $org['ID'] ?>" class="btn btn-light">View Details</a>
-                                </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="card-block">
-                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Email</p>
-                                            <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Org_Email']) ?></h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Phone</p>
-                                            <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Verification_Contact']) ?: 'Not Specified' ?></h6>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <?php foreach ($organizations as $org): ?>
+                    <div class="swiper-slide">
+                        <div class="col-xl-12 col-md-12">
+                            <div class="card user-card-full">
+                                <div class="row m-l-0 m-r-0">
+                                    <div class="col-sm-4 bg-c-lite-green user-profile">
+                                        <div class="card-block text-center text-white">
+                                            <div class="m-b-25">
+                                                <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                                            </div>
+                                            <h6 class="f-w-600"><?= htmlspecialchars($org['Org_Name']) ?></h6>
+                                            <p><?= htmlspecialchars($org['Org_Industry']) ?: 'Not Specified' ?></p>
+                                            <a href="single_organization.php?id=<?= $org['ID'] ?>" class="btn btn-light">View Details</a>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Location</p>
-                                            <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Org_Location']) ?: 'Not Specified' ?></h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Registration No</p>
-                                            <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Org_Register_no']) ?></h6>
+                                    <div class="col-sm-8">
+                                        <div class="card-block">
+                                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Email</p>
+                                                    <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Org_Email']) ?></h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Phone</p>
+                                                    <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Verification_Contact']) ?: 'Not Specified' ?></h6>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Location</p>
+                                                    <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Org_Location']) ?: 'Not Specified' ?></h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Registration No</p>
+                                                    <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Org_Register_no']) ?></h6>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                       
-                                    </div>
-                                    
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </div>
 </div>
@@ -268,8 +273,36 @@ $stmt->close();
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script>
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 40,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+            },
+        }
+    });
+
     function submitOrgForm() {
         var formData = new FormData(document.getElementById('createOrgForm'));
         fetch('createOrganization.php', {
@@ -287,11 +320,10 @@ $stmt->close();
         });
     }
 </script>
+
 <!-- Include Bootstrap Bundle with Popper -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<!-- Initialize Swiper -->
 
 </body>
 <?php include 'footer.php'; ?>
