@@ -296,7 +296,7 @@ if (isset($_SESSION['alert'])) {
                                 <p><strong>Industry:</strong> <?= htmlspecialchars($course['Industry']) ?></p>
                                 <p><?= htmlspecialchars($course['Description']) ?></p>
                                 <p><strong>Price:</strong> $<?= number_format($course['Price'], 2) ?></p>
-                                <a class="action" href="#">Find out more</a>
+                                <a class="action" href="./course_dashboard.php">Find out more</a>
                             </div>
                         <?php endforeach; ?>
                     </div>

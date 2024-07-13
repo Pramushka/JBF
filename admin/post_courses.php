@@ -11,6 +11,53 @@ if ($conn->connect_error) {
 $industries_sql = "SELECT id, industry_name FROM job_industries";
 $industries_result = $conn->query($industries_sql);
 
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $Course_Name = $_POST['Course_Name'];
+    $Skill = $_POST['Skill'];
+    $Industry = $_POST['Industry'];
+    $Description = $_POST['Description'];
+    $Price = $_POST['Price'];
+
+    // Insert course
+    $insert_sql = "INSERT INTO learning_courses (Course_Name, Skill, Industry, Description, Price, CreatedOn) VALUES (?, ?, ?, ?, ?, NOW())";
+    $stmt = $conn->prepare($insert_sql);
+    $stmt->bind_param("ssssd", $Course_Name, $Skill, $Industry, $Description, $Price);
+    if ($stmt->execute()) {
+        $courseId = $stmt->insert_id;  // Get the ID of the newly created course
+
+        // Define the directory path for this specific course using the courseId
+        $targetDirectory = "../courses/" . $courseId . "/";
+        if (!file_exists($targetDirectory)) {
+            mkdir($targetDirectory, 0777, true); // Make directory if it does not exist with full permissions
+        }
+
+        // Handle multiple content uploads
+        if (!empty($_FILES['contentFile']['name'][0])) {
+            for ($i = 0; $i < count($_FILES['contentFile']['name']); $i++) {
+                $contentName = $_POST['contentName'][$i];
+                $fileName = basename($_FILES['contentFile']['name'][$i]);
+                $filePath = $targetDirectory . $fileName;
+                if (move_uploaded_file($_FILES['contentFile']['tmp_name'][$i], $filePath)) {
+                    // Insert content
+                    $insert_content_sql = "INSERT INTO learning_content (Course_ID, Content, Content_File_path, CreatedBy, CreatedOn) VALUES (?, ?, ?, ?, NOW())";
+                    $content_stmt = $conn->prepare($insert_content_sql);
+                    $content_stmt->bind_param("issi", $courseId, $contentName, $filePath, $user_id);
+                    $content_stmt->execute();
+                } else {
+                    echo "Failed to move file: " . htmlspecialchars($_FILES['contentFile']['name'][$i]);
+                }
+            }
+        }
+       
+    } else {
+        echo "Error adding course: " . $stmt->error;
+    }
+    $stmt->close();
+}
+$conn->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +111,7 @@ $industries_result = $conn->query($industries_sql);
 <?php include 'sidebar.php'; ?>
 <div class="container">
     <h2>Add New Learning Course</h2>
-    <form action="post_courses.php" method="POST">
+    <form action="post_courses.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="Course_Name">Course Name:</label>
             <input type="text" class="form-control" id="Course_Name" name="Course_Name" required>
@@ -98,36 +145,35 @@ $industries_result = $conn->query($industries_sql);
             <label for="Price">Price:</label>
             <input type="number" class="form-control" id="Price" name="Price" step="0.01" required>
         </div>
-
+        <div id="content-fields">
+            <h4>Course Content</h4>
+            <div class="form-group">
+                <label for="contentName1">Content Name:</label>
+                <input type="text" class="form-control" id="contentName1" name="contentName[]" required>
+                <label for="contentFile1">Content File:</label>
+                <input type="file" class="form-control-file" id="contentFile1" name="contentFile[]" required>
+            </div>
+        </div>
+        <button type="button" onclick="addContent()">Add More Content</button>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect POST data
-    $Course_Name = $_POST['Course_Name'];
-    $Skill = $_POST['Skill'];
-    $Industry = $_POST['Industry'];
-    $Description = $_POST['Description'];
-    $Price = $_POST['Price'];
 
-    // Insert data into learning_courses table
-    $insert_sql = "INSERT INTO learning_courses (Course_Name, Skill, Industry, Description, Price, CreatedOn) VALUES (?, ?, ?, ?, ?, NOW())";
-    $stmt = $conn->prepare($insert_sql);
-    $stmt->bind_param("ssssd", $Course_Name, $Skill, $Industry, $Description, $Price);
 
-    if ($stmt->execute()) {
-        echo "<p style='text-align:center;color:green;'>New course added successfully!</p>";
-    } else {
-        echo "<p style='text-align:center;color:red;'>Error: " . $stmt->error . "</p>";
-    }
-
-    $stmt->close();
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+var contentCount = 1;
+function addContent() {
+    contentCount++;
+    var html = '<div class="form-group">' +
+               '<label for="contentName' + contentCount + '">Content Name:</label>' +
+               '<input type="text" class="form-control" id="contentName' + contentCount + '" name="contentName[]" required>' +
+               '<label for="contentFile' + contentCount + '">Content File:</label>' +
+               '<input type="file" class="form-control-file" id="contentFile' + contentCount + '" name="contentFile[]" required>' +
+               '</div>';
+    $('#content-fields').append(html);
 }
-
-$conn->close();
-?>
-
+</script>
 </body>
 </html>

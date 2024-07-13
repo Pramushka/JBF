@@ -24,7 +24,7 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col">
-                    <p class="mb-0 phone"><span class="fa fa-phone"></span> <a href="#">+00 1234 567</a></p>
+                    <p class="mb-0 phone"><span class="fa fa-phone"></span> <a href="#">+94 1125 555 555</a></p>
                 </div>
                 <div class="col d-flex justify-content-end">
                     <div class="social-media">
@@ -63,6 +63,8 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
                     <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></a>
                     <div class="dropdown-menu" aria-labelledby="profileDropdown">
                         <a class="dropdown-item" href="userprofile2.php">Profile</a>
+                        <a class="dropdown-item" href="user_courses.php">My courses</a>
+                        <a class="dropdown-item" href="uOrganizationList.php">My Companies</a>
                         <a class="dropdown-item" href="logout.php">LogOut</a>
                     </div>
                 </li>
