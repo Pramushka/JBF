@@ -117,7 +117,7 @@ while ($row = $positionResult->fetch_assoc()) {
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col">
-                    <p class="mb-0 phone"><span class="fa fa-phone"></span> <a href="#">+00 1234 567</a></p>
+                    <p class="mb-0 phone"><span class="fa fa-phone"></span> <a href="#">+94 1125 555 555</a></p>
                 </div>
                 <div class="col d-flex justify-content-end">
                     <div class="social-media">
