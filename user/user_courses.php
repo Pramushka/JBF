@@ -8,9 +8,17 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch enrolled courses
-$enrolled_courses_sql = "SELECT lc.ID, lc.Course_Name, lc.Skill, lc.Industry, lc.Description, lc.Price FROM learning_courses lc JOIN user_enrollments ue ON lc.ID = ue.course_id WHERE ue.user_id = $user_id";
+// Fetch enrolled courses with their content aggregated
+$enrolled_courses_sql = "SELECT lc.ID, lc.Course_Name, lc.Skill, lc.Industry, lc.Description, lc.Price, 
+    GROUP_CONCAT(cont.Content SEPARATOR '|||') AS Contents,
+    GROUP_CONCAT(cont.Content_File_path SEPARATOR '|||') AS FilePaths
+FROM learning_courses lc 
+JOIN user_enrollments ue ON lc.ID = ue.course_id 
+LEFT JOIN learning_content cont ON lc.ID = cont.Course_ID AND cont.IsDeleted = 0
+WHERE ue.user_id = $user_id
+GROUP BY lc.ID";
 $enrolled_courses_result = $conn->query($enrolled_courses_sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -225,39 +233,56 @@ $enrolled_courses_result = $conn->query($enrolled_courses_sql);
         </div>
     </div>
 
-    <!-- Modal for Course Details -->
-    <div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="courseModalLabel">Course Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h4 id="modalCourseName"></h4>
-                    <p><strong>Industry:</strong> <span id="modalCourseIndustry"></span></p>
-                    <p><strong>Description:</strong> <span id="modalCourseDescription"></span></p>
-                    <p><strong>Skill Level:</strong> <span id="modalCourseSkill"></span></p>
-                    <p><strong>Price:</strong> $<span id="modalCoursePrice"></span></p>
-                </div>
+<!-- Modal for Course Details -->
+<div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="courseModalLabel">Course Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 id="modalCourseName"></h4>
+                <p><strong>Industry:</strong> <span id="modalCourseIndustry"></span></p>
+                <p><strong>Description:</strong> <span id="modalCourseDescription"></span></p>
+                <p><strong>Skill Level:</strong> <span id="modalCourseSkill"></span></p>
+                <p><strong>Price:</strong> $<span id="modalCoursePrice"></span></p>
+                <hr>
+                <h5>Contents:</h5>
+                <div id="modalCourseContents"></div> <!-- Placeholder for multiple contents -->
             </div>
         </div>
     </div>
+</div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        $('#courseModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var course = button.data('course');
-            
-            var modal = $(this);
-            modal.find('#modalCourseName').text(course.Course_Name);
-            modal.find('#modalCourseIndustry').text(course.Industry || 'Not Specified');
-            modal.find('#modalCourseDescription').text(course.Description);
-            modal.find('#modalCourseSkill').text(course.Skill);
-            modal.find('#modalCoursePrice').text(parseFloat(course.Price).toFixed(2));
-        });
+$('#courseModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var course = button.data('course'); // Extract info from data-* attributes
+
+    var modal = $(this);
+    modal.find('#modalCourseName').text(course.Course_Name);
+    modal.find('#modalCourseIndustry').text(course.Industry || 'Not Specified');
+    modal.find('#modalCourseDescription').text(course.Description);
+    modal.find('#modalCourseSkill').text(course.Skill);
+    modal.find('#modalCoursePrice').text(parseFloat(course.Price).toFixed(2));
+
+    // Handle multiple contents
+    var contents = course.Contents.split('|||');
+    var filePaths = course.FilePaths.split('|||');
+    var contentHtml = '';
+    contents.forEach((content, index) => {
+        var filePath = filePaths[index] || '#';
+        contentHtml += `<p>${content} <a href="${filePath}" target="_blank">View File</a></p>`;
+    });
+    modal.find('#modalCourseContents').html(contentHtml);
+});
+
+
     </script>
 </body>
 <?php include 'footer.php'; ?>

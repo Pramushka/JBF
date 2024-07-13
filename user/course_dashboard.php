@@ -312,7 +312,6 @@ if (isset($_POST['enroll'])) {
 
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="left">
-                                        <p>' . htmlspecialchars($course['Description']) . '</p>
                                     </div>
                                     <span class="skill">' . htmlspecialchars($course['Skill']) . '</span>
                                 </div>

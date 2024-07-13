@@ -64,6 +64,7 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
                     <div class="dropdown-menu" aria-labelledby="profileDropdown">
                         <a class="dropdown-item" href="userprofile2.php">Profile</a>
                         <a class="dropdown-item" href="user_courses.php">My courses</a>
+                        <a class="dropdown-item" href="uOrganizationList.php">My Companies</a>
                         <a class="dropdown-item" href="logout.php">LogOut</a>
                     </div>
                 </li>
