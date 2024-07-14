@@ -184,9 +184,9 @@ $stmt->close();
             </form>
         </div>
         <div class="col-md-9">
-            <div id="jobListings" class="row row-cols-1 row-cols-md-2 g-4">
+            <div id="jobListings" class="row row-cols-1 g-4">
                 <?php foreach ($jobs as $job): ?>
-                    <div class="col">
+                    <div class="j-col">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title"><?= htmlspecialchars($job['job_positions']) ?></h5>
