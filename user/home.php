@@ -113,18 +113,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //FOR THE STATUS 1 = PENDING
     // Insert into helpdeskinquiries table
-    $stmt = $conn->prepare("INSERT INTO helpdeskinquiries (email, Description, CreatedOn, Status) VALUES (?, ?, NOW(), 1)");
+    $stmt = $conn->prepare("INSERT INTO contact_inq (email, Description, CreatedOn) VALUES (?, ?, NOW())");
     $stmt->bind_param("ss", $email, $description);
     $stmt->execute();
     $helpId = $stmt->insert_id; // Get the ID of the inserted record
 
-    // Link the user with the help desk inquiry
-    $stmt = $conn->prepare("INSERT INTO user_helpdeskinquiries (Help_ID, UserID) VALUES (?, ?)");
-    $stmt->bind_param("ii", $helpId, $userId);
-    $stmt->execute();
-
+  
    // Set a session variable to show the alert after redirecting
-   $_SESSION['alert'] = "Your inquiry has been submitted successfully. Thank you!";
+   $_SESSION['alert'] = "Your newsalert has been setted up successfully. Thank you!";
     
    // Redirect to the same page to avoid form re-submission issues
    header("Location: " . $_SERVER['PHP_SELF']);

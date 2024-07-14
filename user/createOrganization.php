@@ -31,13 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("isssssss", $userId, $orgName, $orgDes, $orgEmail, $orgRegisterNo, $orgLocation, $orgIndustry, $verificationContact);
 
     if ($stmt->execute()) {
-        echo "Organization created successfully.";
-        // Redirect to uOrganizationList.php after successful creation
-        header("Location: uOrganizationList.php");
-        exit;
+        echo json_encode(["message" => "Organization created successfully."]);
     } else {
-        echo "Error creating organization: " . $stmt->error;
+        echo json_encode(["error" => "Error creating organization: " . $stmt->error]);
     }
-    $stmt->close();
+    
+  
 }
 ?>
