@@ -86,7 +86,7 @@
     <nav>
         <ul>
             <li><a href="../admin/admin_index.php"><i class="fas fa-home"></i> Dashboard</a></li>
-            <li><a href="../admin/admin_jobpost_dashboard.php"><i class="fas fa-ticket-alt"></i> Open Tickets</a></li>
+            <li><a href="../admin/admin_jobpost_dashboard.php"><i class="fas fa-ticket-alt"></i> Posted Jobs</a></li>
             <li><a href="../admin/open_tickets.php"><i class="fas fa-check-circle"></i> Closed Tickets</a></li>
             <li><a href="../admin/post_courses.php"><i class="fas fa-plus-circle"></i> Add Course</a></li>
              <li><a href="../admin/NewsalertSubs.php"><i class="fas fa-exclamation-circle"></i> News Alert</a></li>
