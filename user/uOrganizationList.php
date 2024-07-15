@@ -61,7 +61,9 @@ $stmt->close();
             -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
             box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
             border: none;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
         }
 
         .m-r-0 {
@@ -81,7 +83,7 @@ $stmt->close();
         }
 
         .user-profile {
-            padding: 20px 0;
+            padding: 30px 0;
         }
 
         .card-block {
@@ -147,6 +149,20 @@ $stmt->close();
             margin: 0 10px 0 0;
             -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
+        }
+
+        .swiper-slide {
+            display: flex;
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card {
+            flex-grow: 1;
         }
     </style>
 </head>

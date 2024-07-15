@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
         echo json_encode(['error' => 'You need to log in to apply.']);
         exit;
     }
-header('Content-Type: application/json'); // Ensure JSON content type
+    header('Content-Type: application/json'); // Ensure JSON content type
 
     $jobPostId = $_POST['jobPostId'] ?? null;
     $userId = $_SESSION['user_id'];
@@ -242,12 +242,12 @@ $progress = (count($completed_sections) / count($sections)) * 100;
             /* Adjust this value if you need more spacing between the button and progress bar */
         }
     </style>
-    
+
 </head>
 
 
 <body>
-<?php include 'navbar.php'; ?>
+    <?php include 'navbar.php'; ?>
 
 
     <div class="container">
@@ -359,7 +359,7 @@ $progress = (count($completed_sections) / count($sections)) * 100;
                         </div><br>
 
                     </div>
-                    
+
                     <!-- Available Courses Section -->
                     <div class="card">
                         <div class="tab-content p-4">
@@ -454,62 +454,62 @@ $progress = (count($completed_sections) / count($sections)) * 100;
                     </div>
                 </div>
                 <div class="card">
-    <div class="card-body">
-        <div class="d-flex justify-content-between">
-            <h4 class="card-title mb-4">Personal Details</h4>
-            <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#editPersonalDetailsModal">
-                <i class="mdi mdi-pencil"></i>
-            </button>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-bordered mb-0">
-                <tbody>
-                    <tr>
-                        <th scope="row">Name</th>
-                        <td><?php echo htmlspecialchars($username); ?></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Language</th>
-                        <td><?php echo htmlspecialchars($language); ?></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Website</th>
-                        <td><a href="<?php echo htmlspecialchars($website); ?>"><?php echo htmlspecialchars($website); ?></a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Work Status</th>
-                        <td><?php echo htmlspecialchars($work_status); ?></td>
-                    </tr>
-                    <?php if (empty($language) || empty($website)) : ?>
-                        <tr>
-                            <td colspan="2" class="alert-empty">Please fill in all personal details</td>
-                        </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<div class="card">
-    <div class="card-body">
-        <div class="d-flex justify-content-between">
-            <h4 class="card-title mb-4">My Company</h4>
-        </div>
-        <ul class="list-unstyled mb-0" id="organization-list">
-            <?php if (!empty($organizations)): ?>
-                <?php foreach ($organizations as $org): ?>
-                    <li class="organization-item">
-                        <a href="single_organization.php?id=<?= htmlspecialchars($org['ID']); ?>">
-                            <?= htmlspecialchars($org['Org_Name']); ?>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <li>No organizations found.</li>
-            <?php endif; ?>
-        </ul>
-    </div>
-</div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-title mb-4">Personal Details</h4>
+                            <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#editPersonalDetailsModal">
+                                <i class="mdi mdi-pencil"></i>
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered mb-0">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Name</th>
+                                        <td><?php echo htmlspecialchars($username); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Language</th>
+                                        <td><?php echo htmlspecialchars($language); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Website</th>
+                                        <td><a href="<?php echo htmlspecialchars($website); ?>"><?php echo htmlspecialchars($website); ?></a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Work Status</th>
+                                        <td><?php echo htmlspecialchars($work_status); ?></td>
+                                    </tr>
+                                    <?php if (empty($language) || empty($website)) : ?>
+                                        <tr>
+                                            <td colspan="2" class="alert-empty">Please fill in all personal details</td>
+                                        </tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-title mb-4">My Company</h4>
+                        </div>
+                        <ul class="list-unstyled mb-0" id="organization-list">
+                            <?php if (!empty($organizations)) : ?>
+                                <?php foreach ($organizations as $org) : ?>
+                                    <li class="organization-item">
+                                        <a href="single_organization.php?id=<?= htmlspecialchars($org['ID']); ?>">
+                                            <?= htmlspecialchars($org['Org_Name']); ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <li>No organizations found.</li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                </div>
 
 
                 <div class="card">
@@ -626,42 +626,42 @@ $progress = (count($completed_sections) / count($sections)) * 100;
 
     <!-- Edit Personal Details Modal -->
     <div class="modal fade" id="editPersonalDetailsModal" tabindex="-1" aria-labelledby="editPersonalDetailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editPersonalDetailsModalLabel">Edit Personal Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="editPersonalDetailsForm" method="POST" action="save_profile.php">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($username); ?>">
-                    </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editPersonalDetailsModalLabel">Edit Personal Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editPersonalDetailsForm" method="POST" action="save_profile.php">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($username); ?>">
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="language" class="form-label">Language</label>
-                        <input type="text" class="form-control" id="language" name="language" value="<?php echo htmlspecialchars($language); ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="website" class="form-label">Website</label>
-                        <input type="text" class="form-control" id="website" name="website" value="<?php echo htmlspecialchars($website); ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="work_status" class="form-label">Work Status</label>
-                        <select class="form-control" id="work_status" name="work_status">
-                            <option value="Employed" <?php if ($work_status == 'Employed') echo 'selected'; ?>>Employed</option>
-                            <option value="Unemployed" <?php if ($work_status == 'Unemployed') echo 'selected'; ?>>Unemployed</option>
-                            <option value="Looking for a job" <?php if ($work_status == 'Looking for a job') echo 'selected'; ?>>Looking for a job</option>
-                            <option value="Student" <?php if ($work_status == 'Student') echo 'selected'; ?>>Student</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </form>
+                        <div class="mb-3">
+                            <label for="language" class="form-label">Language</label>
+                            <input type="text" class="form-control" id="language" name="language" value="<?php echo htmlspecialchars($language); ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="website" class="form-label">Website</label>
+                            <input type="text" class="form-control" id="website" name="website" value="<?php echo htmlspecialchars($website); ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="work_status" class="form-label">Work Status</label>
+                            <select class="form-control" id="work_status" name="work_status">
+                                <option value="Employed" <?php if ($work_status == 'Employed') echo 'selected'; ?>>Employed</option>
+                                <option value="Unemployed" <?php if ($work_status == 'Unemployed') echo 'selected'; ?>>Unemployed</option>
+                                <option value="Looking for a job" <?php if ($work_status == 'Looking for a job') echo 'selected'; ?>>Looking for a job</option>
+                                <option value="Student" <?php if ($work_status == 'Student') echo 'selected'; ?>>Student</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <!-- Edit Work Experience Modal -->
     <div class="modal fade" id="editWorkExperienceModal" tabindex="-1" aria-labelledby="editWorkExperienceModalLabel" aria-hidden="true">
@@ -756,7 +756,7 @@ $progress = (count($completed_sections) / count($sections)) * 100;
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('addWorkExperienceBtn').addEventListener('click', function () {
+        document.getElementById('addWorkExperienceBtn').addEventListener('click', function() {
             const container = document.getElementById('workExperienceContainer');
             const newEntry = document.createElement('div');
             newEntry.classList.add('work-experience-entry', 'mb-3');
@@ -773,7 +773,7 @@ $progress = (count($completed_sections) / count($sections)) * 100;
             container.appendChild(newEntry);
         });
 
-        document.getElementById('addEducationBtn').addEventListener('click', function () {
+        document.getElementById('addEducationBtn').addEventListener('click', function() {
             const container = document.getElementById('educationContainer');
             const newEntry = document.createElement('div');
             newEntry.classList.add('education-entry', 'mb-3');
@@ -790,7 +790,7 @@ $progress = (count($completed_sections) / count($sections)) * 100;
             container.appendChild(newEntry);
         });
 
-        document.getElementById('addProjectBtn').addEventListener('click', function () {
+        document.getElementById('addProjectBtn').addEventListener('click', function() {
             const container = document.getElementById('projectsContainer');
             const newEntry = document.createElement('div');
             newEntry.classList.add('project-entry', 'mb-3');
@@ -807,7 +807,7 @@ $progress = (count($completed_sections) / count($sections)) * 100;
             container.appendChild(newEntry);
         });
     </script>
-        <?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
 </body>
 
 </html>
