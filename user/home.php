@@ -266,7 +266,7 @@ if (isset($_SESSION['alert'])) {
                     <p class="job-post-salary">Salary: <?= htmlspecialchars($job['salary']) ?></p>
                 </div>
                 <div class="job-post-card-footer">
-                <button class="btn btn-primary apply-btn" onclick='showApplyModal(<?= json_encode($job) ?>)'>Apply Now</button>
+                    <button class="btn btn-primary apply-btn" onclick='showApplyModal(<?= json_encode($job) ?>)'>Apply Now</button>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -277,32 +277,36 @@ if (isset($_SESSION['alert'])) {
 </div>
 
 
+
 <div class="learning-courses-section">
-        <div class="learning-courses-container">
-            <div class="courses-carousel">
-                <h2 class="courses-title">Top Learning Courses</h2>
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <?php foreach ($courses as $course): ?>
-                            <div class="swiper-slide course-card">
-                                <a href="#">
-                                    <span class="title"><?= htmlspecialchars($course['Course_Name']) ?></span>
-                                </a>
-                                <p><strong>Skill Focus:</strong> <?= htmlspecialchars($course['Skill']) ?></p>
-                                <p><strong>Industry:</strong> <?= htmlspecialchars($course['Industry']) ?></p>
-                                <p><?= htmlspecialchars($course['Description']) ?></p>
-                                <p><strong>Price:</strong> $<?= number_format($course['Price'], 2) ?></p>
-                                <a class="action" href="./course_dashboard.php">Find out more</a>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                    <!-- Add Arrows -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+    <div class="learning-courses-container">
+        <div class="courses-carousel">
+            <h2 class="courses-title">Top Learning Courses</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <?php foreach ($courses as $course): ?>
+                        <div class="swiper-slide course-card">
+                            <a href="#">
+                                <span class="title"><?= htmlspecialchars($course['Course_Name']) ?></span>
+                            </a>
+                            <p><strong>Skill Focus:</strong> <?= htmlspecialchars($course['Skill']) ?></p>
+                            <p><strong>Industry:</strong> <?= htmlspecialchars($course['Industry']) ?></p>
+                            <p><?= htmlspecialchars($course['Description']) ?></p>
+                            <p><strong>Price:</strong> $<?= number_format($course['Price'], 2) ?></p>
+                            <a class="action" href="./course_dashboard.php">Find out more</a>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
+        <div class="courses-image">
+            <img src="https://bootstrapious.com/i/snippets/sn-about/illus.png" alt="Learning Courses">
+        </div>
     </div>
+</div>
 
 
 
@@ -357,29 +361,34 @@ if (isset($_SESSION['alert'])) {
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
-        var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 'auto',
-            spaceBetween: 20,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1, /* Show one slide at a time */
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 2000, /* Change slide every 3 seconds */
+            disableOnInteraction: false,
+        },
+        loop: true, /* Enable looping */
+        breakpoints: {
+            1024: {
+                slidesPerView: 1,
+                spaceBetween: 20,
             },
-            breakpoints: {
-                1024: {
-                    slidesPerView: 'auto',
-                    spaceBetween: 20,
-                },
-                768: {
-                    slidesPerView: 'auto',
-                    spaceBetween: 15,
-                },
-                640: {
-                    slidesPerView: 'auto',
-                    spaceBetween: 10,
-                }
+            768: {
+                slidesPerView: 1,
+                spaceBetween: 15,
+            },
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 10,
             }
-        });
-    </script>
+        }
+    });
+</script>
     <script>
 $(document).ready(function() {
     $('#industry_skill_position').select2({
