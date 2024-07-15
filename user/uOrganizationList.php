@@ -40,307 +40,121 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Organizations</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <style>
-        body {
-            background-color: #f9f9fa;
-        }
-
-        .padding {
-            padding: 3rem !important;
-        }
-
-        .user-card-full {
-            overflow: hidden;
-        }
-
-        .card {
-            border-radius: 5px;
-            -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
-            box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
-            border: none;
-            margin-bottom: 50px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .m-r-0 {
-            margin-right: 0px;
-        }
-
-        .m-l-0 {
-            margin-left: 0px;
-        }
-
-        .user-card-full .user-profile {
-            border-radius: 5px 0 0 5px;
-        }
-
-        .bg-c-lite-green {
-            background: linear-gradient(to right, #ee5a6f, #f29263);
-        }
-
-        .user-profile {
-            padding: 30px 0;
-        }
-
-        .card-block {
-            padding: 1.25rem;
-        }
-
-        .m-b-25 {
-            margin-bottom: 25px;
-        }
-
-        .img-radius {
-            border-radius: 5px;
-        }
-
-        h6 {
-            font-size: 14px;
-        }
-
-        .card .card-block p {
-            line-height: 25px;
-        }
-
-        @media only screen and (min-width: 1400px){
-            p {
-                font-size: 14px;
-            }
-        }
-
-        .b-b-default {
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .f-w-600 {
-            font-weight: 600;
-        }
-
-        .m-b-20 {
-            margin-bottom: 20px;
-        }
-
-        .p-b-5 {
-            padding-bottom: 5px !important;
-        }
-
-        .m-b-10 {
-            margin-bottom: 10px;
-        }
-
-        .text-muted {
-            color: #919aa3 !important;
-        }
-
-        .m-t-40 {
-            margin-top: 20px;
-        }
-
-        .user-card-full .social-link li {
-            display: inline-block;
-        }
-
-        .user-card-full .social-link li a {
-            font-size: 20px;
-            margin: 0 10px 0 0;
-            -webkit-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .swiper-slide {
-            display: flex;
-        }
-
-        .card-container {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .card {
-            flex-grow: 1;
-        }
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="antialiased bg-gray-200 font-sans">
+    <?php include 'navbar.php'; ?>
 
-<?php include 'navbarsearch.php'; ?>
+    <div class="hero-section text-center py-8">
+        <h1 class="text-4xl font-bold">Welcome to My Organizations</h1>
+        <p class="text-lg text-gray-700">Manage your organizations efficiently and effortlessly.</p>
+        <button type="button" class="mt-4 px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-500" data-toggle="modal" data-target="#createOrgModal">
+            Create New Organization
+        </button>
+    </div>
 
-<div class="page-content page-container" id="page-content">
-    <div class="padding">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <?php foreach ($organizations as $org): ?>
-                    <div class="swiper-slide">
-                        <div class="col-xl-12 col-md-12">
-                            <div class="card user-card-full">
-                                <div class="row m-l-0 m-r-0">
-                                    <div class="col-sm-4 bg-c-lite-green user-profile">
-                                        <div class="card-block text-center text-white">
-                                            <div class="m-b-25">
-                                                <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
-                                            </div>
-                                            <h6 class="f-w-600"><?= htmlspecialchars($org['Org_Name']) ?></h6>
-                                            <p><?= htmlspecialchars($org['Org_Industry']) ?: 'Not Specified' ?></p>
-                                            <a href="single_organization.php?id=<?= $org['ID'] ?>" class="btn btn-light">View Details</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="card-block">
-                                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Email</p>
-                                                    <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Org_Email']) ?></h6>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Phone</p>
-                                                    <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Verification_Contact']) ?: 'Not Specified' ?></h6>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Location</p>
-                                                    <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Org_Location']) ?: 'Not Specified' ?></h6>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Registration No</p>
-                                                    <h6 class="text-muted f-w-400"><?= htmlspecialchars($org['Org_Register_no']) ?></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+    <div class="container mx-auto py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <?php foreach ($organizations as $org): ?>
+                <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+                    <div class="bg-cover bg-bottom h-56 md:h-64" style="background-image: url('https://img.freepik.com/free-vector/city-skyline-concept-illustration_114360-8923.jpg?t=st=1721039417~exp=1721043017~hmac=c04800151151709210e91284c350a49120de840ece82f4f3a600a4b74537a4cb&w=740')">
+                    </div>
+                    <div>
+                        <div class="p-4 md:p-5">
+                            <p class="font-bold text-xl md:text-2xl"><?= htmlspecialchars($org['Org_Name']) ?></p>
+                            <p class="text-gray-700 md:text-lg">Manage your organization details efficiently and effortlessly.</p>
+                        </div>
+                        <div class="p-4 md:p-5 bg-gray-100">
+                            <div class="sm:flex sm:justify-between sm:items-center">
+                                <div>
+                                    <div class="text-lg text-gray-700"><span class="text-gray-900 font-bold">Email:</span> <?= htmlspecialchars($org['Org_Email']) ?></div>
+                                    <div class="text-lg text-gray-700"><span class="text-gray-900 font-bold">Phone:</span> <?= htmlspecialchars($org['Verification_Contact']) ?: 'Not Specified' ?></div>
+                                    <div class="text-lg text-gray-700"><span class="text-gray-900 font-bold">Industry:</span> <?= htmlspecialchars($org['Org_Industry']) ?: 'Not Specified' ?></div>
+                                    <div class="text-lg text-gray-700"><span class="text-gray-900 font-bold">Location:</span> <?= htmlspecialchars($org['Org_Location']) ?: 'Not Specified' ?></div>
                                 </div>
+                                <a href="single_organization.php?id=<?= $org['ID'] ?>" class="mt-3 sm:mt-0 py-2 px-4 bg-indigo-700 hover:bg-indigo-600 font-bold text-white text-sm rounded-lg shadow-md">View all details</a>
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
-            </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-            <!-- Add Navigation -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
-</div>
-<div class="create-button text-center">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createOrgModal">
-        Create New Organization
-    </button>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="createOrgModal" tabindex="-1" aria-labelledby="createOrgModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="createOrgModalLabel">New Organization</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="createOrgForm">
-                    <div class="mb-3">
-                        <label for="orgName" class="form-label">Organization Name:</label>
-                        <input type="text" class="form-control" id="orgName" name="orgName" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="orgDes" class="form-label">About Organization:</label>
-                        <textarea class="form-control" id="orgDes" name="orgDes" rows="4" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="orgEmail" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="orgEmail" name="orgEmail" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="orgRegisterNo" class="form-label">Registration Number:</label>
-                        <input type="text" class="form-control" id="orgRegisterNo" name="orgRegisterNo" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="orgLocation" class="form-label">Location:</label>
-                        <input type="text" class="form-control" id="orgLocation" name="orgLocation">
-                    </div>
-                    <div class="mb-3">
-                        <label for="orgIndustry" class="form-label">Industry:</label>
-                        <select class="form-control" id="orgIndustry" name="orgIndustry">
-                            <?php foreach ($industries as $industry): ?>
-                                <option value="<?= $industry['industry_name'] ?>"><?= htmlspecialchars($industry['industry_name']) ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="verificationContact" class="form-label">Verification Contact:</label>
-                        <input type="text" class="form-control" id="verificationContact" name="verificationContact">
-                    </div>
-                    <button type="button" class="btn btn-primary" onclick="submitOrgForm()">Submit</button>
-                </form>
+    <!-- Modal -->
+    <div class="modal fade" id="createOrgModal" tabindex="-1" aria-labelledby="createOrgModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createOrgModalLabel">New Organization</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="createOrgForm">
+                        <div class="mb-3">
+                            <label for="orgName" class="form-label">Organization Name:</label>
+                            <input type="text" class="form-control" id="orgName" name="orgName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="orgDes" class="form-label">About Organization:</label>
+                            <textarea class="form-control" id="orgDes" name="orgDes" rows="4" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="orgEmail" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="orgEmail" name="orgEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="orgRegisterNo" class="form-label">Registration Number:</label>
+                            <input type="text" class="form-control" id="orgRegisterNo" name="orgRegisterNo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="orgLocation" class="form-label">Location:</label>
+                            <input type="text" class="form-control" id="orgLocation" name="orgLocation">
+                        </div>
+                        <div class="mb-3">
+                            <label for="orgIndustry" class="form-label">Industry:</label>
+                            <select class="form-control" id="orgIndustry" name="orgIndustry">
+                                <?php foreach ($industries as $industry): ?>
+                                    <option value="<?= $industry['industry_name'] ?>"><?= htmlspecialchars($industry['industry_name']) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="verificationContact" class="form-label">Verification Contact:</label>
+                            <input type="text" class="form-control" id="verificationContact" name="verificationContact">
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="submitOrgForm()">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Include Bootstrap Bundle with Popper -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Include Bootstrap Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 40,
-            },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 50,
-            },
+    <script>
+        function submitOrgForm() {
+            var formData = new FormData(document.getElementById('createOrgForm'));
+            fetch('createOrganization.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data); // Show response from the PHP script
+                $('#createOrgModal').modal('hide'); // Hide modal using Bootstrap's JS
+                location.reload(); // Reload the page to show the new organization
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
-    });
-
-    function submitOrgForm() {
-        var formData = new FormData(document.getElementById('createOrgForm'));
-        fetch('createOrganization.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            alert(data); // Show response from the PHP script
-            $('#createOrgModal').modal('hide'); // Hide modal using Bootstrap's JS
-            location.reload(); // Reload the page to show the new organization
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    }
-</script>
-
-<!-- Include Bootstrap Bundle with Popper -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    </script>
+    <?php include 'footer.php'; ?>
 </body>
-<?php include 'footer.php'; ?>
 </html>

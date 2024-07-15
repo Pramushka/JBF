@@ -147,7 +147,7 @@ while ($row = $positionResult->fetch_assoc()) {
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Organization</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
                         <a class="dropdown-item" href="allorganization.php">Top Hiring</a>
-                        <a class="dropdown-item" href="uOrganizationList.php">My Companies</a>
+                       
                     </div>
                 </li>
                 <li class="nav-item <?= ($current_page == 'course_dashboard.php') ? 'active' : ''; ?>"><a href="course_dashboard.php" class="nav-link">Courses</a></li>
