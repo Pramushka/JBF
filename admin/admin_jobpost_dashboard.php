@@ -36,6 +36,16 @@ if (isset($_GET['delete_job_id'])) {
     <title>Admin Job Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
     <style>
+            
+                 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Montserrat', sans-serif;
+}
         body {
             display: flex;
             height: 100vh;
@@ -207,7 +217,7 @@ if (isset($_GET['delete_job_id'])) {
                         <div class="d-flex align-items-center justify-content-between pt-4 pb-6 px-4">
                             <div class="d-flex align-items-center">
                                 <div class="avatar-xxl avatar-indicators avatar-online me-2 position-relative d-flex justify-content-end align-items-end mt-n10">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar8.png" class="avatar-xxl rounded-circle border border-2" alt="Image">
+                                    <img src="https://img.freepik.com/premium-vector/self-pace-icon_1076610-14508.jpg?w=740" class="avatar-xxl rounded-circle border border-2" alt="Image">
                                 </div>
                                 <div class="lh-1">
                                     <h2 class="mb-0">Admin Dashboard</h2>
@@ -231,7 +241,7 @@ if (isset($_GET['delete_job_id'])) {
                             echo "<div class='col-lg-4 col-12'>";
                             echo "<div class='card mb-5 rounded-3'>";
                             echo "<div>";
-                            echo "<img src='https://bootdey.com/image/480x180/191970/ffffff' alt='Image' class='img-fluid rounded-top'>";
+                            echo "<img src='https://static.vecteezy.com/system/resources/previews/006/636/406/non_2x/search-a-new-job-employment-career-or-job-search-find-opportunity-seek-for-vacancy-or-work-position-concept-free-vector.jpg' alt='Image' class='img-fluid rounded-top' alt='Image' class='img-fluid rounded-top'>";
                             echo "</div>";
                             echo "<div class='avatar avatar-xl mt-n7 ms-4'>";
                             echo "<img src='https://bootdey.com/img/Content/avatar/avatar1.png' alt='Image' class='rounded-circle border-4 border-white-color-40'>";

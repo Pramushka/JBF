@@ -159,6 +159,16 @@ $progress = (count($completed_sections) / count($sections)) * 100;
     <link rel="stylesheet" href="../assets/css/userprofile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+          @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
         .alert-empty {
             color: red;
             font-weight: bold;
@@ -241,6 +251,7 @@ $progress = (count($completed_sections) / count($sections)) * 100;
             margin-top: 10px;
             /* Adjust this value if you need more spacing between the button and progress bar */
         }
+        
     </style>
 
 </head>
@@ -258,7 +269,7 @@ $progress = (count($completed_sections) / count($sections)) * 100;
                         <div class="row align-items-center">
                             <div class="col-md-3">
                                 <div class="text-center border-end">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-fluid avatar-xxl rounded-circle" alt="">
+                                    <img src="https://img.freepik.com/premium-vector/self-pace-icon_1076610-14508.jpg?w=740" class="img-fluid avatar-xxl rounded-circle" alt="">
                                     <h4 class="text-primary font-size-20 mt-3 mb-2"><?php echo htmlspecialchars($username); ?></h4>
                                     <h5 class="text-muted font-size-13 mb-0"><?php echo htmlspecialchars($job_position); ?></h5><br>
                                 </div>
@@ -307,7 +318,7 @@ $progress = (count($completed_sections) / count($sections)) * 100;
                                         echo "<div class='col-md-6' id='job-item-" . $row['id'] . "'>";
                                         echo "<div class='card mb-5 rounded-3'>";
                                         echo "<div>";
-                                        echo "<img src='https://bootdey.com/image/480x180/191970/ffffff' alt='Image' class='img-fluid rounded-top'>";
+                                        echo "<img src='https://static.vecteezy.com/system/resources/previews/006/636/406/non_2x/search-a-new-job-employment-career-or-job-search-find-opportunity-seek-for-vacancy-or-work-position-concept-free-vector.jpg' alt='Image' class='img-fluid rounded-top'>";
                                         echo "</div>";
                                         echo "<div class='card-body'>";
                                         echo "<div class='d-flex mb-3'>";
