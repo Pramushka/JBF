@@ -23,88 +23,116 @@ $reply_result = $reply_stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <style>
+          @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: lightpink;
             margin: 0;
             padding: 0;
             display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        .sidebar {
-            width: 250px;
-            background-color: #e0e4ff;
-            padding: 20px;
-            height: 100vh;
+        .logo {
+            border: 1px solid #f6f6f6;
         }
-        .sidebar h2 {
-            color: #333;
+        .logo img {
+            width: 60px;
+            height: 60px;
         }
-        .container {
-            flex: 1;
-            background-color: #ffffff;
-            padding: 20px;
-        }
-        .ticket-details {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 10px;
+        .card {
+            display: block;
+            padding: 3vh 2vh 7vh 5vh;
+            border: none;
+            border-radius: 15px;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            max-width: 500px;
+            background: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .ticket-details h3 {
-            margin: 0 0 10px;
+        .header {
+            margin-bottom: 5vh;
+            margin-right: 2vh;
+            float: right;
+            margin-left: auto;
         }
-        .ticket-details p {
-            margin: 0;
+        .far {
+            color: rgba(15, 198, 239, 0.97)!important;
+            font-size: 16px!important;
         }
-        .reply-section {
-            margin-top: 20px;
+        p.heading {
+            font-weight: bold;
+            font-size: 25px;
         }
-        .form-group {
-            margin-bottom: 15px;
+        p.text-muted {
+            font-size: 17px;
+            font-weight: bold;
+            color: #a1a7ae!important;
         }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #333333;
+        .btn-sm {
+            border-radius: 8px;
         }
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #dddddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-            height: 100px;
+        .fas.fa-users {
+            color: rgba(15, 198, 239, 0.97)!important;
         }
-        .btn {
-            display: block;
-            padding: 10px;
-            background-color: #4CAF50;
+        .mutual span {
+            font-size: 14px;
+            color: #adb5bd;
+            font-weight: bold;
+        }
+        .btn-primary.btn-lg {
+            border-radius: 30px;
+            width: 90%;
             border: none;
-            border-radius: 5px;
-            color: #ffffff;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-            text-align: center;
+            background: #8c02e3;
         }
-        .btn:hover {
-            background-color: #45a049;
+        .btn-dark.btn-lg {
+            border-radius: 30px;
+            width: 90%;
+            border: none;
+            background: #dee2e6;
+        }
+        .btn-dark span {
+            font-size: 14px;
+            text-align: center;
+            color: #0000008c;
+            font-weight: bold;
+        }
+        .btn-primary span {
+            font-size: 14px;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-<div class="sidebar">
-    <h2>helpdesk</h2>
-    <button onclick="window.location.href='submit_ticket.php'" class="btn">Submit new request</button>
-</div>
+<?php include 'sidebarhelpdesk.php'; ?>
 
 <div class="container">
-    <div class="ticket-details">
-        <h3><?php echo $ticket['category']; ?></h3>
-        <p><?php echo $ticket['Description']; ?></p>
+    <div class="card mx-auto">
+        <div class="row">
+            <div class="header right"><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+        <div class="card-title">
+            <p class="heading"><?php echo $ticket['category']; ?>&nbsp;<i class="far fa-compass"></i></p>
+        </div>
+        <p class="text-muted"><?php echo $ticket['Description']; ?></p>
         <h4>Replies</h4>
         <?php while ($reply = $reply_result->fetch_assoc()) { ?>
             <div class="reply">
@@ -112,8 +140,14 @@ $reply_result = $reply_stmt->get_result();
                 <p><small><?php echo $reply['CreatedOn']; ?></small></p>
             </div>
         <?php } ?>
+        <div class="row btnsubmit mt-4">
+            
+           
+        </div>
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
