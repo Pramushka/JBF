@@ -68,10 +68,9 @@
                             <img src="../assets/img/logo/jobforce01.jpg" class="logo-footer" alt="Jobforce Logo">
                             <p class="mt-3 description">Some short text about the company like You might remember the Dell computer commercials in which a youth reports this exciting news to his friends.</p>
                             <div>
-                                <a class="btn btn-icon btn-light" title="Facebook" target="_blank" href="#" data-abc="true"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-icon btn-light" title="Instagram" target="_blank" href="#" data-abc="true"><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-icon btn-light" title="Youtube" target="_blank" href="#" data-abc="true"><i class="fab fa-youtube"></i></a>
-                                <a class="btn btn-icon btn-light" title="Twitter" target="_blank" href="#" data-abc="true"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-icon btn-light" title="Facebook" target="_blank" href="https://www.facebook.com/profile.php?id=61561778734576" data-abc="true"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-icon btn-light" title="Instagram" target="_blank" href="https://www.instagram.com/jobforce2024?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" data-abc="true"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-icon btn-light" title="Twitter" target="_blank" href="https://x.com/force20636" data-abc="true"><i class="fab fa-twitter"></i></a>
                             </div>
                         </article>
                     </aside>

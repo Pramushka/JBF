@@ -40,7 +40,8 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Organizations</title>
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style> 
                @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
@@ -151,23 +152,38 @@ $stmt->close();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <script>
-        function submitOrgForm() {
-            var formData = new FormData(document.getElementById('createOrgForm'));
-            fetch('createOrganization.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert(data); // Show response from the PHP script
+    function submitOrgForm() {
+        var formData = new FormData(document.getElementById('createOrgForm'));
+        fetch('createOrganization.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Log the response for debugging
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Organization created successfully.'
+            }).then(() => {
                 $('#createOrgModal').modal('hide'); // Hide modal using Bootstrap's JS
                 location.reload(); // Reload the page to show the new organization
-            })
-            .catch(error => {
-                console.error('Error:', error);
             });
-        }
-    </script>
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Organization created successfully.'
+            }).then(() => {
+                $('#createOrgModal').modal('hide'); // Hide modal using Bootstrap's JS
+                location.reload(); // Reload the page to show the new organization
+            });
+        });
+    }
+</script>
+
     <?php include 'footer.php'; ?>
 </body>
 </html>

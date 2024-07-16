@@ -2,6 +2,8 @@
 include '../includes/dbconn.php';
 session_start();
 
+header('Content-Type: application/json'); // Set the response content type to JSON
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Gather POST data
     $orgName = $_POST['orgName'];
@@ -16,14 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query = "INSERT INTO organization (UserID, Org_Name, Org_Descript, Org_Email, Org_Register_no, Org_Location, Org_Industry, Verification_Contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
     if (!$stmt) {
-        echo "Error preparing statement: " . $conn->error;
+        echo json_encode(["error" => "Error preparing statement: " . $conn->error]);
         exit;
     }
 
     $userId = $_SESSION['user_id'];  // Assuming user's ID is stored in session
     // Make sure to check that session variable is set before using it to avoid errors
     if (!isset($userId)) {
-        echo "User not logged in";
+        echo json_encode(["error" => "User not logged in"]);
         exit;
     }
 
@@ -35,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo json_encode(["error" => "Error creating organization: " . $stmt->error]);
     }
-    
-  
+
+    $stmt->close();
 }
 ?>

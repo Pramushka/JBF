@@ -111,13 +111,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
         <div class="row align-items-center">
             <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                 <!-- Bg -->
-                <div class="pt-20 rounded-top" style="background: url(https://bootdey.com/image/480x480/00FFFF/000000) no-repeat; background-size: cover;"></div>
                 <div class="card rounded-bottom smooth-shadow-sm">
                     <div class="d-flex align-items-center justify-content-between pt-4 pb-6 px-4">
                         <div class="d-flex align-items-center">
-                            <div class="avatar-xxl avatar-indicators avatar-online me-2 position-relative d-flex justify-content-end align-items-end mt-n10">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar8.png" class="avatar-xxl rounded-circle border border-2" alt="Image">
-                            </div>
+                          
                             <div class="lh-1">
                                 <h2 class="mb-0"><?= htmlspecialchars($organization['Org_Name']) ?> Post Dashboard</h2>
                                 <p class="mb-0 d-block">@<?php echo htmlspecialchars($username); ?></p>
