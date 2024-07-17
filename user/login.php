@@ -12,16 +12,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
         exit;
     }
 
-    $sql = "SELECT ID, Password FROM User WHERE username = ?";
+    $sql = "SELECT ID, Password, status FROM User WHERE username = ?";
     $stmt = mysqli_prepare($conn, $sql);
     if ($stmt) {
         mysqli_stmt_bind_param($stmt, "s", $username);
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $user_id, $hashed_password);
+        mysqli_stmt_bind_result($stmt, $user_id, $hashed_password, $status);
         mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);
 
-        if (password_verify($password, $hashed_password)) {
+        if ($status != 'Active') {
+            $login_error = "Your account is inactive. Please contact the administrator.";
+        } elseif (password_verify($password, $hashed_password)) {
             $_SESSION['user_id'] = $user_id;
             header("Location: home.php");
             exit;
@@ -39,14 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO User (username, Email, Password) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO User (username, Email, Password, status) VALUES (?, ?, ?, 'Inactive')";
     $stmt = mysqli_prepare($conn, $sql);
     if ($stmt) {
         mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hash);
         mysqli_stmt_execute($stmt);
         if (mysqli_stmt_affected_rows($stmt) > 0) {
             $user_id = mysqli_insert_id($conn); // Get the ID of the newly created user
-            session_start();
             $_SESSION['user_id'] = $user_id; // Store user ID in session
             header("Location: register.php"); // Redirect to register.php
         } else {
@@ -148,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
                     <p>If you have an account?</p>
                     <button class="btn" id="sign-in-btn">Sign in</button>
                 </div>
-                <img scr="" alt="" class="image">
+                <img src="" alt="" class="image">
             </div>
             <div class="panel right-panel">
                 <div class="content">

@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Learning Course</title>
+    <title>Admin Dashboard Sidebar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -78,7 +76,6 @@
     
 
 <div class="sidebar">
- 
     <div class="profile">
         <img src="../assets/img/logo/admin.png" alt="Profile Picture">
         <h2>Admin dashboard</h2>
@@ -89,7 +86,8 @@
             <li><a href="../admin/admin_jobpost_dashboard.php"><i class="fas fa-ticket-alt"></i> Posted Jobs</a></li>
             <li><a href="../admin/open_tickets.php"><i class="fas fa-check-circle"></i>Tickets</a></li>
             <li><a href="../admin/post_courses.php"><i class="fas fa-plus-circle"></i> Add Course</a></li>
-             <li><a href="../admin/NewsalertSubs.php"><i class="fas fa-exclamation-circle"></i> News Alert</a></li>
+            <li><a href="../admin/NewsalertSubs.php"><i class="fas fa-exclamation-circle"></i> News Alert</a></li>
+            <li><a href="../admin/admin_usersmanage.php"><i class="fas fa-exclamation-circle"></i> User Manage</a></li>
             <li><a href="../user/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </nav>
