@@ -250,7 +250,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
                         <?php if ($showJobPostsButton): ?>
                         <a href='view_applicants.php?job_id=" <? htmlspecialchars($jobPost['id']) ?>View Applicants</a>
                         <?php endif; ?>
-                        <button class="btn btn-primary apply-btn" onclick='showApplyModal(<?= json_encode($jobPost) ?>)'>Apply Now</button>
+                        <?php if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] != $organization['UserID']): ?>
+                            <button class="btn btn-success" onclick=" showApplyModal(<?= $jobPost['id'] ?>)">Apply Now</button>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -260,6 +262,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
         <?php endif; ?>
     </div>
 </div>
+
 
 <br>
 <br>
@@ -279,9 +282,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
                 <p id="jobDescription"></p>
                 <p id="jobLocation"></p>
                 <p id="jobSalary"></p>
-                <div class="alert alert-warning" role="alert">
+                <p class="alert alert-warning" role="alert">
                     We hope that you finish your user profile or you might get rejected because your data won't go to the recruiter properly. We recommend you complete the user profile completely.
-                </div>
+                </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -290,6 +293,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
         </div>
     </div>
 </div>
+
 
 <!-- Modal for Organization Management -->
 <div class="modal fade" id="organizationModal2" tabindex="-1" aria-labelledby="organizationModalLabel" aria-hidden="true">

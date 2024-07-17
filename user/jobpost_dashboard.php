@@ -114,11 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
                 <div class="card rounded-bottom smooth-shadow-sm">
                     <div class="d-flex align-items-center justify-content-between pt-4 pb-6 px-4">
                         <div class="d-flex align-items-center">
-<<<<<<< HEAD
                           
-=======
-               
->>>>>>> 607ce24439119b2984cbffc0426300c8bcb6f4e7
                             <div class="lh-1">
                                 <h2 class="mb-0"><?= htmlspecialchars($organization['Org_Name']) ?> Post Dashboard</h2>
                                 <p class="mb-0 d-block">@<?php echo htmlspecialchars($username); ?></p>
