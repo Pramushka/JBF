@@ -17,10 +17,9 @@
             </div>
             <div class="footer-social">
                 <p>Connect with us:</p>
-                <a href="#"><img src="../assets/img/footer/Facebook_logo.png" alt="Facebook"></a>
-                <a href="#"><img src="../assets/img/footer/Instagram_icon.png.webp" alt="Instagram"></a>
-                <a href="#"><img src="../assets/img/footer/twitter.png" alt="Twitter"></a>
-                <a href="#"><img src="../assets/img/footer/youtube1.png" alt="LinkedIn"></a>
+                <a href="https://www.facebook.com/profile.php?id=61561778734576"><img src="../assets/img/footer/Facebook_logo.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/jobforce2024?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img src="../assets/img/footer/Instagram_icon.png.webp" alt="Instagram"></a>
+                <a href="https://x.com/force20636"><img src="../assets/img/footer/twitter.png" alt="Twitter"></a>
             </div>
             <div class="footer-links">
                 <div class="footer-column">
