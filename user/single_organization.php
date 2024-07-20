@@ -100,7 +100,7 @@ while ($industry = $industryResult->fetch_assoc()) {
     <link rel="stylesheet" href="../assets/css/s-organization.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-             @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+            @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
 * {
     margin: 0;
