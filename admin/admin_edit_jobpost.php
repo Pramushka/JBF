@@ -2,13 +2,6 @@
 include '../includes/dbconn.php';
 session_start();
 
-// Ensure user_id is set in session
-if (!isset($_SESSION['user_id'])) {
-    die("User not logged in");
-}
-
-$user_id = $_SESSION['user_id'];
-
 // Get the job ID from the query parameter
 if (!isset($_GET['job_id'])) {
     die("Job ID not specified");
@@ -17,9 +10,9 @@ if (!isset($_GET['job_id'])) {
 $job_id = $_GET['job_id'];
 
 // Fetch the job post data
-$sql = "SELECT * FROM jobpost WHERE id = ? AND CreatedBy = ?";
+$sql = "SELECT * FROM jobpost WHERE id = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("is", $job_id, $user_id);
+$stmt->bind_param("i", $job_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -40,12 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $education = $_POST['education'];
     $salary = $_POST['salary_from'];
 
-    $sql = "UPDATE jobpost SET job_positions = ?, Post_Description = ?, recruitment = ?, Benifits = ?, job_category = ?, Contact_Info = ?, location = ?, education = ?, salary = ? WHERE id = ? AND CreatedBy = ?";
+    $sql = "UPDATE jobpost SET job_positions = ?, Post_Description = ?, recruitment = ?, Benifits = ?, job_category = ?, Contact_Info = ?, location = ?, education = ?, salary = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssssiis", $job_positions, $Post_Description, $recruitment, $Benifits, $job_category, $Contact_Info, $location, $education, $salary, $job_id, $user_id);
+    $stmt->bind_param("ssssssssis", $job_positions, $Post_Description, $recruitment, $Benifits, $job_category, $Contact_Info, $location, $education, $salary, $job_id);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Job post updated successfully');</script>";
+        echo "<script>alert('Job post updated successfully'); window.location.href = 'admin_edit_jobpost.php?job_id=$job_id';</script>";
     } else {
         echo "<script>alert('Error: " . $stmt->error . "');</script>";
     }
