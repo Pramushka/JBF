@@ -164,14 +164,14 @@ $stmt->close();
                     <input type="range" min="0" max="30" value="1" class="form-range" name="experience" id="experienceRange" oninput="document.getElementById('experienceValue').textContent = this.value; applyFilters();">
                     <p>Experience: <span id="experienceValue">1</span> Years</p>
                 </div>
-                <div class="mb-3">
+                <!--<div class="mb-3">
                     <label for="recruitment" class="form-label">Recruitment Type</label>
                     <select name="recruitment" id="recruitment" class="form-select" onchange="applyFilters()">
                         <option value="">Any</option>
                         <option value="Full-Time">Full-Time</option>
                         <option value="Part-Time">Part-Time</option>
                     </select>
-                </div>
+                </div>-->
                 <div class="mb-3">
                     <label for="education" class="form-label">Education Required</label>
                     <select name="education" id="education" class="form-select" onchange="applyFilters()">
@@ -192,27 +192,37 @@ $stmt->close();
             </form>
         </div>
         <div class="col-md-9">
-            <div id="jobListings" class="row row-cols-1 g-4">
-                <?php foreach ($jobs as $job): ?>
-                    <div class="j-col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= htmlspecialchars($job['job_positions']) ?></h5>
-                                <p class="card-text"><?= htmlspecialchars($job['Post_Description']) ?></p>
-                                <p class="card-text"><small class="text-muted"><?= htmlspecialchars($job['location']) ?> - <?= htmlspecialchars($job['education']) ?></small></p>
-                                <p class="card-text">Salary: <?= htmlspecialchars($job['salary']) ?></p>
-                            </div>
-                            <div class="card-footer">
-                            <button class="btn btn-primary apply-btn" onclick='showApplyModal(<?= json_encode($job) ?>)'>Apply Now</button>
-                            </div>
-                        </div>
+    <div id="jobListings" class="row row-cols-1 g-4">
+        <?php 
+        // Function to truncate text to a specific length
+        function truncateText($text, $maxLength = 100) {
+            if (strlen($text) > $maxLength) {
+                return substr($text, 0, $maxLength) . '...';
+            }
+            return $text;
+        }
+        
+        foreach ($jobs as $job): ?>
+            <div class="j-col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= htmlspecialchars($job['job_positions']) ?></h5>
+                        <p class="card-text"><?= htmlspecialchars(truncateText($job['Post_Description'], 100)) ?></p>
+                        <p class="card-text"><small class="text-muted"><?= htmlspecialchars($job['location']) ?> - <?= htmlspecialchars($job['education']) ?></small></p>
+                        <p class="card-text">Salary: <?= htmlspecialchars($job['salary']) ?></p>
                     </div>
-                <?php endforeach; ?>
-                <?php if (empty($jobs)): ?>
-                    <p>No jobs found.</p>
-                <?php endif; ?>
+                    <div class="card-footer">
+                        <button class="btn btn-primary apply-btn" onclick='showApplyModal(<?= json_encode($job) ?>)'>Apply Now</button>
+                    </div>
+                </div>
             </div>
-        </div>
+        <?php endforeach; ?>
+        <?php if (empty($jobs)): ?>
+            <p>No jobs found.</p>
+        <?php endif; ?>
+    </div>
+</div>
+
     </div>
 </div>
 

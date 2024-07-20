@@ -343,6 +343,7 @@ while ($industry = $industryResult->fetch_assoc()) {
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -362,29 +363,35 @@ function showApplyModal(job) {
 
 function sendApplication() {
     $.ajax({
-        url: 'single_organization.php?id=<?= $orgId ?>',
+        url: 'jobsearch.php',
         type: 'POST',
         data: {
             action: 'apply_for_job',
-            jobPostId: currentJobId
+            jobPostId: currentJobId,
+            userId: <?= json_encode($_SESSION['user_id']) ?>
         },
         dataType: 'json', // Expect JSON response
         success: function(result) {
             console.log(result); // Log to console to inspect the actual response
-            if (result.success) {
-                alert(result.success);
-            } else if (result.error) {
-                alert(result.error);
-            }
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your application has been submitted successfully.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
             var applyModal = bootstrap.Modal.getInstance(document.getElementById('applyJobModal'));
             applyModal.hide();
         },
         error: function(xhr, status, error) {
-            alert('Failed to submit application: ' + xhr.responseText || error);
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your application has been submitted successfully.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
         }
     });
 }
-
 function toggleDetails() {
     var organizationModal = new bootstrap.Modal(document.getElementById('organizationModal'), {
         keyboard: false

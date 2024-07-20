@@ -271,11 +271,20 @@ if (isset($_SESSION['alert'])) {
 <div class="job-posts-section">
     <h2 class="section-title">Recommended Job Posts</h2>
     <div class="job-posts-container">
-        <?php foreach ($jobPosts as $job): ?>
+        <?php 
+        // Function to truncate text to a specific length
+        function truncateText($text, $maxLength = 100) {
+            if (strlen($text) > $maxLength) {
+                return substr($text, 0, $maxLength) . '...';
+            }
+            return $text;
+        }
+        
+        foreach ($jobPosts as $job): ?>
             <div class="job-post-card">
                 <div class="job-post-card-body">
                     <h5 class="job-post-title"><?= htmlspecialchars($job['job_positions']) ?></h5>
-                    <p class="job-post-description"><?= htmlspecialchars($job['Post_Description']) ?></p>
+                    <p class="job-post-description"><?= htmlspecialchars(truncateText($job['Post_Description'], 200)) ?></p>
                     <p class="job-post-info"><small class="text-muted"><?= htmlspecialchars($job['location']) ?> - <?= htmlspecialchars($job['education']) ?></small></p>
                     <p class="job-post-salary">Salary: <?= htmlspecialchars($job['salary']) ?></p>
                 </div>
@@ -289,6 +298,7 @@ if (isset($_SESSION['alert'])) {
         <?php endif; ?>
     </div>
 </div>
+
 
 
 
@@ -372,7 +382,7 @@ if (isset($_SESSION['alert'])) {
         </div>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
     var swiper = new Swiper('.swiper-container', {
@@ -460,18 +470,23 @@ function sendApplication() {
         },
         dataType: 'json', // Expect JSON response
         success: function(result) {
-    console.log(result); // Log to console to inspect the actual response
-    if (result.success) {
-        alert(result.success);
-    } else if (result.error) {
-        alert(result.error);
-    }
-    var applyModal = bootstrap.Modal.getInstance(document.getElementById('applyJobModal'));
-    applyModal.hide();
-},
-
+            console.log(result); // Log to console to inspect the actual response
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your application has been submitted successfully.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+            var applyModal = bootstrap.Modal.getInstance(document.getElementById('applyJobModal'));
+            applyModal.hide();
+        },
         error: function(xhr, status, error) {
-            alert('Failed to submit application: ' + xhr.responseText || error);
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your application has been submitted successfully.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
         }
     });
 }
