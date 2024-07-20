@@ -44,7 +44,10 @@
     }
 }
 
+
+/* Container for the entire search bar */
 .search-bar-container {
+    /* Flex container to center items */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,6 +57,7 @@
     max-width: 100%;
 }
 
+/* Main search bar styling */
 .search-bar {
     display: flex;
     align-items: center;
@@ -68,6 +72,7 @@
     flex-wrap: wrap;
 }
 
+/* Individual search field */
 .search-field {
     display: flex;
     align-items: center;
@@ -77,16 +82,19 @@
     position: relative;
 }
 
+/* Remove border from the last search field */
 .search-field:last-child {
     border-right: none;
 }
 
+/* Icon inside the search field */
 .search-field i {
     position: absolute;
     left: 10px;
     color: #888;
 }
 
+/* Input and select elements inside the search field */
 .search-field input,
 .search-field select {
     border: none;
@@ -96,10 +104,12 @@
     padding-left: 30px;
 }
 
+/* Placeholder styling for input */
 .search-field input::placeholder {
     color: #ccc;
 }
 
+/* Custom appearance for select dropdown */
 .search-field select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -109,6 +119,7 @@
     font-size: 16px;
 }
 
+/* Styling for the search button */
 .search-button {
     background: #03045E;
     color: white;
@@ -122,10 +133,12 @@
     flex: 1 1 auto;
 }
 
+/* Hover effect for the search button */
 .search-button:hover {
     background: #0077B6;
 }
 
+/* Responsive styling for screens less than 768px */
 @media (max-width: 768px) {
     .search-field {
         min-width: 100%;
@@ -144,6 +157,9 @@
 }
 
 
+/* Hints for Latest Companies and Services Section CSS */
+
+/* Title for the latest companies section */
 .latest-companies-title {
     color: black;
     font-family: 'Poppins', sans-serif;
@@ -153,6 +169,7 @@
     font-weight: 700;
 }
 
+/* Container for the latest companies */
 .latest-companies-container {
     display: flex;
     justify-content: center;
@@ -161,6 +178,7 @@
     background-color: #f9f9f9;
 }
 
+/* Grid layout for company cards */
 .company-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -170,6 +188,7 @@
     padding: 20px;
 }
 
+/* Styling for individual company cards */
 .company-card {
     background: white;
     border: 1px solid #ddd;
@@ -180,17 +199,20 @@
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+/* Hover effect for company cards */
 .company-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Styling for company logos */
 .company-logo img {
     max-width: 100px;
     border-radius: 50%;
     margin-bottom: 10px;
 }
 
+/* Styling for company names */
 .company-name {
     font-size: 1.5em;
     font-weight: 700;
@@ -198,12 +220,14 @@
     margin-bottom: 10px;
 }
 
+/* Styling for company information */
 .company-info {
     font-size: 1em;
     color: #666;
     margin-bottom: 5px;
 }
 
+/* Styling for the view jobs button */
 .view-jobs-btn {
     background-color: #4facfe;
     color: white;
@@ -214,18 +238,20 @@
     transition: background-color 0.3s;
 }
 
+/* Hover effect for the view jobs button */
 .view-jobs-btn:hover {
     background-color: #0077B6;
 }
 
+/* Container for the services section */
 .ser-container {
     padding: 40px 20px;
     background-color: #ffffff;
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    
 }
 
+/* Title for the services section */
 .services-title {
     font-size: 2.5em;
     color: #333;
@@ -233,6 +259,7 @@
     font-weight: 700;
 }
 
+/* Grid layout for service cards */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -241,6 +268,7 @@
     margin: 0 auto;
 }
 
+/* Styling for individual service cards */
 .service-card {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
@@ -250,11 +278,13 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Hover effect for service cards */
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Styling for icons inside service cards */
 .service-card i {
     font-size: 3em;
     color: #f9f9f9;
@@ -264,6 +294,7 @@
     margin-bottom: 15px;
 }
 
+/* Styling for service card titles */
 .service-card h3 {
     font-size: 1.5em;
     color: #333;
@@ -271,11 +302,13 @@
     font-weight: 700;
 }
 
+/* Styling for service card descriptions */
 .service-card p {
     font-size: 1em;
     color: #666;
 }
 
+/* Responsive styling for services section on smaller screens */
 @media (max-width: 768px) {
     .services-title {
         font-size: 2em;
@@ -290,6 +323,8 @@
         font-size: 0.9em;
     }
 }
+
+/* Styling for the learning courses section */
 .learning-courses-section {
     background: #ffffff;
     color: #333;

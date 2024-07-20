@@ -31,7 +31,7 @@
                     <h2>Support</h2>
                     <ul>
                         <li><a href="../user/contact.php">Contact Us</a></li>
-                        <li><a href="../user/home.php#helpdesk-form-container">Contact Help Desk</a></li>
+                        <li><a href="../user/view_tickets.php">Contact Help Desk</a></li>
 
                     </ul>
                 </div>

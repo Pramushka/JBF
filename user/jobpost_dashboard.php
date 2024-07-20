@@ -142,8 +142,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
                     foreach ($jobPosts as $jobPost) {
                         echo "<div class='col-lg-4 col-12'>";
                         echo "<div class='card mb-5 rounded-3'>";
-                        echo "<div><img src='https://bootdey.com/image/480x180/191970/ffffff' alt='Image' class='img-fluid rounded-top'></div>";
-                        echo "<div class='avatar avatar-xl mt-n7 ms-4'><img src='https://bootdey.com/img/Content/avatar/avatar1.png' alt='Image' class='rounded-circle border-4 border-white-color-40'></div>";
+                       
+                        
                         echo "<div class='card-body'>";
                         echo "<h4 class='mb-1'>" . htmlspecialchars($jobPost['job_positions']) . "</h4>";
                         echo "<p>" . htmlspecialchars($jobPost['job_category']) . "</p>";
