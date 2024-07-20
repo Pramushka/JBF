@@ -248,11 +248,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
                         <p class="card-text"><?= htmlspecialchars($jobPost['Post_Description']) ?></p>
                         <p class="card-text"><small class="text-muted">Posted on <?= date('F j, Y', strtotime($jobPost['CreatedOn'])) ?></small></p>
                         <?php if ($showJobPostsButton): ?>
-                        <a href='view_applicants.php?job_id=" <? htmlspecialchars($jobPost['id']) ?>View Applicants</a>
+                            <a href='view_applicants.php?job_id=<?= htmlspecialchars($jobPost['id']) ?>' class="btn btn-info">View Applicants</a>
                         <?php endif; ?>
                         <?php if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] != $organization['UserID']): ?>
-                            <button class="btn btn-success" onclick=" showApplyModal(<?= $jobPost['id'] ?>)">Apply Now</button>
-                        <?php endif; ?>
+                            <button class="btn btn-primary apply-btn" onclick='showApplyModal(<?= json_encode($jobPost) ?>)'>Apply Now</button>                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -262,7 +261,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
         <?php endif; ?>
     </div>
 </div>
-
 
 <br>
 <br>

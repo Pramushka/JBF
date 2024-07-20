@@ -197,18 +197,28 @@ $stmt->close();
     <div class="heading mt-2"> <span>All Organizations</span> </div>
     <div class="row mt-1 g-4">
         <?php foreach ($organizations as $org): ?>
-        <div class="col-md-4">
-            <div class="card p-2" data-bs-toggle="modal" data-bs-target="#organizationModal" data-org='<?= json_encode($org) ?>'>
-                <div class="d-flex p-1 px-4 align-items-center"> <span class="square"><img src="https://i.imgur.com/6YiLBAv.png" height="20" width="20" /></span> </div>
-                <div class="email mt-1"> <span><?= htmlspecialchars($org['Org_Name']) ?></span>
-                    <div class="dummytext mt-1"> <span>Email: <?= htmlspecialchars($org['Org_Email']) ?></span><br>
-                        <span>Location: <?= htmlspecialchars($org['Org_Location']) ?: 'Not Specified' ?></span><br>
-                        <span>Industry: <?= htmlspecialchars($org['Org_Industry']) ?: 'Not Specified' ?></span><br>
-                        <span>Registration No: <?= htmlspecialchars($org['Org_Register_no']) ?></span><br>
-                        <span>Contact: <?= htmlspecialchars($org['Verification_Contact']) ?: 'Not Specified' ?></span></div>
+            <div class="col-md-4">
+    <div class="card p-2">
+        <a href="single_organization.php?id=<?= $org['ID'] ?>" class="text-decoration-none text-dark">
+            <div class="d-flex p-1 px-4 align-items-center">
+                <span class="square">
+                    <img src="https://i.imgur.com/6YiLBAv.png" height="20" width="20" />
+                </span>
+            </div>
+            <div class="email mt-1">
+                <span><?= htmlspecialchars($org['Org_Name']) ?></span>
+                <div class="dummytext mt-1">
+                    <span>Email: <?= htmlspecialchars($org['Org_Email']) ?></span><br>
+                    <span>Location: <?= htmlspecialchars($org['Org_Location']) ?: 'Not Specified' ?></span><br>
+                    <span>Industry: <?= htmlspecialchars($org['Org_Industry']) ?: 'Not Specified' ?></span><br>
+                    <span>Registration No: <?= htmlspecialchars($org['Org_Register_no']) ?></span><br>
+                    <span>Contact: <?= htmlspecialchars($org['Verification_Contact']) ?: 'Not Specified' ?></span>
                 </div>
             </div>
-        </div>
+        </a>
+    </div>
+</div>
+
         <?php endforeach; ?>
     </div>
 </div>
