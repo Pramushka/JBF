@@ -96,14 +96,10 @@ if (!empty($params)) {
     $stmt->bind_param(str_repeat("s", count($params)), ...$params);
 }
 
-
-
 $stmt->execute();
 $result = $stmt->get_result();
 $jobs = $result->fetch_all(MYSQLI_ASSOC);
 $stmt->close();
-
-
 
 ?>
 
@@ -235,7 +231,6 @@ $stmt->close();
                 <div class="alert alert-warning" role="alert">
                     We hope that you finish your user profile or you might get rejected because your data won't go to the recruiter properly. We recommend you complete the user profile completely.
                 </div>
-                <button class="btn btn-secondary">Upload CV (Placeholder)</button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
