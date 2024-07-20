@@ -142,13 +142,7 @@ while ($row = $positionResult->fetch_assoc()) {
             <ul class="navbar-nav m-auto">
                 <li class="nav-item <?= ($current_page == 'home.php') ? 'active' : ''; ?>"><a href="home.php" class="nav-link">Home</a></li>
                 <li class="nav-item <?= ($current_page == 'jobsearch.php') ? 'active' : ''; ?>"><a href="jobsearch.php" class="nav-link">Search Jobs</a></li>
-                <li class="nav-item dropdown <?= ($current_page == 'allorganization.php' || $current_page == 'uOrganizationList.php') ? 'active' : ''; ?>">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Organization</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="allorganization.php">Top Hiring</a>
-                       
-                    </div>
-                </li>
+                <li class="nav-item <?= ($current_page == 'allorganization.php') ? 'active' : ''; ?>"><a href="allorganization.php" class="nav-link">Organizations</a></li>
                 <li class="nav-item <?= ($current_page == 'course_dashboard.php') ? 'active' : ''; ?>"><a href="course_dashboard.php" class="nav-link">Courses</a></li>
                 <li class="nav-item <?= ($current_page == 'about_us.php') ? 'active' : ''; ?>"><a href="about_us.php" class="nav-link">About Us</a></li>
                 <li class="nav-item <?= ($current_page == 'contact.php') ? 'active' : ''; ?>"><a href="contact.php" class="nav-link">Contact</a></li>

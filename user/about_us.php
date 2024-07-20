@@ -237,8 +237,8 @@ step: function (now) {
                     <h5 class="mb-0">Nineth Pramushka</h5>
                     <span class="small text-uppercase text-muted">Project Manager & Backend Developer</span>
                     <ul class="social mb-0 list-inline mt-3">
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="https://web.facebook.com/nineth.dabare" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/nineth_pramushka_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -250,8 +250,8 @@ step: function (now) {
                     <h5 class="mb-0">Kavindu Pabasara</h5>
                     <span class="small text-uppercase text-muted">Fullstack Developer and Database Engineer</span>
                     <ul class="social mb-0 list-inline mt-3">
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="https://web.facebook.com/kavindu.pabasara.96" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/kav1i._/?utm_source=ig_web_button_share_sheet" class="social-link"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -263,8 +263,8 @@ step: function (now) {
                     <h5 class="mb-0">Chasira Sahas</h5>
                     <span class="small text-uppercase text-muted">Front-end Developer & System Analyst</span>
                     <ul class="social mb-0 list-inline mt-3">
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="https://web.facebook.com/profile.php?id=100094771093001" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/chasira_sahas_?igsh=ZTM0OTk0MnkyYXd1" class="social-link"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -276,9 +276,8 @@ step: function (now) {
                     <h5 class="mb-0">Chalaka Ranathunga</h5>
                     <span class="small text-uppercase text-muted">Front-end Developer & QA Engineer</span>
                     <ul class="social mb-0 list-inline mt-3">
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="https://web.facebook.com/chalaka.javendra" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/_cj_ranathunga?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -292,9 +291,8 @@ step: function (now) {
                     <h5 class="mb-0">Sashen Kavinda</h5>
                     <span class="small text-uppercase text-muted">Front-end Developer & QA Engineer</span>
                     <ul class="social mb-0 list-inline mt-3">
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="https://web.facebook.com/shashen.kavinda.75" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/shashen/?utm_source=ig_web_button_share_sheet" class="social-link"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
