@@ -28,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Prepare SQL query to update organization details
     $sql = "UPDATE organization SET 
             Org_Name = ?, 
-            Org_Des = ?, 
+            Org_descript = ?, 
             Org_Email = ?, 
-            Org_RegisterNo = ?, 
+            Org_Register_no = ?, 
             Org_Location = ?, 
             Org_Industry = ?, 
             Verification_Contact = ? 
@@ -53,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     echo json_encode(['error' => 'Invalid request method.']);
 }
-
 
 $conn->close();
 ?>

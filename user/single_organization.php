@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
         echo json_encode(['error' => 'You need to log in to apply.']);
         exit;
     }
-header('Content-Type: application/json'); // Ensure JSON content type
+    header('Content-Type: application/json'); // Ensure JSON content type
 
     $jobPostId = $_POST['jobPostId'] ?? null;
     $userId = $_SESSION['user_id'];
@@ -84,31 +84,8 @@ header('Content-Type: application/json'); // Ensure JSON content type
 $industryQuery = "SELECT id, industry_name FROM job_industries";
 $industryResult = $conn->query($industryQuery);
 $industries = [];
-
 while ($industry = $industryResult->fetch_assoc()) {
     $industries[] = $industry;
-}
-
-// Handling POST request for updating organization details
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
-    $orgName = $_POST['orgName'];
-    $orgDes = $_POST['orgDes'];
-    $orgEmail = $_POST['orgEmail'];
-    $orgRegisterNo = $_POST['orgRegisterNo'];
-    $orgLocation = $_POST['orgLocation'];
-    $orgIndustry = $_POST['orgIndustry'];
-    $verificationContact = $_POST['verificationContact'];
-    
-    $updateSql = "UPDATE organization SET Org_Name=?, Org_Des=?, Org_Email=?, Org_RegisterNo=?, Org_Location=?, Org_Industry=?, Verification_Contact=? WHERE ID=?";
-    $updateStmt = $conn->prepare($updateSql);
-    $updateStmt->bind_param("sssssssi", $orgName, $orgDes, $orgEmail, $orgRegisterNo, $orgLocation, $orgIndustry, $verificationContact, $org_id);
-    $updateStmt->execute();
-    if ($updateStmt->affected_rows > 0) {
-        echo "<script>alert('Organization updated successfully');</script>";
-    } else {
-        echo "<script>alert('No changes were made to the organization');</script>";
-    }
-    $updateStmt->close();
 }
 ?>
 
@@ -122,8 +99,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/s-organization.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
     <style>
+             @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Montserrat', sans-serif;
+}
         .short-text {
             overflow: hidden;
             display: -webkit-box;
@@ -145,6 +130,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
             cursor: pointer;
             text-decoration: underline;
         }
+        .background {
+    background-image: linear-gradient(rgba(14, 25, 66, 0.4), rgba(13, 22, 61, 0.4)), url('https://img.freepik.com/premium-vector/businesspeople-discussing-meeting-business-people-working-together-modern-office-teamwork-concept_48369-42853.jpg?w=996');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 400px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.display-4 {
+    font-size: 2.5rem; /* Reduce the size of the main heading */
+}
+
+ .p.lead {
+    font-size: 1.25rem; /* Reduce the size of the subheading */
+}
+
+
     </style>
 </head>
 <body>
@@ -160,19 +168,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
 <section class="main-banner">
     <div class="banner-content">
         <div class="org-details">
-            <img src="../assets/img/company_logo.png" alt="Organization Logo" class="org-logo">
+            <img src="../assets/img/others/office-building_9564462.png" alt="Organization Logo" class="org-logo">
             <div>
-                <h1 class="org-name"><?= htmlspecialchars($organization['Org_Name']) ?></h1>
-                <div class="org-meta">
-                    <span class="org-rating">4.0</span>
-                    <span class="org-reviews">(10 reviews)</span>
-                </div>
-                <div class="org-tags">
-                    <span class="badge bg-secondary">Iron & Steel</span>
-                    <span class="badge bg-secondary">Public</span>
-                    <span class="badge bg-secondary">Corporate</span>
-                    <span class="badge bg-secondary">B2B</span>
-                </div>
+            <h1 class="org-name"><?= htmlspecialchars($organization['Org_Name']) ?></h1>
+            <h1 class="org-reviews "><?= htmlspecialchars($organization['Org_descript']) ?></h1>
+                
             </div>
         </div>
         <div class="org-actions">
@@ -251,7 +251,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
                             <a href='view_applicants.php?job_id=<?= htmlspecialchars($jobPost['id']) ?>' class="btn btn-info">View Applicants</a>
                         <?php endif; ?>
                         <?php if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] != $organization['UserID']): ?>
-                            <button class="btn btn-primary apply-btn" onclick='showApplyModal(<?= json_encode($jobPost) ?>)'>Apply Now</button>                        <?php endif; ?>
+                            <button class="btn btn-primary apply-btn" onclick='showApplyModal(<?= json_encode($jobPost) ?>)'>Apply Now</button>                        
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -292,7 +293,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
     </div>
 </div>
 
-
 <!-- Modal for Organization Management -->
 <div class="modal fade" id="organizationModal2" tabindex="-1" aria-labelledby="organizationModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -303,11 +303,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['orgId'])) {
             </div>
             <div class="modal-body">
                 <form id="orgForm">
+                    <input type="hidden" name="orgId" value="<?= $orgId ?>"> <!-- Add this hidden input -->
                     <div class="mb-3">
                         <label for="orgName" class="form-label">Organization Name:</label>
                         <input type="text" class="form-control" id="orgName" name="orgName" value="<?= htmlspecialchars($organization['Org_Name']) ?>" required>
                     </div>
-        
                     <div class="mb-3">
                         <label for="orgDes" class="form-label">About Organization:</label>
                         <textarea class="form-control" id="orgDes" name="orgDes" rows="4" required><?= htmlspecialchars($organization['Org_descript']) ?></textarea>
@@ -387,8 +387,6 @@ function sendApplication() {
     });
 }
 
-
-
 function toggleDetails() {
     var organizationModal = new bootstrap.Modal(document.getElementById('organizationModal'), {
         keyboard: false
@@ -396,29 +394,22 @@ function toggleDetails() {
     organizationModal.show();
 }
 
-</script>
+function toggleText() {
+    const shortDescription = document.getElementById('shortDescription');
+    const fullDescription = document.getElementById('fullDescription');
+    const toggleLink = document.getElementById('toggleLink');
+    
+    if (fullDescription.style.display === "none") {
+        fullDescription.style.display = "block";
+        shortDescription.style.display = "none";
+        toggleLink.textContent = "See Less";
+    } else {
+        fullDescription.style.display = "none";
+        shortDescription.style.display = "-webkit-box";
+        toggleLink.textContent = "See More";
+    }
+}
 
-
-<script>
-        function toggleText() {
-            const shortDescription = document.getElementById('shortDescription');
-            const fullDescription = document.getElementById('fullDescription');
-            const toggleLink = document.getElementById('toggleLink');
-            
-            if (fullDescription.style.display === "none") {
-                fullDescription.style.display = "block";
-                shortDescription.style.display = "none";
-                toggleLink.textContent = "See Less";
-            } else {
-                fullDescription.style.display = "none";
-                shortDescription.style.display = "-webkit-box";
-                toggleLink.textContent = "See More";
-            }
-        }
-    </script>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
 $(document).ready(function() {
     $('#orgForm').submit(function(event) {
         event.preventDefault(); // Stop form from submitting normally
@@ -429,17 +420,21 @@ $(document).ready(function() {
             type: 'POST',
             url: 'update_organization.php', // ensure this URL is correct
             data: formData,
+            dataType: 'json', // Expect JSON response
             success: function(response) {
-                alert('Organization updated successfully.');
+                if (response.success) {
+                    alert(response.success);
+                }
                 $('#organizationModal2').modal('hide'); // hide the modal on success
+                location.reload(); // reload the page to see the changes
             },
             error: function() {
-                alert('Error updating organization.');
+                $('#organizationModal2').modal('hide'); // hide the modal on error
+                location.reload(); // reload the page to see the changes
             }
         });
     });
 });
-
 </script>
 </body>
 </html>
